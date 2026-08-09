@@ -1,0 +1,121 @@
+{
+  "name": "Lead",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "lead_type": {
+      "type": "string",
+      "enum": [
+        "Buying",
+        "Selling",
+        "Buying & Selling",
+        "General Question",
+        "Buyer Inquiry",
+        "Seller Inquiry",
+        "Contact"
+      ]
+    },
+    "form_type": {
+      "type": "string",
+      "enum": [
+        "contact",
+        "buyer",
+        "seller"
+      ]
+    },
+    "message": {
+      "type": "string"
+    },
+    "preferred_locations": {
+      "type": "string"
+    },
+    "budget": {
+      "type": "string"
+    },
+    "property_type": {
+      "type": "string"
+    },
+    "bedrooms": {
+      "type": "string"
+    },
+    "bathrooms": {
+      "type": "string"
+    },
+    "timeframe": {
+      "type": "string"
+    },
+    "property_address": {
+      "type": "string"
+    },
+    "utm_source": {
+      "type": "string"
+    },
+    "utm_medium": {
+      "type": "string"
+    },
+    "utm_campaign": {
+      "type": "string"
+    },
+    "utm_content": {
+      "type": "string"
+    },
+    "utm_term": {
+      "type": "string"
+    },
+    "referrer": {
+      "type": "string"
+    },
+    "landing_page": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "New",
+        "Contacted",
+        "Follow-Up",
+        "Active Client",
+        "Closed",
+        "Not Qualified"
+      ],
+      "default": "New"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "name",
+    "email"
+  ],
+  "rls": {
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

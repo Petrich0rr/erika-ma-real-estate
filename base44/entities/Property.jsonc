@@ -1,0 +1,78 @@
+{
+  "name": "Property",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "price": {
+      "type": "number"
+    },
+    "bedrooms": {
+      "type": "number"
+    },
+    "bathrooms": {
+      "type": "number"
+    },
+    "property_type": {
+      "type": "string",
+      "enum": [
+        "Condo",
+        "Detached",
+        "Semi-Detached",
+        "Townhouse",
+        "Loft",
+        "Commercial",
+        "Land"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "For Sale",
+        "Sold",
+        "Pending",
+        "Coming Soon"
+      ],
+      "default": "For Sale"
+    },
+    "photo": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "neighbourhood": {
+      "type": "string"
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "title",
+    "address"
+  ],
+  "rls": {
+    "read": {},
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}
