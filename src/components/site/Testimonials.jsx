@@ -7,9 +7,9 @@ export default function Testimonials() {
   const [items, setItems] = useState(null);
 
   useEffect(() => {
-    base44.entities.Testimonial.list()
-      .then(setItems)
-      .catch(() => setItems([]));
+    base44.entities.Testimonial.list().
+    then(setItems).
+    catch(() => setItems([]));
   }, []);
 
   const hasReal = items && items.length > 0;
@@ -22,10 +22,10 @@ export default function Testimonials() {
           <h2 className="font-heading text-4xl md:text-5xl mt-4 max-w-xl">In their words</h2>
         </Reveal>
 
-        {hasReal ? (
-          <div className="grid gap-10 md:grid-cols-3">
-            {items.map((t) => (
-              <Reveal key={t.id}>
+        {hasReal ?
+        <div className="grid gap-10 md:grid-cols-3">
+            {items.map((t) =>
+          <Reveal key={t.id}>
                 <blockquote className="border-l border-primary/40 pl-6">
                   <Quote className="text-primary/40" size={28} />
                   <p className="font-heading text-xl md:text-2xl italic leading-relaxed mt-4 text-foreground/85">
@@ -36,24 +36,24 @@ export default function Testimonials() {
                   </footer>
                 </blockquote>
               </Reveal>
-            ))}
-          </div>
-        ) : (
-          <div className="grid gap-10 md:grid-cols-3">
-            {[0, 1, 2].map((i) => (
-              <Reveal key={i}>
+          )}
+          </div> :
+
+        <div className="grid gap-10 md:grid-cols-3">
+            {[0, 1, 2].map((i) =>
+          <Reveal key={i}>
                 <blockquote className="border-l border-primary/40 pl-6">
                   <Quote className="text-primary/40" size={28} />
-                  <p className="font-heading text-xl md:text-2xl italic leading-relaxed mt-4 text-foreground/80">
-                    &ldquo;Your client&rsquo;s testimonial will appear here. Add a real review from your dashboard to showcase the experience of working with you.&rdquo;
-                  </p>
+                  <p className="font-heading text-xl md:text-2xl italic leading-relaxed mt-4 text-foreground/80">“Your client’s testimonial will appear here. Add a review from your dashboard to showcase the experience of working with you.”
+
+              </p>
                   <footer className="mt-5 text-sm text-muted-foreground">[Client Name] · [Neighbourhood]</footer>
                 </blockquote>
               </Reveal>
-            ))}
+          )}
           </div>
-        )}
+        }
       </div>
-    </section>
-  );
+    </section>);
+
 }
