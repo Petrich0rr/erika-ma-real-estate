@@ -11,30 +11,30 @@ import LeadForm from "@/components/site/LeadForm";
 import { Image } from "@/components/ui/image";
 
 const MARKETING_PILLARS = [
-  { title: "Digital Marketing & Social Exposure", body: "Your property is showcased across the platforms today's buyers actually use — not just the MLS." },
-  { title: "Professional Photography & Video", body: "Every listing is presented with editorial-quality visuals that make a home feel as desirable online as it does in person." },
-  { title: "Strategic Positioning & Pricing", body: "Thoughtful, data-informed pricing and positioning designed to attract the right buyers from day one." },
-  { title: "Personalized, One-on-One Service", body: "A single point of contact who knows your goals, your timeline, and your story — from first conversation to closing." },
-  { title: "Market Research & Insight", body: "Clear, current context on Toronto and GTA market conditions so every decision is grounded in fact." },
-  { title: "Transparent Communication", body: "You always know what's happening, what's next, and why — no jargon, no surprises." },
-];
+{ title: "Digital Marketing & Social Exposure", body: "Your property is showcased across the platforms today's buyers actually use — not just the MLS." },
+{ title: "Professional Photography & Video", body: "Every listing is presented with editorial-quality visuals that make a home feel as desirable online as it does in person." },
+{ title: "Strategic Positioning & Pricing", body: "Thoughtful, data-informed pricing and positioning designed to attract the right buyers from day one." },
+{ title: "Personalized, One-on-One Service", body: "A single point of contact who knows your goals, your timeline, and your story — from first conversation to closing." },
+{ title: "Market Research & Insight", body: "Clear, current context on Toronto and GTA market conditions so every decision is grounded in fact." },
+{ title: "Transparent Communication", body: "You always know what's happening, what's next, and why — no jargon, no surprises." }];
+
 
 const RESOURCE_PREVIEWS = [
-  { label: "First-Time Home Buyer Guide", to: "/resources" },
-  { label: "Seller Guide", to: "/resources" },
-  { label: "Mortgage Calculator", to: "/resources" },
-  { label: "Land Transfer Tax", to: "/resources" },
-  { label: "Closing Costs", to: "/resources" },
-  { label: "Toronto & GTA Market Updates", to: "/resources" },
-];
+{ label: "First-Time Home Buyer Guide", to: "/resources" },
+{ label: "Seller Guide", to: "/resources" },
+{ label: "Mortgage Calculator", to: "/resources" },
+{ label: "Land Transfer Tax", to: "/resources" },
+{ label: "Closing Costs", to: "/resources" },
+{ label: "Toronto & GTA Market Updates", to: "/resources" }];
+
 
 export default function Home() {
   const [neighbourhoods, setNeighbourhoods] = useState([]);
 
   useEffect(() => {
-    base44.entities.Neighbourhood.list()
-      .then((n) => setNeighbourhoods(n.filter((x) => x.featured).concat(n).slice(0, 3)))
-      .catch(() => setNeighbourhoods([]));
+    base44.entities.Neighbourhood.list().
+    then((n) => setNeighbourhoods(n.filter((x) => x.featured).concat(n).slice(0, 3))).
+    catch(() => setNeighbourhoods([]));
   }, []);
 
   return (
@@ -75,12 +75,12 @@ export default function Home() {
             <div className="lg:col-span-5 order-1 lg:order-2">
               <Reveal y={32} className="relative">
                 <div className="aspect-[3/4] overflow-hidden bg-sand">
-                  <Image
-                    src={siteConfig.images.hero}
-                    alt={`${siteConfig.agentName} — professional real estate headshot`}
-                    fittingType="fill"
-                    className="w-full h-full"
-                  />
+                  <Image src="https://media.base44.com/images/public/6a79030aec60e25b597174ab/9923cdafa_Head_Shot__4_.png"
+
+                  alt={`${siteConfig.agentName} — professional real estate headshot`}
+                  fittingType="fill"
+                  className="w-full h-full" />
+                  
                 </div>
                 <div className="hidden lg:block absolute -bottom-6 -left-6 bg-background px-6 py-4 border-l-2 border-primary">
                   <span className="block text-[0.65rem] uppercase tracking-[0.25em] text-muted-foreground">Serving</span>
@@ -154,16 +154,16 @@ export default function Home() {
             </div>
             <Link to="/neighbourhoods" className="btn-ghost">Explore Neighbourhoods</Link>
           </Reveal>
-          {neighbourhoods.length > 0 ? (
-            <div className="grid sm:grid-cols-3 gap-8">
-              {neighbourhoods.map((n) => (
-                <Reveal key={n.id}><NeighbourhoodCard neighbourhood={n} /></Reveal>
-              ))}
-            </div>
-          ) : (
-            <div className="grid sm:grid-cols-3 gap-8">
-              {Object.values(siteConfig.images.neighbourhoods).map((img, i) => (
-                <Reveal key={i}>
+          {neighbourhoods.length > 0 ?
+          <div className="grid sm:grid-cols-3 gap-8">
+              {neighbourhoods.map((n) =>
+            <Reveal key={n.id}><NeighbourhoodCard neighbourhood={n} /></Reveal>
+            )}
+            </div> :
+
+          <div className="grid sm:grid-cols-3 gap-8">
+              {Object.values(siteConfig.images.neighbourhoods).map((img, i) =>
+            <Reveal key={i}>
                   <Link to="/neighbourhoods" className="group block">
                     <div className="relative overflow-hidden aspect-[4/3] bg-background">
                       <Image src={img} alt="Toronto neighbourhood" fittingType="fill" className="w-full h-full transition-transform duration-700 group-hover:scale-105" />
@@ -175,9 +175,9 @@ export default function Home() {
                     <p className="text-muted-foreground text-sm mt-1">Coming soon</p>
                   </Link>
                 </Reveal>
-              ))}
+            )}
             </div>
-          )}
+          }
         </div>
       </section>
 
@@ -201,13 +201,13 @@ export default function Home() {
             </div>
             <div className="lg:col-span-7">
               <div className="grid sm:grid-cols-2 gap-x-10">
-                {MARKETING_PILLARS.map((p, i) => (
-                  <Reveal key={p.title} delay={i * 0.05} className="py-7 border-b border-primary/15">
+                {MARKETING_PILLARS.map((p, i) =>
+                <Reveal key={p.title} delay={i * 0.05} className="py-7 border-b border-primary/15">
                     <span className="font-heading text-primary text-2xl">0{i + 1}</span>
                     <h3 className="font-heading text-xl mt-2">{p.title}</h3>
                     <p className="text-muted-foreground text-sm mt-2 leading-relaxed">{p.body}</p>
                   </Reveal>
-                ))}
+                )}
               </div>
             </div>
           </div>
@@ -228,14 +228,14 @@ export default function Home() {
             <Link to="/resources" className="btn-ghost">Browse all resources</Link>
           </Reveal>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-2">
-            {RESOURCE_PREVIEWS.map((r, i) => (
-              <Reveal key={r.label} delay={i * 0.04}>
+            {RESOURCE_PREVIEWS.map((r, i) =>
+            <Reveal key={r.label} delay={i * 0.04}>
                 <Link to={r.to} className="group flex items-center justify-between py-6 border-b border-primary/15">
                   <span className="font-heading text-lg md:text-xl group-hover:text-primary transition-colors">{r.label}</span>
                   <ArrowUpRight size={18} className="text-primary transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </Link>
               </Reveal>
-            ))}
+            )}
           </div>
         </div>
       </section>
@@ -270,6 +270,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-    </>
-  );
+    </>);
+
 }
