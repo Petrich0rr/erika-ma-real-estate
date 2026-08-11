@@ -106,7 +106,7 @@ export default function Home() {
               <h2 className="font-heading text-4xl md:text-5xl mt-4 max-w-xl">A personal, modern approach to real estate</h2>
             </Reveal>
             <Reveal delay={0.1}>
-              <p className="mt-6 text-foreground/80 max-w-xl leading-relaxed">Buying or selling a home is a big decision. I'm here to help makethe process simple, transparent, and as stress-free as possible.
+              <p className="mt-6 text-foreground/80 max-w-xl leading-relaxed">Buying or selling a home is a big decision. I'm here to help make the process simple, transparent, and as stress-free as possible.
 
               </p>
             </Reveal>
