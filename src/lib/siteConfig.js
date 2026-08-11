@@ -9,8 +9,8 @@ export const siteConfig = {
     "A modern, marketing-driven approach to buying and selling homes across Toronto and the Greater Toronto Area.",
   shortTagline: "Toronto & GTA Real Estate",
   email: "hello@yourdomain.com",
-  phone: "(416) 555-0123",
-  phoneHref: "+14165550123",
+  phone: "(647) 686-5233",
+  phoneHref: "+16476865233",
   areas: [
     "Toronto",
     "Etobicoke",
