@@ -101,7 +101,7 @@ export default function Home() {
             </div>
           </Reveal>
           <div className="lg:col-span-7">
-            <Reveal><span className="eyebrow">About</span></Reveal>
+            <Reveal><span className="eyebrow">Meet erika</span></Reveal>
             <Reveal delay={0.05}>
               <h2 className="font-heading text-4xl md:text-5xl mt-4 max-w-xl">Your Trusted Partner in Real Estate.</h2>
             </Reveal>
