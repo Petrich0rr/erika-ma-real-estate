@@ -2,7 +2,7 @@
 // Replace every bracketed placeholder with your real information.
 
 export const siteConfig = {
-  agentName: "[Your Name]",
+  agentName: "Erika Ma",
   role: "Real Estate Salesperson",
   brokerage: "[Your Brokerage Name]",
   tagline:
