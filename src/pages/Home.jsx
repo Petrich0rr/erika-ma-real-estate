@@ -103,7 +103,7 @@ export default function Home() {
           <div className="lg:col-span-7">
             <Reveal><span className="eyebrow">About</span></Reveal>
             <Reveal delay={0.05}>
-              <h2 className="font-heading text-4xl md:text-5xl mt-4 max-w-xl">A personal, modern approach to real estate</h2>
+              <h2 className="font-heading text-4xl md:text-5xl mt-4 max-w-xl">Your Trusted Partner inReal Estate.</h2>
             </Reveal>
             <Reveal delay={0.1}>
               <p className="mt-6 text-foreground/80 max-w-xl leading-relaxed">Buying or selling a home is a big decision. I'm here to help make the process simple, transparent, and as stress-free as possible.
