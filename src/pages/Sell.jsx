@@ -13,7 +13,7 @@ const PILLARS = [
 { title: "Online Exposure", body: "Visibility across key real estate platforms and digital channels." },
 { title: "Market Positioning", body: "A clear strategy to help your property stand out in the market." },
 { title: "Negotiation", body: "Focused negotiation with your goals and best interests in mind." },
-{ title: "Communication", body: "[You always know what's happening, what's next, and why — start to finish.]" }];
+{ title: "Communication", body: "Clear updates and guidance from listing to closing." }];
 
 
 export default function Sell() {
