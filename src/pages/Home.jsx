@@ -132,7 +132,7 @@ export default function Home() {
             <Reveal delay={0.08} className="p-10 md:p-16">
               <span className="eyebrow">For Sellers</span>
               <h3 className="font-heading text-3xl md:text-4xl mt-4">Looking to Sell?</h3>
-              <p className="mt-5 text-foreground/75 max-w-md leading-relaxed">Your home deserves a strategy that helps it stand out. With a marketing focused approach, I’ll help position and showcase your property to reach the right buyers.
+              <p className="mt-5 text-foreground/75 max-w-md leading-relaxed">Your home deserves a strategy that helps it stand out. With a marketing focused approach, I’ll position and showcase your property to reach the right buyers.
 
               </p>
               <Link to="/sell" className="btn-primary mt-8">What&rsquo;s My Home Worth?</Link>
