@@ -53,9 +53,9 @@ export default function Home() {
                 </h1>
               </Reveal>
               <Reveal delay={0.12}>
-                <p className="mt-7 text-lg md:text-xl text-foreground/80 max-w-xl leading-relaxed hidden">
-                  {siteConfig.tagline}
-                </p>
+                
+
+                
               </Reveal>
               <Reveal delay={0.18}>
                 <div className="mt-5 text-sm uppercase tracking-[0.18em] text-muted-foreground">
