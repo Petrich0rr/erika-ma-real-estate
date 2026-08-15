@@ -249,12 +249,12 @@ export default function Home() {
               <h2 className="font-heading text-4xl md:text-5xl mt-4">Let&rsquo;s start a conversation</h2>
             </Reveal>
             <Reveal delay={0.1}>
-              <p className="mt-6 text-foreground/80 max-w-md leading-relaxed">
-                [A warm invitation to get in touch — whether you're ready to buy, sell, or just starting to explore. Replace with your own wording.]
+              <p className="mt-6 text-foreground/80 max-w-md leading-relaxed">Every real estate journey starts with a conversation. Whether you’re buying, selling, renting, investing, or exploring your options, let’s connect and make your next move happen.
+
               </p>
             </Reveal>
             <Reveal delay={0.15} className="mt-8 space-y-3 text-foreground/85">
-              <p className="flex items-center gap-2.5"><MapPin size={16} className="text-primary" /> Toronto &amp; Greater Toronto Area</p>
+              <p className="flex items-center gap-2.5"><MapPin size={16} className="text-primary" /> Serving Toronto &amp; the Greater Toronto Area</p>
               <p>
                 <a href={`mailto:${siteConfig.email}`} className="link-underline">{siteConfig.email}</a>
               </p>
