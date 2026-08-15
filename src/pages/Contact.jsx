@@ -7,8 +7,8 @@ function TikTokIcon({ size = 20 }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
       <path d="M16.5 3c.3 2.1 1.7 3.8 3.8 4.2v2.6c-1.4 0-2.7-.4-3.8-1.1v6.6c0 3.3-2.7 6-6 6s-6-2.7-6-6 2.7-6 6-6c.3 0 .6 0 .9.1v2.7c-.3-.1-.6-.1-.9-.1-1.8 0-3.3 1.5-3.3 3.3s1.5 3.3 3.3 3.3 3.3-1.5 3.3-3.3V3h2.7z" />
-    </svg>
-  );
+    </svg>);
+
 }
 
 export default function Contact() {
@@ -21,8 +21,8 @@ export default function Contact() {
             <h1 className="font-heading text-5xl md:text-7xl mt-5 max-w-3xl leading-[0.98]">Let&rsquo;s talk</h1>
           </Reveal>
           <Reveal delay={0.1}>
-            <p className="mt-7 text-lg text-foreground/80 max-w-xl leading-relaxed">
-              [A warm, brief invitation to reach out — for buyers, sellers, or anyone with a question about Toronto and GTA real estate. Replace with your own wording.]
+            <p className="mt-7 text-lg text-foreground/80 max-w-xl leading-relaxed">Whether you’re ready now or just exploring, I’m always happy to chat.
+
             </p>
           </Reveal>
         </div>
@@ -68,6 +68,6 @@ export default function Contact() {
           </div>
         </div>
       </section>
-    </>
-  );
+    </>);
+
 }
