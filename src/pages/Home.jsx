@@ -124,16 +124,16 @@ export default function Home() {
             <Reveal className="p-10 md:p-16 border-b md:border-b-0 md:border-r border-primary/15">
               <span className="eyebrow">For Buyers</span>
               <h3 className="font-heading text-3xl md:text-4xl mt-4">Looking to Buy?</h3>
-              <p className="mt-5 text-foreground/75 max-w-md leading-relaxed">
-                [How you help buyers find the right home in the right neighbourhood, at the right time — from first search to closing.]
+              <p className="mt-5 text-foreground/75 max-w-md leading-relaxed">Finding the right home is about more than just the property. I’ll help you navigate the market, explore your options, and find a home that fits your needs and goals.
+
               </p>
               <Link to="/buy" className="btn-primary mt-8">Start Your Search</Link>
             </Reveal>
             <Reveal delay={0.08} className="p-10 md:p-16">
               <span className="eyebrow">For Sellers</span>
               <h3 className="font-heading text-3xl md:text-4xl mt-4">Looking to Sell?</h3>
-              <p className="mt-5 text-foreground/75 max-w-md leading-relaxed">
-                [How a modern, marketing-driven approach positions your home to stand out and attract serious buyers.]
+              <p className="mt-5 text-foreground/75 max-w-md leading-relaxed">Your home deserves a strategy that helps it stand out. With a marketing focused approach, I’ll help position and showcase your property to reach the right buyers.
+
               </p>
               <Link to="/sell" className="btn-primary mt-8">What&rsquo;s My Home Worth?</Link>
             </Reveal>
