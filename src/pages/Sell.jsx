@@ -8,11 +8,11 @@ const PILLARS = [
 { title: "Professional Photography", body: "Quality imagery that presents your home at its best." },
 { title: "Professional Video", body: "Video that brings your property and its best features to life." },
 { title: "Social Media Marketing", body: "Strategic exposure across the platforms buyers use every day.\n" },
-{ title: "Digital Advertising", body: "[Data-driven ad campaigns that put your listing in front of qualified buyers.]" },
-{ title: "Property Presentation", body: "[Staging and prep guidance so every detail reads well on camera and in person.]" },
-{ title: "Online Exposure", body: "[Maximum visibility across listing platforms and search — not just the MLS.]" },
-{ title: "Market Positioning", body: "[A clear story for why your home stands out in its neighbourhood and price band.]" },
-{ title: "Negotiation", body: "[Skilled, level-headed negotiation to protect your equity and your timeline.]" },
+{ title: "Digital Advertising", body: "Targeted campaigns designed to expand your property\u2019s reach." },
+{ title: "Property Presentation", body: "Thoughtful presentation to make a strong first impression." },
+{ title: "Online Exposure", body: "Visibility across key real estate platforms and digital channels." },
+{ title: "Market Positioning", body: "A clear strategy to help your property stand out in the market." },
+{ title: "Negotiation", body: "Focused negotiation with your goals and best interests in mind." },
 { title: "Communication", body: "[You always know what's happening, what's next, and why — start to finish.]" }];
 
 
