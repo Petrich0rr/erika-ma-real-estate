@@ -5,8 +5,8 @@ import { Image } from "@/components/ui/image";
 
 const PILLARS = [
 { title: "Strategic Pricing", body: "Pricing informed by the market, your property, and your goals." },
-{ title: "Professional Photography", body: "Quality imagery that presents your home at its best." },
-{ title: "Professional Video", body: "Video that brings your property and its best features to life." },
+{ title: "Photography", body: "Quality imagery that presents your home at its best." },
+{ title: "Video", body: "Video that brings your property and its best features to life." },
 { title: "Social Media Marketing", body: "Strategic exposure across the platforms buyers use every day.\n" },
 { title: "Digital Advertising", body: "Targeted campaigns designed to expand your property\u2019s reach." },
 { title: "Property Presentation", body: "Thoughtful presentation to make a strong first impression." },
