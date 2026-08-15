@@ -5,28 +5,28 @@ import BuyerForm from "@/components/site/BuyerForm";
 import { Image } from "@/components/ui/image";
 
 const AUDIENCES = [
-  {
-    title: "First-Time Buyers",
-    body: "[How you guide first-time buyers through financing, neighbourhoods, and the unknowns — so the biggest purchase of their life feels considered, not overwhelming.]",
-  },
-  {
-    title: "Experienced Buyers",
-    body: "[How you help move-up and repeat buyers navigate timing, competing offers, and strategy to land the right next home.]",
-  },
-  {
-    title: "Investors",
-    body: "[How you support investors with market context, rental considerations, and a clear-eyed view of opportunity across the GTA.]",
-  },
-];
+{
+  title: "First-Time Buyers",
+  body: "[How you guide first-time buyers through financing, neighbourhoods, and the unknowns — so the biggest purchase of their life feels considered, not overwhelming.]"
+},
+{
+  title: "Experienced Buyers",
+  body: "[How you help move-up and repeat buyers navigate timing, competing offers, and strategy to land the right next home.]"
+},
+{
+  title: "Investors",
+  body: "[How you support investors with market context, rental considerations, and a clear-eyed view of opportunity across the GTA.]"
+}];
+
 
 const JOURNEY = [
-  { step: "01", title: "Consultation", body: "We talk through your goals, timeline, budget, and the neighbourhoods that fit your life." },
-  { step: "02", title: "Financing", body: "Connect with a mortgage professional for pre-approval so you know exactly what you can shop for." },
-  { step: "03", title: "The Search", body: "I curate listings and off-market opportunities that match your criteria — no noise, just what fits." },
-  { step: "04", title: "Viewings", body: "We tour the homes that make sense, with honest perspective on value and potential." },
-  { step: "05", title: "Offer & Negotiation", body: "I help you structure a strong, smart offer and negotiate terms in your favour." },
-  { step: "06", title: "Closing", body: "From conditions to closing day, I coordinate the details so you arrive at the keys with confidence." },
-];
+{ step: "01", title: "Consultation", body: "We talk through your goals, timeline, budget, and the neighbourhoods that fit your life." },
+{ step: "02", title: "Financing", body: "Connect with a mortgage professional for pre-approval so you know exactly what you can shop for." },
+{ step: "03", title: "The Search", body: "I curate listings and off-market opportunities that match your criteria. No noise, just what fits." },
+{ step: "04", title: "Viewings", body: "We tour the homes that make sense, with honest perspective on value and potential." },
+{ step: "05", title: "Offer & Negotiation", body: "I help you structure a strong, smart offer and negotiate terms in your favour." },
+{ step: "06", title: "Closing", body: "From conditions to closing day, I coordinate the details so you arrive at the keys with confidence." }];
+
 
 export default function Buy() {
   return (
@@ -63,13 +63,13 @@ export default function Buy() {
             <h2 className="font-heading text-4xl md:text-5xl mt-4 max-w-xl">A buyer journey built around you</h2>
           </Reveal>
           <div className="grid md:grid-cols-3 gap-10">
-            {AUDIENCES.map((a, i) => (
-              <Reveal key={a.title} delay={i * 0.07}>
+            {AUDIENCES.map((a, i) =>
+            <Reveal key={a.title} delay={i * 0.07}>
                 <span className="font-heading text-primary text-3xl">0{i + 1}</span>
                 <h3 className="font-heading text-2xl mt-3">{a.title}</h3>
                 <p className="text-muted-foreground mt-3 leading-relaxed">{a.body}</p>
               </Reveal>
-            ))}
+            )}
           </div>
         </div>
       </section>
@@ -82,15 +82,15 @@ export default function Buy() {
             <h2 className="font-heading text-4xl md:text-5xl mt-4 max-w-xl">How buying works, simply</h2>
           </Reveal>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12">
-            {JOURNEY.map((j, i) => (
-              <Reveal key={j.step} delay={i * 0.04}>
+            {JOURNEY.map((j, i) =>
+            <Reveal key={j.step} delay={i * 0.04}>
                 <div className="border-t border-primary/25 pt-5">
                   <span className="font-heading text-primary text-xl">{j.step}</span>
                   <h3 className="font-heading text-xl mt-2">{j.title}</h3>
                   <p className="text-muted-foreground text-sm mt-2 leading-relaxed">{j.body}</p>
                 </div>
               </Reveal>
-            ))}
+            )}
           </div>
         </div>
       </section>
@@ -110,6 +110,6 @@ export default function Buy() {
           </Reveal>
         </div>
       </section>
-    </>
-  );
+    </>);
+
 }
