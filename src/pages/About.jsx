@@ -43,7 +43,7 @@ export default function About() {
           <div className="lg:col-span-7 space-y-16">
             <Reveal>
               <h2 className="font-heading text-3xl md:text-4xl">A little about me</h2>
-              <p className="mt-6 text-foreground/80 leading-relaxed max-w-xl">I’m Erika, a Toronto based real estate professional with a background in digital marketing. I bring a modern, personal approach to real estate, helping clients feel informed and confident throughout the process.
+              <p className="mt-6 text-foreground/80 leading-relaxed max-w-xl">Hi, I’m Erika! I’m a Toronto based real estate professional with a background in marketing. I love meeting new people, getting to know what they’re looking for, and helping make the whole real estate process feel a little less overwhelming.
 
               </p>
             </Reveal>
