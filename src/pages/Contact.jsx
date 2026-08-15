@@ -57,7 +57,7 @@ export default function Contact() {
             </Reveal>
             <Reveal delay={0.1}>
               <h2 className="font-heading text-2xl md:text-3xl">Hours</h2>
-              <p className="mt-5 text-foreground/80">[By appointment — days, evenings, and weekends. Replace with your availability.]</p>
+              <p className="mt-5 text-foreground/80">Available by appointment</p>
             </Reveal>
           </div>
 
