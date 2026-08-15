@@ -254,7 +254,7 @@ export default function Home() {
               </p>
             </Reveal>
             <Reveal delay={0.15} className="mt-8 space-y-3 text-foreground/85">
-              <p className="flex items-center gap-2.5"><MapPin size={16} className="text-primary" /> Serving Toronto &amp; the Greater Toronto Area</p>
+              <p className="flex items-center gap-2.5"><MapPin size={16} className="text-primary" /> Toronto &amp; the Greater Toronto Area</p>
               <p>
                 <a href={`mailto:${siteConfig.email}`} className="link-underline">{siteConfig.email}</a>
               </p>
