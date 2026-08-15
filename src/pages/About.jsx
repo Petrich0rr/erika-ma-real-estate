@@ -88,7 +88,7 @@ export default function About() {
 
       <CtaBand
         title="Let's work together"
-        message="[A short, warm closing line inviting visitors to reach out. Replace with your own wording.]"
+        message="Whether you’re ready now or just exploring, I’m always happy to chat."
         primaryLabel="Get in Touch"
         primaryTo="/contact"
         secondaryLabel="View Properties"
