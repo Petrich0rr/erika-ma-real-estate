@@ -62,15 +62,15 @@ export default function About() {
 
             <Reveal>
               <h2 className="font-heading text-3xl md:text-4xl">My marketing background</h2>
-              <p className="mt-6 text-foreground/80 leading-relaxed max-w-xl">
-                [Describe your marketing background and how it shapes the way you present and promote properties. Replace with your approved copy.]
+              <p className="mt-6 text-foreground/80 leading-relaxed max-w-xl">Before real estate, I built my career in digital marketing. From social media and content to websites and campaigns, I’ve learned how much good presentation and the right strategy matter. Now I get to bring that experience into real estate too.
+
               </p>
             </Reveal>
 
             <Reveal>
               <h2 className="font-heading text-3xl md:text-4xl">Why work with me</h2>
-              <p className="mt-6 text-foreground/80 leading-relaxed max-w-xl">
-                [A concise, genuine case for why clients should choose you — focused on the experience and outcomes you deliver, not unsupported superlatives. Replace with your approved copy.]
+              <p className="mt-6 text-foreground/80 leading-relaxed max-w-xl">I want you to feel comfortable asking questions, sharing what you really want, and taking your time with big decisions. I’ll be there to guide you, keep you in the loop, and make the process as smooth as I can.
+
               </p>
             </Reveal>
 
