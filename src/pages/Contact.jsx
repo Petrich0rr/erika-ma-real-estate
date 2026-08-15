@@ -21,7 +21,7 @@ export default function Contact() {
             <h1 className="font-heading text-5xl md:text-7xl mt-5 max-w-3xl leading-[0.98]">Let&rsquo;s talk</h1>
           </Reveal>
           <Reveal delay={0.1}>
-            <p className="mt-7 text-lg text-foreground/80 max-w-xl leading-relaxed">Whether you’re ready now or just exploring, I’m always happy to chat.
+            <p className="mt-7 text-lg text-foreground/80 max-w-xl leading-relaxed">Whether you’re ready now or just exploring, I’m always happy to chat.
 
             </p>
           </Reveal>
