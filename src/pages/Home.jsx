@@ -53,7 +53,7 @@ export default function Home() {
                 </h1>
               </Reveal>
               <Reveal delay={0.12}>
-                <p className="mt-7 text-lg md:text-xl text-foreground/80 max-w-xl leading-relaxed">
+                <p className="mt-7 text-lg md:text-xl text-foreground/80 max-w-xl leading-relaxed hidden">
                   {siteConfig.tagline}
                 </p>
               </Reveal>
