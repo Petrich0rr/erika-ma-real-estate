@@ -191,8 +191,8 @@ export default function Home() {
                 <h2 className="font-heading text-4xl md:text-5xl mt-4">Real estate, marketed with intention</h2>
               </Reveal>
               <Reveal delay={0.1}>
-                <p className="mt-6 text-foreground/80 max-w-md leading-relaxed">
-                  [A short statement on your marketing-driven philosophy and how it benefits clients. Replace with your approved copy.]
+                <p className="mt-6 text-foreground/80 max-w-md leading-relaxed">With a background in digital marketing, I bring a modern, strategic approach to real estate — combining strong presentation, market insight, and personalized service to help your property stand out.
+
                 </p>
               </Reveal>
               <Reveal delay={0.15} className="mt-8 aspect-[16/10] overflow-hidden bg-sand">
