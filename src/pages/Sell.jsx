@@ -4,17 +4,17 @@ import SellerForm from "@/components/site/SellerForm";
 import { Image } from "@/components/ui/image";
 
 const PILLARS = [
-  { title: "Strategic Pricing", body: "[Positioning your home at the right price to attract serious buyers without leaving money on the table.]" },
-  { title: "Professional Photography", body: "[Editorial-quality images that present your home at its absolute best.]" },
-  { title: "Professional Video", body: "[Video that gives buyers a true sense of space and flow before they ever tour.]" },
-  { title: "Social Media Marketing", body: "[Targeted exposure across the platforms where today's buyers spend their time.]" },
-  { title: "Digital Advertising", body: "[Data-driven ad campaigns that put your listing in front of qualified buyers.]" },
-  { title: "Property Presentation", body: "[Staging and prep guidance so every detail reads well on camera and in person.]" },
-  { title: "Online Exposure", body: "[Maximum visibility across listing platforms and search — not just the MLS.]" },
-  { title: "Market Positioning", body: "[A clear story for why your home stands out in its neighbourhood and price band.]" },
-  { title: "Negotiation", body: "[Skilled, level-headed negotiation to protect your equity and your timeline.]" },
-  { title: "Communication", body: "[You always know what's happening, what's next, and why — start to finish.]" },
-];
+{ title: "Strategic Pricing", body: "Pricing informed by the market, your property, and your goals." },
+{ title: "Professional Photography", body: "Quality imagery that presents your home at its best." },
+{ title: "Professional Video", body: "Video that brings your property and its best features to life." },
+{ title: "Social Media Marketing", body: "Strategic exposure across the platforms buyers use every day.\n" },
+{ title: "Digital Advertising", body: "[Data-driven ad campaigns that put your listing in front of qualified buyers.]" },
+{ title: "Property Presentation", body: "[Staging and prep guidance so every detail reads well on camera and in person.]" },
+{ title: "Online Exposure", body: "[Maximum visibility across listing platforms and search — not just the MLS.]" },
+{ title: "Market Positioning", body: "[A clear story for why your home stands out in its neighbourhood and price band.]" },
+{ title: "Negotiation", body: "[Skilled, level-headed negotiation to protect your equity and your timeline.]" },
+{ title: "Communication", body: "[You always know what's happening, what's next, and why — start to finish.]" }];
+
 
 export default function Sell() {
   return (
@@ -27,8 +27,8 @@ export default function Sell() {
               <h1 className="font-heading text-5xl md:text-7xl mt-5 leading-[0.98]">Sell with a marketing edge</h1>
             </Reveal>
             <Reveal delay={0.1}>
-              <p className="mt-7 text-lg text-foreground/80 max-w-xl leading-relaxed">
-                [A short intro to your modern, marketing-driven approach to selling — how you present, promote, and protect your home's value. Replace with your approved copy.]
+              <p className="mt-7 text-lg text-foreground/80 max-w-xl leading-relaxed">Selling your home is more than putting it on the market. I’ll combine thoughtful strategy, strong presentation, and modern marketing to help your property stand out.
+
               </p>
             </Reveal>
             <Reveal delay={0.15}>
@@ -51,15 +51,15 @@ export default function Sell() {
             <h2 className="font-heading text-4xl md:text-5xl mt-4 max-w-2xl">Everything that goes into selling your home well</h2>
           </Reveal>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12">
-            {PILLARS.map((p, i) => (
-              <Reveal key={p.title} delay={i * 0.03}>
+            {PILLARS.map((p, i) =>
+            <Reveal key={p.title} delay={i * 0.03}>
                 <div className="border-t border-primary/25 pt-5">
                   <span className="font-heading text-primary text-xl">0{i + 1 < 10 ? `0${i + 1}` : i + 1}</span>
                   <h3 className="font-heading text-xl mt-2">{p.title}</h3>
                   <p className="text-muted-foreground text-sm mt-2 leading-relaxed">{p.body}</p>
                 </div>
               </Reveal>
-            ))}
+            )}
           </div>
         </div>
       </section>
@@ -79,6 +79,6 @@ export default function Sell() {
           </Reveal>
         </div>
       </section>
-    </>
-  );
+    </>);
+
 }
