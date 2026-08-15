@@ -244,7 +244,7 @@ export default function Home() {
       <section id="contact" className="py-20 md:py-32 bg-sand">
         <div className="mx-auto max-w-[1400px] px-5 md:px-10 grid lg:grid-cols-12 gap-12 lg:gap-16">
           <div className="lg:col-span-5">
-            <Reveal><span className="eyebrow">Contact</span></Reveal>
+            <Reveal><span className="eyebrow">Contact ERIKA</span></Reveal>
             <Reveal delay={0.05}>
               <h2 className="font-heading text-4xl md:text-5xl mt-4">Let&rsquo;s start a conversation</h2>
             </Reveal>
@@ -254,7 +254,7 @@ export default function Home() {
               </p>
             </Reveal>
             <Reveal delay={0.15} className="mt-8 space-y-3 text-foreground/85">
-              <p className="flex items-center gap-2.5"><MapPin size={16} className="text-primary" /> Toronto &amp; the Greater Toronto Area</p>
+              <p className="flex items-center gap-2.5"><MapPin size={16} className="text-primary" /> Serving Toronto &amp; the Greater Toronto Area</p>
               <p>
                 <a href={`mailto:${siteConfig.email}`} className="link-underline">{siteConfig.email}</a>
               </p>
