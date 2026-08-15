@@ -41,7 +41,7 @@ export default function Contact() {
                   <a href={`tel:${siteConfig.phoneHref}`} className="link-underline text-lg">{siteConfig.phone}</a>
                 </p>
                 <p className="flex items-center gap-2.5 text-muted-foreground pt-2">
-                  <MapPin size={16} className="text-primary" /> Serving Toronto &amp; the Greater Toronto Area
+                  <MapPin size={16} className="text-primary" /> Toronto &amp; Greater Toronto Area
                 </p>
               </div>
             </Reveal>
