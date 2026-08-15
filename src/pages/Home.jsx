@@ -11,10 +11,10 @@ import LeadForm from "@/components/site/LeadForm";
 import { Image } from "@/components/ui/image";
 
 const MARKETING_PILLARS = [
-{ title: "Digital Marketing & Social Exposure", body: "Your property is showcased across the platforms today's buyers actually use — not just the MLS." },
-{ title: "Professional Photography & Video", body: "Every listing is presented with editorial-quality visuals that make a home feel as desirable online as it does in person." },
-{ title: "Strategic Positioning & Pricing", body: "Thoughtful, data-informed pricing and positioning designed to attract the right buyers from day one." },
-{ title: "Personalized, One-on-One Service", body: "A single point of contact who knows your goals, your timeline, and your story — from first conversation to closing." },
+{ title: "Digital Marketing & Social Exposure", body: "Your property is strategically showcased across digital and social platforms to reach buyers beyond the MLS." },
+{ title: "Professional Photography & Video", body: "High quality photography and video present your property at its best and help make a strong first impression online." },
+{ title: "Strategic Positioning & Pricing", body: "Market data, comparable properties, and current conditions help inform a pricing and positioning strategy designed for your property." },
+{ title: "Personalized, One-on-One Service", body: "You\u2019ll have a dedicated point of contact who understands your goals, priorities, and timeline from our first conversation through closing." },
 { title: "Market Research & Insight", body: "Clear, current context on Toronto and GTA market conditions so every decision is grounded in fact." },
 { title: "Transparent Communication", body: "You always know what's happening, what's next, and why — no jargon, no surprises." }];
 
@@ -191,7 +191,7 @@ export default function Home() {
                 <h2 className="font-heading text-4xl md:text-5xl mt-4">Real estate, marketed with intention</h2>
               </Reveal>
               <Reveal delay={0.1}>
-                <p className="mt-6 text-foreground/80 max-w-md leading-relaxed">With a background in digital marketing, I bring a modern, strategic approach to real estate — combining strong presentation, market insight, and personalized service to help your property stand out.
+                <p className="mt-6 text-foreground/80 max-w-md leading-relaxed">With a background in digital marketing, I bring a modern, strategic approach to real estate, combining strong presentation, market insight, and personalized service to help your property stand out.
 
                 </p>
               </Reveal>
