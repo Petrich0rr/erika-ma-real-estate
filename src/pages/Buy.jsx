@@ -7,15 +7,15 @@ import { Image } from "@/components/ui/image";
 const AUDIENCES = [
 {
   title: "First-Time Buyers",
-  body: "[How you guide first-time buyers through financing, neighbourhoods, and the unknowns — so the biggest purchase of their life feels considered, not overwhelming.]"
+  body: "Buying your first home is a big step. I\u2019ll guide you through the process and make sure you know what to expect along the way."
 },
 {
   title: "Experienced Buyers",
-  body: "[How you help move-up and repeat buyers navigate timing, competing offers, and strategy to land the right next home.]"
+  body: "Ready for your next move? I\u2019ll help you navigate the market and find a home that fits where life is taking you next.\n"
 },
 {
   title: "Investors",
-  body: "[How you support investors with market context, rental considerations, and a clear-eyed view of opportunity across the GTA.]"
+  body: "Looking for your next opportunity? I\u2019ll help you explore properties with your goals, the numbers, and the market in mind."
 }];
 
 
@@ -39,8 +39,8 @@ export default function Buy() {
               <h1 className="font-heading text-5xl md:text-7xl mt-5 leading-[0.98]">Find the home that fits your life</h1>
             </Reveal>
             <Reveal delay={0.1}>
-              <p className="mt-7 text-lg text-foreground/80 max-w-xl leading-relaxed">
-                [A short, warm intro to how you help buyers across Toronto and the GTA — focused on clarity, confidence, and a search that respects their time. Replace with your approved copy.]
+              <p className="mt-7 text-lg text-foreground/80 max-w-xl leading-relaxed">Finding a home should feel exciting, not overwhelming. I’ll help you navigate the market, understand your options, and find a home that feels right for you.
+
               </p>
             </Reveal>
             <Reveal delay={0.15}>
