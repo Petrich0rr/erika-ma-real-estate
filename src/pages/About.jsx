@@ -6,11 +6,11 @@ import CtaBand from "@/components/site/CtaBand";
 import { Image } from "@/components/ui/image";
 
 const APPROACH = [
-  "Listening first — understanding your goals, timeline, and what home really means to you.",
-  "A marketing mindset applied to every transaction, whether you're buying or selling.",
-  "Clear, honest guidance at every step — no pressure, no jargon.",
-  "Modern tools and exposure paired with old-fashioned personal service.",
-];
+"Listening first — understanding your goals, timeline, and what home really means to you.",
+"A marketing mindset applied to every transaction, whether you're buying or selling.",
+"Clear, honest guidance at every step — no pressure, no jargon.",
+"Modern tools and exposure paired with old-fashioned personal service."];
+
 
 const AREAS = siteConfig.areas;
 
@@ -43,20 +43,20 @@ export default function About() {
           <div className="lg:col-span-7 space-y-16">
             <Reveal>
               <h2 className="font-heading text-3xl md:text-4xl">A little about me</h2>
-              <p className="mt-6 text-foreground/80 leading-relaxed max-w-xl">
-                [Your personal introduction. Share who you are, what drew you to real estate, and what makes working with you different. This is your space to be human and credible — not a corporate résumé. Replace with your final biography.]
+              <p className="mt-6 text-foreground/80 leading-relaxed max-w-xl">I’m Erika, a Toronto based real estate professional with a background in digital marketing. I bring a modern, personal approach to real estate, helping clients feel informed and confident throughout the process.
+
               </p>
             </Reveal>
 
             <Reveal>
               <h2 className="font-heading text-3xl md:text-4xl">My approach to real estate</h2>
               <ul className="mt-6 space-y-4 max-w-xl">
-                {APPROACH.map((a) => (
-                  <li key={a} className="flex items-start gap-3">
+                {APPROACH.map((a) =>
+                <li key={a} className="flex items-start gap-3">
                     <Check size={18} className="text-primary mt-1 shrink-0" />
                     <span className="text-foreground/80">{a}</span>
                   </li>
-                ))}
+                )}
               </ul>
             </Reveal>
 
@@ -77,9 +77,9 @@ export default function About() {
             <Reveal>
               <h2 className="font-heading text-3xl md:text-4xl">Areas I serve</h2>
               <div className="mt-6 flex flex-wrap gap-2.5 max-w-xl">
-                {AREAS.map((a) => (
-                  <span key={a} className="px-4 py-2 border border-primary/25 text-sm text-foreground/80">{a}</span>
-                ))}
+                {AREAS.map((a) =>
+                <span key={a} className="px-4 py-2 border border-primary/25 text-sm text-foreground/80">{a}</span>
+                )}
               </div>
             </Reveal>
           </div>
@@ -92,8 +92,8 @@ export default function About() {
         primaryLabel="Get in Touch"
         primaryTo="/contact"
         secondaryLabel="View Properties"
-        secondaryTo="/"
-      />
-    </>
-  );
+        secondaryTo="/" />
+      
+    </>);
+
 }
