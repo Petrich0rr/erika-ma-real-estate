@@ -188,7 +188,7 @@ export default function Home() {
             <div className="lg:col-span-5 lg:sticky lg:top-32">
               <Reveal><span className="eyebrow">Why Work With Me</span></Reveal>
               <Reveal delay={0.05}>
-                <h2 className="font-heading text-4xl md:text-5xl mt-4">Real estate, marketed like it should be</h2>
+                <h2 className="font-heading text-4xl md:text-5xl mt-4">Real estate, marketed with intention</h2>
               </Reveal>
               <Reveal delay={0.1}>
                 <p className="mt-6 text-foreground/80 max-w-md leading-relaxed">
