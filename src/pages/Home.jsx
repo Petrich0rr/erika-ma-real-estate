@@ -15,8 +15,8 @@ const MARKETING_PILLARS = [
 { title: "Professional Photography & Video", body: "High quality photography and video present your property at its best and help make a strong first impression online." },
 { title: "Strategic Positioning & Pricing", body: "Market data, comparable properties, and current conditions help inform a pricing and positioning strategy designed for your property." },
 { title: "Personalized, One-on-One Service", body: "You\u2019ll have a dedicated point of contact who understands your goals, priorities, and timeline from our first conversation through closing." },
-{ title: "Market Research & Insight", body: "Clear, current context on Toronto and GTA market conditions so every decision is grounded in fact." },
-{ title: "Transparent Communication", body: "You always know what's happening, what's next, and why — no jargon, no surprises." }];
+{ title: "Market Research & Insight", body: "Clear, current insight into Toronto and GTA market conditions helps you make informed decisions with confidence." },
+{ title: "Transparent Communication", body: "Clear communication throughout the process, so you always know what\u2019s happening, what comes next, and what your options are." }];
 
 
 const RESOURCE_PREVIEWS = [
