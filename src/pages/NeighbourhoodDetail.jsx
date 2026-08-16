@@ -60,7 +60,7 @@ export default function NeighbourhoodDetail() {
       <section className="pb-16">
           <div className="mx-auto max-w-[1400px] px-5 md:px-10">
             <div className="aspect-[16/9] overflow-hidden bg-sand">
-              <Image src="https://media.base44.com/images/public/6a79030aec60e25b597174ab/b81f53bf7_modern-buildings-along-yorkville-avenue-midtown-toronto-onta-ontario-72879551.webp" alt={nh.name} fittingType="fill" className="w-full h-full" />
+              <Image src="https://media.base44.com/images/public/6a79030aec60e25b597174ab/053ec0ce3_istockphoto-506890867-612x612.jpg" alt={nh.name} fittingType="fill" className="w-full h-full" />
             </div>
           </div>
         </section>
