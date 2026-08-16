@@ -24,7 +24,7 @@ export const siteConfig = {
     "Burlington",
   ],
   social: {
-    instagram: "https://instagram.com/",
+    instagram: "https://www.instagram.com/itserikama/",
     linkedin: "https://linkedin.com/",
     tiktok: "https://tiktok.com/",
   },
