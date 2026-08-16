@@ -9,8 +9,8 @@ export const siteConfig = {
     "A modern, marketing-driven approach to buying and selling homes across Toronto and the Greater Toronto Area.",
   shortTagline: "Toronto & GTA Real Estate",
   email: "ma_erika@yahoo.ca",
-  phone: "(647) 686-5233",
-  phoneHref: "+16476865233",
+  phone: "(647) 868-5233",
+  phoneHref: "+16478685233",
   areas: [
     "Toronto",
     "North York",
