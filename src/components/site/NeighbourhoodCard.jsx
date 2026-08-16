@@ -7,7 +7,7 @@ export default function NeighbourhoodCard({ neighbourhood }) {
     <Link to={`/neighbourhoods/${neighbourhood.slug}`} className="group block">
       <div className="relative overflow-hidden aspect-[4/3] bg-sand">
         {neighbourhood.photo ?
-        <Image src="https://media.base44.com/images/public/6a79030aec60e25b597174ab/b81f53bf7_modern-buildings-along-yorkville-avenue-midtown-toronto-onta-ontario-72879551.webp"
+        <Image src={neighbourhood.photo}
 
         alt={neighbourhood.name}
         fittingType="fill"
