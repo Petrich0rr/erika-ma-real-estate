@@ -111,7 +111,7 @@ export default function Home() {
               </p>
             </Reveal>
             <Reveal delay={0.15}>
-              <Link to="/about" className="btn-ghost mt-8">More about me</Link>
+              <Link to="/about" className="btn-ghost mt-8 pl-0">More about me</Link>
             </Reveal>
           </div>
         </div>
