@@ -25,7 +25,7 @@ export const siteConfig = {
   ],
   social: {
     instagram: "https://www.instagram.com/itserikama/",
-    linkedin: "https://linkedin.com/",
+    linkedin: "https://www.linkedin.com/in/erikama/",
     tiktok: "https://tiktok.com/",
   },
   images: {
