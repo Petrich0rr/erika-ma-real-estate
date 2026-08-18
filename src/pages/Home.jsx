@@ -97,7 +97,7 @@ export default function Home() {
         <div className="mx-auto max-w-[1400px] px-5 md:px-10 grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           <Reveal className="lg:col-span-5">
             <div className="aspect-[4/5] overflow-hidden bg-sand">
-              <Image src={siteConfig.images.about} alt={`${siteConfig.agentName}`} fittingType="fill" className="w-full h-full" />
+              <Image src="https://media.base44.com/images/public/6a79030aec60e25b597174ab/e6b83c6c0_IMG_3447.jpeg" alt={`${siteConfig.agentName}`} fittingType="fill" className="w-full h-full" />
             </div>
           </Reveal>
           <div className="lg:col-span-7">
