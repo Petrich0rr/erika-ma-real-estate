@@ -133,15 +133,59 @@
   background: hsl(var(--primary));
   border: 2px solid hsl(var(--background));
   border-radius: 9999px;
-  width: 14px;
-  height: 14px;
-  box-shadow: 0 0 0 4px hsl(var(--primary) / 0.18);
-  transition: transform 0.2s ease;
+  width: 16px;
+  height: 16px;
+  box-shadow: 0 0 0 5px hsl(var(--primary) / 0.2), 0 2px 6px hsl(var(--primary) / 0.35);
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease;
+  cursor: pointer;
 }
-.nh-pin:hover { transform: scale(1.25); }
+.nh-pin:hover {
+  transform: scale(1.35);
+  box-shadow: 0 0 0 7px hsl(var(--primary) / 0.28), 0 4px 12px hsl(var(--primary) / 0.45);
+}
 .nh-pin.is-featured {
-  width: 18px; height: 18px;
-  box-shadow: 0 0 0 6px hsl(var(--primary) / 0.22);
+  width: 20px; height: 20px;
+  box-shadow: 0 0 0 7px hsl(var(--primary) / 0.25), 0 2px 8px hsl(var(--primary) / 0.4);
+}
+.nh-pin.is-featured:hover {
+  box-shadow: 0 0 0 9px hsl(var(--primary) / 0.32), 0 4px 14px hsl(var(--primary) / 0.5);
+}
+.nh-pin::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 9999px;
+  background: hsl(var(--primary) / 0.3);
+  opacity: 0;
+  animation: nh-ping 2.4s ease-out infinite;
+}
+.nh-pin.is-featured::after {
+  opacity: 1;
+}
+@keyframes nh-ping {
+  0% { transform: scale(0.8); opacity: 0.6; }
+  70% { transform: scale(2.2); opacity: 0; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+.leaflet-popup-content-wrapper {
+  background: hsl(var(--background)) !important;
+  border: 1px solid hsl(var(--primary) / 0.2) !important;
+  border-radius: 2px !important;
+  box-shadow: 0 8px 30px hsl(0 0% 0% / 0.12) !important;
+  padding: 0 !important;
+}
+.leaflet-popup-content {
+  margin: 14px 18px !important;
+  font-family: var(--font-body) !important;
+}
+.leaflet-popup-tip {
+  background: hsl(var(--background)) !important;
+  border: 1px solid hsl(var(--primary) / 0.2) !important;
+}
+.leaflet-popup-close-button {
+  color: hsl(var(--muted-foreground)) !important;
+  font-size: 18px !important;
+  padding: 6px 8px 0 0 !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
