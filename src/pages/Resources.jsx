@@ -97,7 +97,7 @@ export default function Resources() {
         <div className="mx-auto max-w-[1400px] px-5 md:px-10">
           <Reveal className="mb-12">
             <span className="eyebrow">Free Downloads</span>
-            <h2 className="font-heading text-4xl md:text-5xl mt-4">Get the guide delivered</h2>
+            <h2 className="font-heading text-4xl md:text-5xl mt-4">Guides to Get You Started</h2>
           </Reveal>
           <div className="grid md:grid-cols-2 gap-10">
             <Reveal className="bg-sand p-7 md:p-10 border border-primary/15">
