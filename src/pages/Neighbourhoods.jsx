@@ -36,7 +36,7 @@ export default function Neighbourhoods() {
         <div className="mx-auto max-w-[1400px] px-5 md:px-10">
           <div className="grid lg:grid-cols-12 gap-8">
             <div className="lg:col-span-8">
-              <div className="border border-primary/15 overflow-hidden">
+              <div className="border border-primary/15">
                 <NeighbourhoodMap neighbourhoods={items} onSelect={setSelected} />
               </div>
             </div>

@@ -1,12 +1,31 @@
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { useEffect } from "react";
+import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import L from "leaflet";
+
+function MapResizer() {
+  const map = useMap();
+  useEffect(() => {
+    const fix = () => map.invalidateSize();
+    const t1 = setTimeout(fix, 200);
+    const t2 = setTimeout(fix, 800);
+    const t3 = setTimeout(fix, 1600);
+    window.addEventListener("load", fix);
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
+      window.removeEventListener("load", fix);
+    };
+  }, [map]);
+  return null;
+}
 
 function makeIcon(featured) {
   return L.divIcon({
     className: "",
     html: `<span class="nh-pin ${featured ? "is-featured" : ""}"></span>`,
-    iconSize: featured ? [18, 18] : [14, 14],
-    iconAnchor: featured ? [9, 9] : [7, 7],
+    iconSize: [30, 30],
+    iconAnchor: [15, 15],
   });
 }
 
@@ -26,6 +45,7 @@ export default function NeighbourhoodMap({ neighbourhoods = [], onSelect }) {
         subdomains="abcd"
         maxZoom={19}
       />
+      <MapResizer />
       {points.map((n) => (
         <Marker
           key={n.id}

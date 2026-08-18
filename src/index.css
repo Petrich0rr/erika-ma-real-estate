@@ -130,6 +130,8 @@
   color: #fff !important;
 }
 .nh-pin {
+  display: block;
+  position: relative;
   background: hsl(var(--primary));
   border: 2px solid hsl(var(--background));
   border-radius: 9999px;
