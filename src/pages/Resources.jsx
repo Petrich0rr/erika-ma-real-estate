@@ -102,8 +102,8 @@ export default function Resources() {
           <div className="grid md:grid-cols-2 gap-10">
             <Reveal className="bg-sand p-7 md:p-10 border border-primary/15">
               <h3 className="font-heading text-2xl">First-Time Home Buyer Guide</h3>
-              <p className="text-muted-foreground text-sm mt-2 leading-relaxed">
-                [A short description of what's inside the buyer guide. Replace with your copy.] Enter your name and email and I&rsquo;ll send it over.
+              <p className="text-muted-foreground text-sm mt-2 leading-relaxed">Buying your first home? Get the key steps, tips and things to know before you start your search.
+
               </p>
               <div className="mt-6">
                 <GuideRequestForm guideName="First-Time Home Buyer Guide" />
@@ -111,8 +111,8 @@ export default function Resources() {
             </Reveal>
             <Reveal delay={0.08} className="bg-sand p-7 md:p-10 border border-primary/15">
               <h3 className="font-heading text-2xl">Seller Guide</h3>
-              <p className="text-muted-foreground text-sm mt-2 leading-relaxed">
-                [A short description of what's inside the seller guide. Replace with your copy.] Enter your name and email and I&rsquo;ll send it over.
+              <p className="text-muted-foreground text-sm mt-2 leading-relaxed">Thinking of selling? Get the key steps, tips and things to know before putting your home on the market.
+
               </p>
               <div className="mt-6">
                 <GuideRequestForm guideName="Seller Guide" />
