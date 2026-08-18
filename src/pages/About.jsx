@@ -37,7 +37,7 @@ export default function About() {
         <div className="mx-auto max-w-[1400px] px-5 md:px-10 grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           <Reveal className="lg:col-span-5">
             <div className="aspect-[3/4] overflow-hidden bg-sand lg:sticky lg:top-32">
-              <Image src={siteConfig.images.about} alt={siteConfig.agentName} fittingType="fill" className="w-full h-full" />
+              <Image src="https://media.base44.com/images/public/6a79030aec60e25b597174ab/9218783f3_IMG_3445.jpeg" alt={siteConfig.agentName} fittingType="fill" className="w-full h-full" />
             </div>
           </Reveal>
           <div className="lg:col-span-7 space-y-16">
