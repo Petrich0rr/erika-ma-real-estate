@@ -11,7 +11,7 @@ const CATEGORIES = [
 { icon: Home, label: "First-Time Home Buyer Guide", desc: "Everything you need to approach your first purchase with confidence.", to: "/contact" },
 { icon: FileText, label: "Seller Guide", desc: "A modern roadmap for preparing, pricing, and marketing your home.", to: "/contact" },
 { icon: Receipt, label: "Closing Costs", desc: "Understand the costs beyond the purchase price before closing day.", to: "/contact" },
-{ icon: TrendingUp, label: "Toronto & GTA Market Updates", desc: "Current context on local market conditions — added regularly.", to: "/contact" },
+{ icon: TrendingUp, label: "Toronto & GTA Market Updates", desc: "Current context on local market conditions, added regularly.", to: "/contact" },
 { icon: BookOpen, label: "Real Estate Articles", desc: "Practical, jargon-free reads on buying and selling.", to: "/contact" },
 { icon: MapPin, label: "Neighbourhood Guides", desc: "Lifestyle, highlights, and property types across the GTA.", to: "/neighbourhoods" }];
 
