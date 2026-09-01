@@ -4,6 +4,6 @@ export default function BrokerageLogo({ className = "", variant = "dark" }) {
   const src = variant === "light" ? siteConfig.brokerageLogoLight : siteConfig.brokerageLogo;
   if (!src) return null;
   return (
-    <img src={src} alt={siteConfig.brokerage} className={className} />
-  );
+    <img src="https://media.base44.com/images/public/6a79030aec60e25b597174ab/79d9d96e1_HL_Logo_Dark.png" alt={siteConfig.brokerage} className={className} />);
+
 }
