@@ -1,22 +1,27 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import L from "leaflet";
+import "leaflet/dist/leaflet.css";
 
-function MapResizer() {
+function MapController({ points }) {
   const map = useMap();
   useEffect(() => {
-    const fix = () => map.invalidateSize();
-    const t1 = setTimeout(fix, 200);
-    const t2 = setTimeout(fix, 800);
-    const t3 = setTimeout(fix, 1600);
-    window.addEventListener("load", fix);
+    const fit = () => {
+      map.invalidateSize();
+      if (points.length > 0) {
+        const bounds = L.latLngBounds(points.map((p) => [p.lat, p.lng]));
+        map.fitBounds(bounds, { padding: [50, 50], maxZoom: 13 });
+      }
+    };
+    const t1 = setTimeout(fit, 200);
+    const t2 = setTimeout(fit, 800);
+    window.addEventListener("load", fit);
     return () => {
       clearTimeout(t1);
       clearTimeout(t2);
-      clearTimeout(t3);
-      window.removeEventListener("load", fix);
+      window.removeEventListener("load", fit);
     };
-  }, [map]);
+  }, [map, points]);
   return null;
 }
 
@@ -30,7 +35,16 @@ function makeIcon(featured) {
 }
 
 export default function NeighbourhoodMap({ neighbourhoods = [], onSelect }) {
+  const [ready, setReady] = useState(false);
   const points = neighbourhoods.filter((n) => n.lat && n.lng);
+
+  useEffect(() => {
+    const t = setTimeout(() => setReady(true), 300);
+    return () => clearTimeout(t);
+  }, []);
+
+  if (!ready) return <div className="h-[520px] w-full bg-sand animate-pulse" />;
+
   return (
     <MapContainer
       center={[43.6532, -79.3832]}
@@ -45,7 +59,7 @@ export default function NeighbourhoodMap({ neighbourhoods = [], onSelect }) {
         subdomains="abcd"
         maxZoom={19}
       />
-      <MapResizer />
+      <MapController points={points} />
       {points.map((n) => (
         <Marker
           key={n.id}
@@ -57,7 +71,7 @@ export default function NeighbourhoodMap({ neighbourhoods = [], onSelect }) {
             <div style={{ fontFamily: "Open Sans, sans-serif" }}>
               <strong style={{ fontFamily: "Playfair Display, serif", fontSize: "1rem" }}>{n.name}</strong>
               {n.tagline && <div style={{ color: "#757575", fontSize: "0.8rem", marginTop: "2px" }}>{n.tagline}</div>}
-              <div style={{ color: "#0300A6", fontSize: "0.8rem", marginTop: "6px", textDecoration: "underline" }}>View guide →</div>
+              <div style={{ color: "#001768", fontSize: "0.8rem", marginTop: "6px", textDecoration: "underline" }}>View guide →</div>
             </div>
           </Popup>
         </Marker>

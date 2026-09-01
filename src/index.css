@@ -10,19 +10,19 @@
     --card-foreground: 0 0% 10%;
     --popover: 33 44% 96%;
     --popover-foreground: 0 0% 10%;
-    --primary: 241 100% 33%;
+    --primary: 227 100% 20%;
     --primary-foreground: 0 0% 100%;
     --secondary: 36 40% 90%;
     --secondary-foreground: 0 0% 10%;
     --muted: 36 38% 90%;
     --muted-foreground: 0 0% 42%;
-    --accent: 241 100% 33%;
+    --accent: 227 100% 20%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
     --border: 36 32% 86%;
     --input: 36 32% 86%;
-    --ring: 241 100% 33%;
+    --ring: 227 100% 20%;
     --sand: 33 40% 91%;
     --radius: 0px;
     --font-heading: 'Playfair Display', Georgia, 'Times New Roman', serif;
@@ -38,19 +38,19 @@
     --card-foreground: 0 0% 92%;
     --popover: 240 10% 14%;
     --popover-foreground: 0 0% 92%;
-    --primary: 241 100% 62%;
+    --primary: 227 100% 62%;
     --primary-foreground: 0 0% 100%;
     --secondary: 240 8% 18%;
     --secondary-foreground: 0 0% 92%;
     --muted: 240 8% 18%;
     --muted-foreground: 0 0% 62%;
-    --accent: 241 100% 62%;
+    --accent: 227 100% 62%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 72% 55%;
     --destructive-foreground: 0 0% 100%;
     --border: 240 8% 24%;
     --input: 240 8% 24%;
-    --ring: 241 100% 62%;
+    --ring: 227 100% 62%;
   }
 }
 

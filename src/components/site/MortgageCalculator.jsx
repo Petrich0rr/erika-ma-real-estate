@@ -22,7 +22,7 @@ export default function MortgageCalculator() {
         <input type="number" min={0} step={10000} value={price} onChange={(e) => setPrice(Number(e.target.value))} className="ghost-input" />
       </Field>
       <Field label={`Down payment (${downPct}%) — ${fmt(down)}`}>
-        <input type="range" min={0} max={50} step={1} value={downPct} onChange={(e) => setDownPct(Number(e.target.value))} className="w-full accent-[#0300A6]" />
+        <input type="range" min={0} max={50} step={1} value={downPct} onChange={(e) => setDownPct(Number(e.target.value))} className="w-full accent-[#001768]" />
       </Field>
       <Field label="Interest rate (%)">
         <input type="number" min={0} step={0.05} value={rate} onChange={(e) => setRate(Number(e.target.value))} className="ghost-input" />
