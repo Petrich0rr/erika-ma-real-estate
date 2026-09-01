@@ -25,7 +25,7 @@ export default function SiteFooter() {
               </span>
             </Link>
             <p className="mt-6 text-background/70 max-w-sm leading-relaxed text-[0.95rem]">
-              {siteConfig.tagline}
+              Residential &bull; Commercial &bull; Pre-Construction
             </p>
             <BrokerageLogo className="mt-8 h-20 md:h-24 w-auto" />
             <div className="mt-7 flex items-center gap-4">
