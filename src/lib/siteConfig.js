@@ -4,7 +4,8 @@
 export const siteConfig = {
   agentName: "Erika Ma",
   role: "Real Estate Salesperson",
-  brokerage: "[Your Brokerage Name]",
+  brokerage: "HomeLife Landmark Realty Inc., Brokerage",
+  brokerageLogo: "https://media.base44.com/images/public/6a79030aec60e25b597174ab/68f82883d_HL_Logo_Dark.png",
   tagline:
     "A modern, marketing-driven approach to buying and selling homes across Toronto and the Greater Toronto Area.",
   shortTagline: "Toronto & GTA Real Estate",
