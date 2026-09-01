@@ -7,10 +7,12 @@ export const siteConfig = {
   brokerage: "HomeLife Landmark Realty Inc., Brokerage",
   brokerageLogo:
     "https://media.base44.com/images/public/6a79030aec60e25b597174ab/eed4d503f_HomeLife-Landmark-Office-Logo-Chinese1.png",
+  brokerageLogoLight:
+    "https://media.base44.com/images/public/6a79030aec60e25b597174ab/7e1d39e07_HL_Logo_Light.png",
   tagline:
     "A modern, marketing-driven approach to buying and selling homes across Toronto and the Greater Toronto Area.",
   shortTagline: "Toronto & GTA Real Estate",
-  email: "ma_erika@yahoo.ca",
+  email: "realerikama@gmail.com",
   phone: "(647) 868-5233",
   phoneHref: "+16478685233",
   areas: [
