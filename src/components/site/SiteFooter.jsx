@@ -43,13 +43,6 @@ export default function SiteFooter() {
                 <Phone size={20} />
               </a>
             </div>
-            {siteConfig.brokerageLogo && (
-              <img
-                src={siteConfig.brokerageLogo}
-                alt="HomeLife Landmark Realty Inc., Brokerage"
-                className="mt-8 h-20 w-auto object-contain"
-              />
-            )}
           </div>
 
           <div className="md:col-span-3">
