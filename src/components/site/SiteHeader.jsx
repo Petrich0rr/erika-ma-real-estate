@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { navLinks, siteConfig } from "@/lib/siteConfig";
 import { captureUtm } from "@/lib/utm";
+import BrokerageLogo from "@/components/site/BrokerageLogo";
 
 export default function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
@@ -36,13 +37,17 @@ export default function SiteHeader() {
     >
       <div className="mx-auto max-w-[1400px] px-5 md:px-10">
         <div className="flex items-center justify-between h-20 md:h-24">
-          <Link to="/" className="group" aria-label={`${siteConfig.agentName} — home`}>
-            <span className="block font-heading text-xl md:text-2xl leading-none text-foreground">
-              {siteConfig.agentName}
-            </span>
-            <span className="block text-[0.6rem] uppercase tracking-[0.28em] text-primary mt-1.5">
-              {siteConfig.shortTagline}
-            </span>
+          <Link to="/" className="group flex items-center gap-4" aria-label={`${siteConfig.agentName} — home`}>
+            <div>
+              <span className="block font-heading text-xl md:text-2xl leading-none text-foreground">
+                {siteConfig.agentName}
+              </span>
+              <span className="block text-[0.6rem] uppercase tracking-[0.28em] text-primary mt-1.5">
+                {siteConfig.shortTagline}
+              </span>
+            </div>
+            <span className="hidden md:block h-14 w-px bg-primary/20" />
+            <BrokerageLogo className="hidden md:block h-14 w-auto" />
           </Link>
 
           <nav className="hidden lg:flex items-center gap-9" aria-label="Primary">

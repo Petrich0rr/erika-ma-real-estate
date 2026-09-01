@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Instagram, Linkedin, Mail, Phone, ArrowUpRight } from "lucide-react";
 import { navLinks, siteConfig } from "@/lib/siteConfig";
+import BrokerageLogo from "@/components/site/BrokerageLogo";
 
 // TikTok has no lucide icon; render a compact inline glyph.
 function TikTokIcon({ size = 18 }) {
@@ -26,6 +27,7 @@ export default function SiteFooter() {
             <p className="mt-6 text-background/70 max-w-sm leading-relaxed text-[0.95rem]">
               {siteConfig.tagline}
             </p>
+            <BrokerageLogo className="mt-8 h-20 md:h-24 w-auto" />
             <div className="mt-7 flex items-center gap-4">
               <a href={siteConfig.social.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-background/70 hover:text-background transition-colors">
                 <Instagram size={20} />
