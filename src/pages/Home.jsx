@@ -45,7 +45,7 @@ export default function Home() {
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
             <div className="lg:col-span-7 order-2 lg:order-1">
               <Reveal y={20}>
-                <span className="eyebrow">Meet</span>
+                <span className="eyebrow hidden">Meet</span>
               </Reveal>
               <Reveal delay={0.05}>
                 <h1 className="font-heading text-[2.75rem] sm:text-[4rem] lg:text-[5.5rem] leading-[0.95] mt-5">
