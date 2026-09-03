@@ -9,6 +9,7 @@ import Testimonials from "@/components/site/Testimonials";
 import NeighbourhoodCard from "@/components/site/NeighbourhoodCard";
 import LeadForm from "@/components/site/LeadForm";
 import { Image } from "@/components/ui/image";
+import SkylineHero from "@/components/site/SkylineHero";
 
 const MARKETING_PILLARS = [
 { title: "Digital Marketing & Social Exposure", body: "Your property is strategically showcased across digital and social platforms to reach buyers beyond the MLS." },
@@ -40,8 +41,9 @@ export default function Home() {
   return (
     <>
       {/* HERO */}
-      <section className="relative min-h-[92vh] flex items-center pt-32 pb-16 md:pt-36">
-        <div className="mx-auto max-w-[1400px] px-5 md:px-10 w-full">
+      <section className="relative isolate bg-background min-h-[92vh] flex items-center pt-32 pb-16 md:pt-36">
+        <SkylineHero />
+        <div className="relative z-10 mx-auto max-w-[1400px] px-5 md:px-10 w-full">
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
             <div className="lg:col-span-7 order-2 lg:order-1">
               <Reveal y={20}>
