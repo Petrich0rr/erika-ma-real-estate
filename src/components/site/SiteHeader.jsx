@@ -47,12 +47,7 @@ export default function SiteHeader() {
               </span>
             </div>
             <span className="hidden md:block h-14 w-px bg-primary/20" />
-            <div className="hidden md:flex flex-col items-start gap-1">
-              <BrokerageLogo className="h-12 w-auto" />
-              <span className="text-[0.55rem] uppercase tracking-[0.2em] text-muted-foreground leading-none">
-                {siteConfig.brokerage}
-              </span>
-            </div>
+            <BrokerageLogo className="hidden md:block h-14 w-auto" />
           </Link>
 
           <nav className="hidden lg:flex items-center gap-9" aria-label="Primary">

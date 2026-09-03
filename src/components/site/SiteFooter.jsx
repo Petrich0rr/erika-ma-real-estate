@@ -28,6 +28,9 @@ export default function SiteFooter() {
               Residential &bull; Commercial &bull; Pre-Construction
             </p>
             <BrokerageLogo variant="light" className="mt-8 h-28 md:h-32 w-auto" />
+            <p className="mt-3 text-[0.7rem] uppercase tracking-[0.18em] text-background/55 leading-relaxed">
+              {siteConfig.brokerage}
+            </p>
             <div className="mt-5 text-[0.8rem] leading-relaxed text-background/55">
               <p>Tel: {siteConfig.office.phone} &nbsp; Fax: {siteConfig.office.fax}</p>
               <p>{siteConfig.office.address}</p>
@@ -80,7 +83,7 @@ export default function SiteFooter() {
                   {siteConfig.phone}
                 </a>
               </li>
-              <li className="text-background/60 pt-2">{siteConfig.brokerage}</li>
+
             </ul>
             <Link to="/contact" className="inline-flex items-center gap-1.5 mt-6 text-background text-sm uppercase tracking-[0.18em] font-semibold group">
               Book a consultation

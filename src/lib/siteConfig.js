@@ -18,7 +18,7 @@ export const siteConfig = {
   },
   tagline:
     "A modern, marketing-driven approach to buying and selling homes across Toronto and the Greater Toronto Area.",
-  shortTagline: "Toronto & GTA Real Estate",
+  shortTagline: "Real Estate Salesperson",
   email: "realerikama@gmail.com",
   phone: "(647) 868-5233",
   phoneHref: "+16478685233",
