@@ -35,9 +35,9 @@ export const siteConfig = {
     "Burlington",
   ],
   social: {
-    instagram: "https://www.instagram.com/itserikama/",
+    instagram: "https://www.instagram.com/realerikama/",
     linkedin: "https://www.linkedin.com/in/erikama/",
-    tiktok: "https://tiktok.com/",
+    tiktok: "https://www.tiktok.com/@erikarma._",
   },
   images: {
     hero: "https://media.base44.com/images/public/6a79030aec60e25b597174ab/00be8f2f3_generated_87ff875e.png",

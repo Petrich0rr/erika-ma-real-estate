@@ -35,9 +35,11 @@ export default function Contact() {
               <h2 className="font-heading text-2xl md:text-3xl">Direct</h2>
               <div className="mt-5 space-y-3 text-foreground/85">
                 <p>
+                  <span className="text-muted-foreground text-sm uppercase tracking-[0.18em] font-semibold mr-2">Email:</span>
                   <a href={`mailto:${siteConfig.email}`} className="link-underline text-lg">{siteConfig.email}</a>
                 </p>
                 <p>
+                  <span className="text-muted-foreground text-sm uppercase tracking-[0.18em] font-semibold mr-2">Phone:</span>
                   <a href={`tel:${siteConfig.phoneHref}`} className="link-underline text-lg">{siteConfig.phone}</a>
                 </p>
                 <p className="flex items-center gap-1.5 text-muted-foreground pt-2">
