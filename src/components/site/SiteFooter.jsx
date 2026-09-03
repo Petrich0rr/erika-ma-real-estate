@@ -8,8 +8,8 @@ function TikTokIcon({ size = 18 }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
       <path d="M16.5 3c.3 2.1 1.7 3.8 3.8 4.2v2.6c-1.4 0-2.7-.4-3.8-1.1v6.6c0 3.3-2.7 6-6 6s-6-2.7-6-6 2.7-6 6-6c.3 0 .6 0 .9.1v2.7c-.3-.1-.6-.1-.9-.1-1.8 0-3.3 1.5-3.3 3.3s1.5 3.3 3.3 3.3 3.3-1.5 3.3-3.3V3h2.7z" />
-    </svg>
-  );
+    </svg>);
+
 }
 
 export default function SiteFooter() {
@@ -58,13 +58,13 @@ export default function SiteFooter() {
           <div className="md:col-span-3">
             <h3 className="text-[0.65rem] uppercase tracking-[0.28em] text-background/50 mb-5">Explore</h3>
             <ul className="space-y-3">
-              {navLinks.map((l) => (
-                <li key={l.to}>
+              {navLinks.map((l) =>
+              <li key={l.to}>
                   <Link to={l.to} className="text-background/80 hover:text-background text-[0.95rem] transition-colors">
                     {l.label}
                   </Link>
                 </li>
-              ))}
+              )}
             </ul>
           </div>
 
@@ -102,11 +102,11 @@ export default function SiteFooter() {
               <Link to="/terms" className="hover:text-background/80 transition-colors">Terms &amp; Notices</Link>
             </div>
           </div>
-          <p className="mt-6 text-[0.7rem] leading-relaxed text-background/40 max-w-3xl">
+          <p className="mt-6 text-[0.7rem] leading-relaxed text-background/40 max-w-3xl hidden">
             [Brokerage regulatory disclosures and required real estate notices to be inserted here.]
           </p>
         </div>
       </div>
-    </footer>
-  );
+    </footer>);
+
 }
