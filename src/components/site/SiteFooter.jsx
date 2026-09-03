@@ -69,11 +69,13 @@ export default function SiteFooter() {
             <h3 className="text-[0.65rem] uppercase tracking-[0.28em] text-background/50 mb-5">Contact</h3>
             <ul className="space-y-3 text-[0.95rem]">
               <li>
+                <span className="text-background/50 text-xs uppercase tracking-[0.18em] font-semibold mr-2">Email:</span>
                 <a href={`mailto:${siteConfig.email}`} className="text-background/80 hover:text-background transition-colors">
                   {siteConfig.email}
                 </a>
               </li>
               <li>
+                <span className="text-background/50 text-xs uppercase tracking-[0.18em] font-semibold mr-2">Phone:</span>
                 <a href={`tel:${siteConfig.phoneHref}`} className="text-background/80 hover:text-background transition-colors">
                   {siteConfig.phone}
                 </a>
