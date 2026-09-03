@@ -6,9 +6,16 @@ export const siteConfig = {
   role: "Real Estate Salesperson",
   brokerage: "HomeLife Landmark Realty Inc., Brokerage",
   brokerageLogo:
-    "https://media.base44.com/images/public/6a79030aec60e25b597174ab/eed4d503f_HomeLife-Landmark-Office-Logo-Chinese1.png",
+    "https://media.base44.com/images/public/6a79030aec60e25b597174ab/7db0197c6_HL_Logo_Dark.png",
   brokerageLogoLight:
-    "https://media.base44.com/images/public/6a79030aec60e25b597174ab/7e1d39e07_HL_Logo_Light.png",
+    "https://media.base44.com/images/public/6a79030aec60e25b597174ab/156860034_HL_Logo_Light.png",
+  office: {
+    phone: "(905) 305-1600",
+    phoneHref: "+19053051600",
+    fax: "(905) 305-1609",
+    address: "7240 Woodbine Ave #103, Markham, ON L3R 1A4",
+    disclaimer: "*Independently Owned and Operated",
+  },
   tagline:
     "A modern, marketing-driven approach to buying and selling homes across Toronto and the Greater Toronto Area.",
   shortTagline: "Toronto & GTA Real Estate",
