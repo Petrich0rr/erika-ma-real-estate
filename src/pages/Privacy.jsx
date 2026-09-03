@@ -39,9 +39,9 @@ Your privacy is important. This Privacy Policy explains how personal information
 
 
             </p>
-            <p className="hidden">
-              [Describe what personal information you collect (e.g. name, email, phone, message), how it is used (e.g. to respond to inquiries and provide real estate services), and how visitors may request access to or deletion of their information.]
-            </p>
+            
+
+            
             <p className="text-sm text-muted-foreground pt-4 border-t border-primary/15">
               For questions about your information, contact {siteConfig.email}.
             </p>
