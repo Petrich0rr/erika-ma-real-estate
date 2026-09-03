@@ -27,7 +27,12 @@ export default function SiteFooter() {
             <p className="mt-6 text-background/70 max-w-sm leading-relaxed text-[0.95rem]">
               Residential &bull; Commercial &bull; Pre-Construction
             </p>
-            <BrokerageLogo variant="light" className="mt-8 h-24 md:h-28 w-auto" />
+            <BrokerageLogo variant="footer" className="mt-8 h-28 md:h-32 w-auto" />
+            <div className="mt-5 text-[0.8rem] leading-relaxed text-background/55 space-y-1">
+              <p>Tel: (905) 305-1600 &nbsp;Fax: (905) 305-1609</p>
+              <p>7240 Woodbine Ave #103, Markham, ON L3R 1A4</p>
+              <p className="italic">*Independently Owned and Operated</p>
+            </div>
             <div className="mt-7 flex items-center gap-4">
               <a href={siteConfig.social.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-background/70 hover:text-background transition-colors">
                 <Instagram size={20} />
