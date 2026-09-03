@@ -75,7 +75,7 @@ export default function Home() {
             <div className="lg:col-span-5 order-1 lg:order-2">
               <Reveal y={32} className="relative">
                 <div className="aspect-[3/4] overflow-hidden bg-sand">
-                  <Image src="https://media.base44.com/images/public/6a79030aec60e25b597174ab/9923cdafa_Head_Shot__4_.png"
+                  <Image src="https://media.base44.com/images/public/6a79030aec60e25b597174ab/fa96e8e67_Blue_Home.png"
 
                   alt={`${siteConfig.agentName} — professional real estate headshot`}
                   fittingType="fill"
