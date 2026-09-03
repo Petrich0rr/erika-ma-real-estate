@@ -8,7 +8,6 @@ import FeaturedProperties from "@/components/site/FeaturedProperties";
 import Testimonials from "@/components/site/Testimonials";
 import NeighbourhoodCard from "@/components/site/NeighbourhoodCard";
 import LeadForm from "@/components/site/LeadForm";
-import FallingSkyline from "@/components/site/FallingSkyline";
 import { Image } from "@/components/ui/image";
 
 const MARKETING_PILLARS = [
@@ -39,9 +38,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="relative">
-      <FallingSkyline />
-      <div className="relative z-10">
+    <>
       {/* HERO */}
       <section className="relative min-h-[92vh] flex items-center pt-32 pb-16 md:pt-36">
         <div className="mx-auto max-w-[1400px] px-5 md:px-10 w-full">
@@ -273,8 +270,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-      </div>
-    </div>
-  );
+    </>);
 
 }
