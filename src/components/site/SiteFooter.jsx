@@ -102,9 +102,9 @@ export default function SiteFooter() {
               <Link to="/terms" className="hover:text-background/80 transition-colors">Terms &amp; Notices</Link>
             </div>
           </div>
-          <p className="mt-6 text-[0.7rem] leading-relaxed text-background/40 max-w-3xl hidden">
-            [Brokerage regulatory disclosures and required real estate notices to be inserted here.]
-          </p>
+          
+
+          
         </div>
       </div>
     </footer>);
