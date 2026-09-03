@@ -12,7 +12,7 @@ export default function Terms() {
             <p>
               [Your terms of use and website notices will appear here. This placeholder covers the terms governing use of this website, disclaimers regarding property information, and any real estate regulatory or brokerage disclosures required in your jurisdiction. Replace with your finalized terms and required notices.]
             </p>
-            <p>
+            <p className="hidden">
               [Include any required brokerage identification, licensing, and regulatory disclosures here. Do not publish without your brokerage&rsquo;s approved wording.]
             </p>
             <p className="text-sm text-muted-foreground pt-4 border-t border-primary/15">
@@ -21,6 +21,6 @@ export default function Terms() {
           </div>
         </Reveal>
       </div>
-    </section>
-  );
+    </section>);
+
 }
