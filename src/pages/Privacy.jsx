@@ -9,8 +9,8 @@ export default function Privacy() {
         <Reveal delay={0.05}><h1 className="font-heading text-4xl md:text-6xl mt-5">Privacy Policy</h1></Reveal>
         <Reveal delay={0.1}>
           <div className="mt-8 space-y-5 text-foreground/80 leading-relaxed">
-            <p>[Your privacy policy content will appear here. This placeholder covers how visitor information is collected, used, and protected — including inquiries submitted through this website and marketing attribution data. Replace with your finalized privacy policy and any brokerage-required wording.]
-
+            <p>Last updated: September 2026
+Your privacy is important. This Privacy Policy explains how personal information may be collected, used, and protected when you visit this website or contact me through it.
 
 
 
