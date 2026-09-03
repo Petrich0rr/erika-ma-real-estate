@@ -76,6 +76,24 @@ export default async function(req) {
       );
     }
 
+    const notifySms = secrets.get('LEAD_NOTIFICATION_SMS');
+    if (notifySms) {
+      const smsBody = [
+        `New lead — ${body.name}`,
+        body.phone ? `Ph: ${body.phone}` : `Email: ${body.email}`,
+        `Interest: ${body.lead_type || 'Contact'}`,
+        body.message ? `Msg: ${String(body.message).slice(0, 120)}` : ''
+      ].filter(Boolean).join(' | ');
+
+      waitUntil(
+        base44.asServiceRole.integrations.Core.SendEmail({
+          to: notifySms,
+          subject: `Lead: ${body.name}`,
+          body: smsBody
+        }).catch(() => {})
+      );
+    }
+
     return Response.json({ ok: true, id: lead.id });
   } catch (error) {
     return Response.json({ error: error.message }, { status: 500 });
