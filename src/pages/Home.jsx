@@ -57,9 +57,9 @@ export default function Home() {
                 </h1>
               </Reveal>
               <Reveal delay={0.12}>
-                
-
-                
+                <p className="mt-5 font-heading text-2xl md:text-[2rem] leading-snug text-foreground/85">
+                  Guiding you <em className="italic">home</em>, every step of the way.
+                </p>
               </Reveal>
               <Reveal delay={0.18}>
                 <div className="mt-5 text-sm uppercase tracking-[0.18em] text-muted-foreground">
