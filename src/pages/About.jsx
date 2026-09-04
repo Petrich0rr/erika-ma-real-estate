@@ -4,6 +4,7 @@ import { siteConfig } from "@/lib/siteConfig";
 import Reveal from "@/components/site/Reveal";
 import CtaBand from "@/components/site/CtaBand";
 import { Image } from "@/components/ui/image";
+import HeroWatermark from "@/components/site/HeroWatermark";
 
 const APPROACH = [
 "Listening first — understanding your goals, timeline, and what home really means to you.",
@@ -17,8 +18,9 @@ const AREAS = siteConfig.areas;
 export default function About() {
   return (
     <>
-      <section className="pt-36 md:pt-44 pb-16 md:pb-24">
-        <div className="mx-auto max-w-[1400px] px-5 md:px-10">
+      <section className="relative isolate overflow-hidden pt-36 md:pt-44 pb-16 md:pb-24">
+        <HeroWatermark opacity={0.08} />
+        <div className="relative z-10 mx-auto max-w-[1400px] px-5 md:px-10">
           <Reveal><span className="eyebrow">About</span></Reveal>
           <Reveal delay={0.05}>
             <h1 className="font-heading text-5xl md:text-7xl mt-5 max-w-3xl leading-[0.98]">

@@ -38,7 +38,7 @@ export default function SkylineHero() {
           // Shift the image down so the shoreline (where buildings meet water)
           // lands flush at the hero's bottom edge; the water below is clipped
           // by the hero's overflow-hidden boundary.
-          transform: "translateY(14%)",
+          transform: "translateY(12%)",
           maskImage:
             "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.45) 16%, #000 36%, #000 100%)",
           WebkitMaskImage:

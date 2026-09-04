@@ -10,7 +10,6 @@ import NeighbourhoodCard from "@/components/site/NeighbourhoodCard";
 import LeadForm from "@/components/site/LeadForm";
 import { Image } from "@/components/ui/image";
 import SkylineHero from "@/components/site/SkylineHero";
-import HeroWatermark from "@/components/site/HeroWatermark";
 
 const MARKETING_PILLARS = [
 { title: "Digital Marketing & Social Exposure", body: "Your property is strategically showcased across digital and social platforms to reach buyers beyond the MLS." },
@@ -43,7 +42,6 @@ export default function Home() {
     <>
       {/* HERO */}
       <section className="relative isolate overflow-hidden bg-background min-h-[92vh] flex items-center pt-32 pb-16 md:pt-36">
-        <HeroWatermark />
         <SkylineHero />
         <div className="relative z-10 mx-auto max-w-[1400px] px-5 md:px-10 w-full">
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
@@ -100,7 +98,7 @@ export default function Home() {
             </div>
           </Reveal>
           <div className="lg:col-span-7">
-            <Reveal><span className="eyebrow">Meet erika</span></Reveal>
+            <Reveal><span className="eyebrow" style={{ fontSize: "0.8rem" }}>Meet erika</span></Reveal>
             <Reveal delay={0.05}>
               <h2 className="font-heading text-4xl md:text-5xl mt-4 max-w-xl">Your Trusted Partner in Real Estate.</h2>
             </Reveal>
@@ -254,12 +252,8 @@ export default function Home() {
             </Reveal>
             <Reveal delay={0.15} className="mt-8 space-y-3 text-foreground/85">
               <p className="flex items-center gap-1.5 text-muted-foreground pt-2"><MapPin size={16} className="text-primary" /> Toronto &amp; Greater Toronto Area</p>
-              <p>
-                <a href={`mailto:${siteConfig.email}`} className="link-underline">{siteConfig.email}</a>
-              </p>
-              <p>
-                <a href={`tel:${siteConfig.phoneHref}`} className="link-underline">{siteConfig.phone}</a>
-              </p>
+              <p><span className="text-muted-foreground">Email: </span><a href={`mailto:${siteConfig.email}`} className="link-underline">{siteConfig.email}</a></p>
+              <p><span className="text-muted-foreground">Phone: </span><a href={`tel:${siteConfig.phoneHref}`} className="link-underline">{siteConfig.phone}</a></p>
             </Reveal>
           </div>
           <div className="lg:col-span-7">

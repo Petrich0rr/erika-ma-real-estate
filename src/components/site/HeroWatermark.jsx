@@ -7,7 +7,7 @@ const LOGO_URL =
 // the logo as a *luminance mask* over a gold gradient fill: the black
 // background becomes transparent (low luminance) and the gold strokes shape
 // the fill (high luminance). Clipped to the hero via overflow-hidden.
-export default function HeroWatermark() {
+export default function HeroWatermark({ opacity = 0.04 }) {
   return (
     <div
       aria-hidden="true"
@@ -23,7 +23,7 @@ export default function HeroWatermark() {
         WebkitMaskRepeat: "no-repeat",
         WebkitMaskSize: "contain",
         WebkitMaskPosition: "center",
-        opacity: 0.04,
+        opacity,
       }}
     />
   );
