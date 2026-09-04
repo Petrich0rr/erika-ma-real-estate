@@ -48,25 +48,20 @@ export default function Home() {
         <div className="relative z-10 mx-auto max-w-[1400px] px-5 md:px-10 w-full">
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
             <div className="lg:col-span-7 order-2 lg:order-1">
-              <Reveal y={20}>
-                
-              </Reveal>
               <Reveal delay={0.05}>
-                <h1 className="font-heading text-[2.75rem] sm:text-[4rem] lg:text-[5.5rem] leading-[0.95] mt-5">
-                  {siteConfig.agentName}
+                <h1 className="font-heading text-[2.75rem] sm:text-[4rem] lg:text-[4rem] leading-[1.02] text-black">
+                  Guiding you <em className="italic font-normal">home</em>,<br />
+                  every step of the way.
                 </h1>
               </Reveal>
               <Reveal delay={0.12}>
-                <p className="mt-5 font-heading text-2xl md:text-[2rem] leading-snug text-foreground/85">
-                  Guiding you <em className="italic">home</em>, every step of the way.
-                </p>
+                <div className="mt-7 h-px w-16 bg-black" />
               </Reveal>
               <Reveal delay={0.18}>
-                <div className="mt-5 text-sm uppercase tracking-[0.18em] text-muted-foreground">
-                  {siteConfig.role}
-                  <span className="mx-2.5 text-primary">·</span>
-                  {siteConfig.brokerage}
-                </div>
+                <p className="mt-6 text-base md:text-lg text-foreground/70 leading-relaxed max-w-[35rem]">
+                  Personalized service. Local expertise. Exceptional results.<br />
+                  Let&rsquo;s make your next move your best one yet.
+                </p>
               </Reveal>
               <Reveal delay={0.24}>
                 <div className="mt-10 flex flex-wrap gap-4">

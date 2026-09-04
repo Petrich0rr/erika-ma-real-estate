@@ -23,7 +23,7 @@ export default function HeroWatermark() {
         WebkitMaskRepeat: "no-repeat",
         WebkitMaskSize: "contain",
         WebkitMaskPosition: "center",
-        opacity: 0.16,
+        opacity: 0.04,
       }}
     />
   );
