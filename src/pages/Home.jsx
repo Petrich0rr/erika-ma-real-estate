@@ -45,7 +45,7 @@ export default function Home() {
         <SkylineHero />
         <div className="relative z-10 mx-auto max-w-[1400px] px-5 md:px-10 w-full">
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-            <div className="lg:col-span-7 order-2 lg:order-1">
+            <div className="lg:col-span-7 order-2 lg:order-1 lg:-translate-y-10">
               <Reveal delay={0.05}>
                 <h1 className="font-heading text-[2.75rem] sm:text-[4rem] lg:text-[4rem] leading-[1.02] text-black">
                   Guiding you <em className="italic font-normal">home</em>,<br />
