@@ -22,6 +22,30 @@ const TWINKLES = [
   { left: "88%", top: "44%", s: 2,   d: 8.0, dl: 1.5 },
 ];
 
+// Builds a seamless repeating sine-wave path that fills `periods * period` width.
+function wavePath(period, periods, baseY, amp, height = 120) {
+  let d = `M 0 ${baseY}`;
+  for (let i = 0; i < periods; i++) {
+    const x0 = i * period;
+    const xMid = x0 + period / 2;
+    const x1 = x0 + period;
+    d += ` C ${xMid} ${baseY - amp} ${xMid} ${baseY - amp} ${x1} ${baseY}`;
+    const xMid2 = x1 + period / 2;
+    const x2 = x1 + period;
+    d += ` C ${xMid2} ${baseY + amp} ${xMid2} ${baseY + amp} ${x2} ${baseY}`;
+  }
+  const totalW = periods * period;
+  d += ` L ${totalW} ${height} L 0 ${height} Z`;
+  return d;
+}
+
+// Three layered ripples — different periods/speeds for a natural lake surface.
+const WAVES = [
+  { period: 720, periods: 4, baseY: 52, amp: 26, dur: 22, color: "rgba(150,190,255,0.42)" },
+  { period: 576, periods: 5, baseY: 62, amp: 18, dur: 16, color: "rgba(140,180,250,0.30)" },
+  { period: 480, periods: 6, baseY: 72, amp: 12, dur: 11, color: "rgba(130,170,245,0.22)" },
+];
+
 export default function SkylineHero() {
   const reduce = useReducedMotion();
   return (
@@ -65,6 +89,29 @@ export default function SkylineHero() {
         />
       ))}
 
+      {/* Realistic lake water ripples */}
+      <div className="absolute inset-x-0 bottom-0 h-[38%] overflow-hidden">
+        {WAVES.map((w, i) => (
+          <svg
+            key={i}
+            className="absolute left-0 top-0 h-full"
+            style={{ width: "200%", mixBlendMode: "screen" }}
+            viewBox="0 0 2880 120"
+            preserveAspectRatio="none"
+          >
+            <motion.g
+              animate={reduce ? undefined : { x: [0, -w.period] }}
+              transition={
+                reduce ? undefined : { duration: w.dur, repeat: Infinity, ease: "linear" }
+              }
+            >
+              <path d={wavePath(w.period, w.periods, w.baseY, w.amp)} fill={w.color} />
+            </motion.g>
+          </svg>
+        ))}
+      </div>
+
+      {/* Soft traveling highlight across the water */}
       <motion.div
         className="absolute inset-x-0 bottom-0 h-[32%]"
         style={{
