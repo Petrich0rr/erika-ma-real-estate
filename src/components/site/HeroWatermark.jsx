@@ -10,7 +10,7 @@ const LOGO_URL =
 export default function HeroWatermark({
   opacity = 0.04,
   className = "inset-0 w-full h-full",
-  maskPosition = "center",
+  maskPosition = "left top",
 }) {
   return (
     <div
