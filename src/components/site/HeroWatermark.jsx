@@ -9,7 +9,7 @@ const LOGO_URL =
 // `mask-size: contain` so the full logo is always visible and never cropped.
 export default function HeroWatermark({
   opacity = 0.04,
-  className = "inset-x-0 top-0 bottom-12",
+  className = "top-0 left-0 w-[55vw] h-[55vw] md:w-[33vw] md:h-[33vw]",
   maskPosition = "left top",
 }) {
   return (
