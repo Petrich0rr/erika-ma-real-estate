@@ -91,6 +91,9 @@
     },
     "notes": {
       "type": "string"
+    },
+    "ip": {
+      "type": "string"
     }
   },
   "required": [
