@@ -94,6 +94,32 @@ export default async function(req) {
       );
     }
 
+    // Always notify the agent directly with the full lead details.
+    const detailLines = [
+      'A new real estate lead was just submitted on your website.',
+      '',
+      `Name: ${body.name}`,
+      `Email: ${body.email}`,
+      body.phone ? `Phone: ${body.phone}` : '',
+      `Service interested in: ${body.lead_type || 'Contact'}`,
+      body.property_address ? `Property address: ${body.property_address}` : '',
+      body.preferred_locations ? `Preferred locations: ${body.preferred_locations}` : '',
+      body.budget ? `Budget: ${body.budget}` : '',
+      body.property_type ? `Property type: ${body.property_type}` : '',
+      body.bedrooms ? `Bedrooms: ${body.bedrooms}` : '',
+      body.bathrooms ? `Bathrooms: ${body.bathrooms}` : '',
+      body.timeframe ? `Timeline: ${body.timeframe}` : '',
+      body.message ? `\nMessage:\n${body.message}` : ''
+    ].filter(Boolean).join('\n');
+
+    waitUntil(
+      base44.asServiceRole.integrations.Core.SendEmail({
+        to: 'realerikama@gmail.com',
+        subject: `🏡 New Real Estate Lead — ${body.name}`,
+        body: detailLines
+      }).catch(() => {})
+    );
+
     return Response.json({ ok: true, id: lead.id });
   } catch (error) {
     return Response.json({ error: error.message }, { status: 500 });
