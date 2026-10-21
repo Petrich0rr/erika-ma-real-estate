@@ -18,8 +18,11 @@ const AREAS = siteConfig.areas;
 export default function About() {
   return (
     <>
-      <section className="relative isolate overflow-hidden pt-36 md:pt-44 pb-16 md:pb-24">
-        <HeroWatermark opacity={0.3} />
+      <section className="relative isolate overflow-hidden pt-36 md:pt-44 pb-16 md:pb-24 min-h-[340px] md:min-h-[640px]">
+        <HeroWatermark
+          opacity={0.3}
+          className="w-[clamp(210px,33vw,580px)] h-[clamp(210px,33vw,580px)] top-0 left-0"
+        />
         <div className="relative z-10 mx-auto max-w-[1400px] px-5 md:px-10">
           <Reveal><span className="eyebrow">About</span></Reveal>
           <Reveal delay={0.05}>

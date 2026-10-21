@@ -6,6 +6,7 @@ import Reveal from "@/components/site/Reveal";
 import MortgageCalculator from "@/components/site/MortgageCalculator";
 import LandTransferTaxCalculator from "@/components/site/LandTransferTaxCalculator";
 import GuideRequestForm from "@/components/site/GuideRequestForm";
+import ExploreArea from "@/components/site/ExploreArea";
 
 const CATEGORIES = [
 { icon: Home, label: "First-Time Home Buyer Guide", desc: "Everything you need to approach your first purchase with confidence.", to: "/contact" },
@@ -66,6 +67,9 @@ export default function Resources() {
           </div>
         </div>
       </section>
+
+      {/* EXPLORE THE AREA */}
+      <ExploreArea />
 
       {/* GUIDES */}
       <section className="py-16 md:py-24 bg-sand">
