@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import PageNotFound from "./lib/PageNotFound";
 import { AuthProvider } from "@/lib/AuthContext";
 import ScrollToTop from "./components/ScrollToTop";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import Layout from "@/components/site/Layout";
 
@@ -29,6 +30,7 @@ function App() {
       <QueryClientProvider client={queryClientInstance}>
         <Router>
           <ScrollToTop />
+          <GoogleAnalytics />
           <Routes>
             {/* Public site — no login required */}
             <Route element={<Layout />}>
