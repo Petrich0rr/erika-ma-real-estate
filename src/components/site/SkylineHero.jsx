@@ -3,16 +3,17 @@ import { motion, useReducedMotion } from "framer-motion";
 const SKYLINE_URL =
   "https://media.base44.com/images/public/6a79030aec60e25b597174ab/e8f9428c4_ChatGPTImageSep3202601_57_51AM.png";
 
-// The skyline image is 2172×724 (3:1). The CN Tower antenna tip reaches up to
-// ~18% from the top of the image; the surrounding buildings sit around 55–72%.
-// To show the full tower we size the skyline box to the image itself
-// (aspect-ratio tracks the rendered width, so the container is always tall
-// enough), anchor the image to the top so the antenna is never clipped, and
-// let the bottom 12% (the water band) overflow + clip so the building line
-// stays flush with the hero's bottom edge — exactly where it sits today.
-// The top mask now fades only the black sky above the antenna instead of
-// burning it out.
+// The source art is 2172×724 (3:1) — Toronto's skyline glowing against a black
+// sky. Placed on a white hero, blend modes make it disappear, so instead the
+// art is used as a *luminance mask* over the brand royal blue: the black sky
+// drops out (low luminance → transparent) and the lit buildings fill with blue,
+// giving a soft silhouette.
+//
+// The wrapper is slightly shorter than the image (3.41:1 vs 3:1) so the bottom
+// 12% water band is cropped and the building line sits flush with the hero's
+// bottom edge.
 const SKYLINE_ASPECT = 3.41; // 3 / 0.88 — full width, bottom 12% water cropped
+const SKYLINE_IMAGE_ASPECT = "2172 / 724";
 
 // Light points placed over the building band. Each twinkle is slow and offset
 // so the effect feels organic, never synced. Tops are tuned to the building
@@ -40,20 +41,22 @@ export default function SkylineHero() {
     <div
       aria-hidden="true"
       className="absolute inset-x-0 bottom-0 overflow-hidden pointer-events-none z-0"
-      style={{ aspectRatio: `${SKYLINE_ASPECT} / 1` }}
+      style={{ aspectRatio: `${SKYLINE_ASPECT} / 1`, opacity: 0.3 }}
     >
-      <img
-        src={SKYLINE_URL}
-        alt=""
-        className="absolute top-0 left-0 w-full h-auto"
+      <div
+        className="absolute top-0 left-0 w-full"
         style={{
-          mixBlendMode: "screen",
-          // Fade only the black sky above the CN Tower antenna so the tower
-          // stays fully opaque; the building band is untouched.
-          maskImage:
-            "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.6) 7%, #000 15%, #000 100%)",
-          WebkitMaskImage:
-            "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.6) 7%, #000 15%, #000 100%)",
+          aspectRatio: SKYLINE_IMAGE_ASPECT,
+          background: "hsl(var(--primary))",
+          maskImage: `url(${SKYLINE_URL})`,
+          maskRepeat: "no-repeat",
+          maskSize: "100% 100%",
+          maskPosition: "top left",
+          maskMode: "luminance",
+          WebkitMaskImage: `url(${SKYLINE_URL})`,
+          WebkitMaskRepeat: "no-repeat",
+          WebkitMaskSize: "100% 100%",
+          WebkitMaskPosition: "top left",
         }}
       />
 
@@ -67,8 +70,8 @@ export default function SkylineHero() {
             width: t.s,
             height: t.s,
             opacity: reduce ? 0.5 : 1,
-            background: "rgba(196,218,255,0.95)",
-            boxShadow: "0 0 6px 2px rgba(150,190,255,0.5)",
+            background: "hsl(var(--primary))",
+            boxShadow: "0 0 6px 2px hsl(var(--primary) / 0.35)",
           }}
           animate={reduce ? undefined : { opacity: [0.1, 0.95, 0.1] }}
           transition={

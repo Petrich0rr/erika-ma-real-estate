@@ -41,7 +41,7 @@ export default function Home() {
   return (
     <>
       {/* HERO */}
-      <section className="relative isolate overflow-hidden bg-background min-h-[92vh] flex items-center pt-32 pb-16 md:pt-36">
+      <section className="relative isolate overflow-hidden bg-white min-h-[92vh] flex items-center pt-32 pb-16 md:pt-36">
         <SkylineHero />
         <div className="relative z-10 mx-auto max-w-[1400px] px-5 md:px-10 w-full">
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
@@ -64,13 +64,15 @@ export default function Home() {
                 <div className="mt-10 flex flex-wrap gap-4">
                   <Link to="/buy" className="btn-primary">Buy a Home</Link>
                   <Link to="/sell" className="btn-outline">Sell a Home</Link>
-                  <Link to="/contact" className="btn-ghost">Let&rsquo;s Talk</Link>
                 </div>
+                <p className="mt-5 text-xs tracking-[0.08em] text-muted-foreground leading-relaxed max-w-[32rem]">
+                  Licensed Real Estate Salesperson, HomeLife Landmark Realty Inc. Serving Toronto and the GTA.
+                </p>
               </Reveal>
             </div>
             <div className="lg:col-span-5 order-1 lg:order-2">
               <Reveal y={32} className="relative">
-                <div className="aspect-[3/4] overflow-hidden bg-sand">
+                <div className="aspect-[3/4] overflow-hidden rounded-[22px] bg-white shadow-[0_30px_70px_-28px_rgba(0,23,104,0.4)]">
                   <Image src="https://media.base44.com/images/public/6a79030aec60e25b597174ab/fa96e8e67_Blue_Home.png"
 
                   alt={`${siteConfig.agentName} — professional real estate headshot`}
@@ -78,7 +80,7 @@ export default function Home() {
                   className="w-full h-full" />
                   
                 </div>
-                <div className="hidden lg:block absolute -bottom-6 -left-6 bg-background px-6 py-4 border-l-2 border-primary">
+                <div className="hidden lg:block absolute -bottom-6 -left-6 bg-white px-6 py-4 border-l-2 border-primary">
                   <span className="block text-[0.65rem] uppercase tracking-[0.25em] text-muted-foreground">Serving</span>
                   <span className="block font-heading text-lg">Toronto &amp; the GTA</span>
                 </div>
