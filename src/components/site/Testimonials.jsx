@@ -10,7 +10,10 @@ export default function Testimonials() {
       <div className="mx-auto max-w-[1400px] px-5 md:px-10">
         <header className="mx-auto max-w-3xl text-center">
           <h2 className="font-heading text-4xl leading-[1.06] text-foreground md:text-5xl lg:text-[3.5rem]">
-            Real Experiences from My Clients
+            Real Experiences from My{" "}
+            <span className="inline-block font-heading italic text-primary text-[1.2em] leading-none">
+              Clients
+            </span>
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-sm text-foreground/70 md:text-base">
             What it is actually like working with me in Toronto and the GTA

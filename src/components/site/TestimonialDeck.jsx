@@ -8,7 +8,7 @@ const ROTATE_MS = 6000;
 const REVIEWS = [
   {
     name: "Calleigh I.",
-    role: "Tenant in Toronto",
+    role: "Client, North York",
     avatar:
       "https://base44.app/api/apps/6a79030aec60e25b597174ab/files/mp/public/6a79030aec60e25b597174ab/21c7ba816_calleigh-i.png",
     initials: "CI",
@@ -16,7 +16,7 @@ const REVIEWS = [
   },
   {
     name: "Nham M.",
-    role: "Condo Buyer in Toronto",
+    role: "Client, Toronto",
     avatar:
       "https://base44.app/api/apps/6a79030aec60e25b597174ab/files/mp/public/6a79030aec60e25b597174ab/cfe778f08_nham-m.png",
     initials: "NM",
@@ -24,7 +24,7 @@ const REVIEWS = [
   },
   {
     name: "Carol Y.",
-    role: "Client in Scarborough",
+    role: "Client, Scarborough",
     avatar: null,
     initials: "CY",
     text: "I felt very comfortable working with Erika and knew I was in good hands. She really made sure I was getting the best deal. I would definitely recommend her.",
