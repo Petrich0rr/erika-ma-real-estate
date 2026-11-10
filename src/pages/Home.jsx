@@ -48,8 +48,8 @@ export default function Home() {
             <div className="lg:col-span-7 order-2 lg:order-1 lg:-translate-y-10">
               <Reveal delay={0.05}>
                 <h1 className="font-heading text-[2.75rem] sm:text-[4rem] lg:text-[4rem] leading-[1.02] text-black">
-                  Guiding you <em className="italic font-normal">home</em>,<br />
-                  every step of the way.
+                  Want to buy, sell, or lease in{" "}
+                  <em className="italic font-normal">Toronto and the GTA</em>?
                 </h1>
               </Reveal>
               <Reveal delay={0.12}>
@@ -57,8 +57,7 @@ export default function Home() {
               </Reveal>
               <Reveal delay={0.18}>
                 <p className="mt-6 text-base md:text-lg text-foreground/70 leading-relaxed max-w-[35rem]">
-                  Personalized service. Local expertise. Exceptional results.<br />
-                  Let&rsquo;s make your next move your best one yet.
+                  I will guide you through every step, from first showing to keys in hand.
                 </p>
               </Reveal>
               <Reveal delay={0.24}>
@@ -113,6 +112,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* TESTIMONIALS */}
+      <Testimonials />
 
       {/* BUY / SELL PATHWAYS */}
       <section className="bg-sand">
@@ -210,9 +212,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* TESTIMONIALS */}
-      <Testimonials />
 
       {/* RESOURCES PREVIEW */}
       <section className="py-20 md:py-32">
