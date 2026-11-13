@@ -68,7 +68,7 @@ export default function SiteHeader() {
           </nav>
 
           <div className="hidden lg:block">
-            <Link to="/contact" className="btn-primary">Work wiLet’s Talk
+            <Link to="/contact" className="btn-primary">Work with erika
 
             </Link>
           </div>

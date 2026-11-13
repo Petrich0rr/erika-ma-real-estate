@@ -18,7 +18,7 @@ export default function Contact() {
         <div className="mx-auto max-w-[1400px] px-5 md:px-10">
           <Reveal><span className="eyebrow">Contact</span></Reveal>
           <Reveal delay={0.05}>
-            <h1 className="font-heading text-5xl md:text-7xl mt-5 max-w-3xl leading-[0.98]">Let&rsquo;s talk</h1>
+            <h1 className="font-heading text-5xl md:text-7xl mt-5 max-w-3xl leading-[0.98]">Work with </h1>
           </Reveal>
           <Reveal delay={0.1}>
             <p className="mt-7 text-lg text-foreground/80 max-w-xl leading-relaxed">Whether you’re ready or just exploring, I’m always happy to chat.
