@@ -69,11 +69,11 @@ export default function Home() {
             <Reveal
               y={32}
               className="order-1 lg:order-2 relative z-20 w-full aspect-[3/5] lg:aspect-auto lg:absolute lg:bottom-0 lg:right-0 lg:h-[clamp(420px,74vh,780px)] lg:w-[clamp(252px,44.4vh,468px)]">
-              <Image
-                src="https://base44.app/api/apps/6a79030aec60e25b597174ab/files/mp/public/6a79030aec60e25b597174ab/aec0b1eb6_Erika_Hero_Cutout_Trimmed_v1.png"
-                alt={`${siteConfig.agentName} — professional real estate headshot`}
-                fittingType="fit"
-                className="block h-full w-full hidden" />
+              
+
+
+
+              
               <div className="absolute bottom-6 left-0 bg-white px-8 py-6 border-l-2 border-primary">
                 <p className="font-heading text-[2rem] font-bold leading-none text-black">{siteConfig.agentName}</p>
                 <p className="mt-3 text-[0.7rem] font-semibold uppercase tracking-[0.3em] text-primary">Licensed REALTOR®</p>

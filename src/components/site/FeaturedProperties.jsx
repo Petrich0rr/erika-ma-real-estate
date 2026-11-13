@@ -48,7 +48,7 @@ export default function FeaturedProperties() {
                   <div className="pt-5">
                     <h3 className="font-heading text-xl">Featured Listing</h3>
                     <p className="text-muted-foreground text-sm mt-1">Property details available soon.</p>
-                    <Link to="/contact" className="btn-ghost mt-4 hidden">Contact to feature your home</Link>
+                    
                   </div>
                 </article>
               </Reveal>
