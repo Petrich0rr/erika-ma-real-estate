@@ -68,14 +68,12 @@ export default function Home() {
             </div>
             <Reveal
               y={32}
-              className="order-1 lg:order-2 relative z-20 w-full lg:absolute lg:bottom-0 lg:right-0 lg:h-[92%] lg:w-auto lg:aspect-[3375/4219]">
+              className="order-1 lg:order-2 relative z-20 w-full aspect-[3375/4219] lg:aspect-auto lg:absolute lg:bottom-0 lg:right-0 lg:h-[92%] lg:w-[40%] lg:max-w-[760px]">
               <Image
                 src="https://media.base44.com/images/public/6a79030aec60e25b597174ab/a3c7b9385_HalfBody_Headshot.png"
                 alt={`${siteConfig.agentName} — professional real estate headshot`}
                 fittingType="fit"
-                originWidth={3375}
-                originHeight={4219}
-                className="block w-full" />
+                className="block h-full w-full" />
               <div className="absolute bottom-6 left-0 bg-white px-8 py-6 border-l-2 border-primary">
                 <p className="font-heading text-[2rem] font-bold leading-none text-black">{siteConfig.agentName}</p>
                 <p className="mt-3 text-[0.7rem] font-semibold uppercase tracking-[0.3em] text-primary">Licensed REALTOR®</p>
