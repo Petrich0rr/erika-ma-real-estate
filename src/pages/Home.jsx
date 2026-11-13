@@ -49,41 +49,41 @@ export default function Home() {
               <Reveal delay={0.05}>
                 <h1 className="font-heading text-[2.75rem] sm:text-[4rem] lg:text-[4rem] leading-[1.02] text-black">
                   Want to buy, sell, or lease in{" "}
-                  <em className="italic font-normal text-primary">Toronto and the GTA</em>?
+                  <em className="italic font-normal text-primary text-[1.12em]">Toronto and the GTA</em>?
                 </h1>
               </Reveal>
               <Reveal delay={0.12}>
                 <div className="mt-7 h-px w-16 bg-black" />
               </Reveal>
               <Reveal delay={0.18}>
-                <p className="mt-6 text-base md:text-lg text-foreground/70 leading-relaxed max-w-[35rem]">
+                <p className="mt-6 text-[19px] text-foreground/70 leading-[1.95] max-w-[35rem]">
                   I will guide you through every step, from first showing to keys in hand.
                 </p>
               </Reveal>
               <Reveal delay={0.24}>
                 <div className="mt-10">
-                  <a href="#contact" className="btn-primary">Let&rsquo;s Grab Coffee</a>
+                  <a href="#contact" className="btn-primary px-12 py-5 text-base">Let&rsquo;s Grab Coffee</a>
                 </div>
                 <p className="mt-5 text-xs tracking-[0.08em] text-muted-foreground leading-relaxed max-w-[32rem]">
                   Licensed Real Estate Salesperson, HomeLife Landmark Realty Inc.
                 </p>
               </Reveal>
             </div>
-            <div className="lg:col-span-5 order-1 lg:order-2">
-              <Reveal y={32} className="relative">
-                <div className="aspect-[3/4] overflow-hidden rounded-[22px] bg-white shadow-[0_30px_70px_-28px_rgba(0,23,104,0.4)]">
-                  <Image src="https://media.base44.com/images/public/6a79030aec60e25b597174ab/a980f6ce5_HalfBody_Headshot.png"
-
-                  alt={`${siteConfig.agentName} — professional real estate headshot`}
-                  fittingType="fit"
-                  className="w-full h-full" />
-                  
-                </div>
-                <div className="hidden lg:block absolute -bottom-6 -left-6 bg-white px-6 py-4 border-l-2 border-primary">
-                  <span className="block font-heading text-lg">{siteConfig.agentName}</span>
-                </div>
-              </Reveal>
-            </div>
+            <Reveal
+              y={32}
+              className="order-1 lg:order-2 relative z-[1] w-full lg:absolute lg:bottom-0 lg:right-0 lg:w-[44vw] lg:max-w-[620px]">
+              <Image
+                src="https://media.base44.com/images/public/6a79030aec60e25b597174ab/a980f6ce5_HalfBody_Headshot.png"
+                alt={`${siteConfig.agentName} — professional real estate headshot`}
+                fittingType="fit"
+                originWidth={3375}
+                originHeight={4219}
+                className="block w-full" />
+              <div className="absolute bottom-6 left-0 bg-white px-8 py-6 border-l-2 border-primary">
+                <p className="font-heading text-[2rem] font-bold leading-none text-black">{siteConfig.agentName}</p>
+                <p className="mt-3 text-[0.7rem] font-semibold uppercase tracking-[0.3em] text-primary">Licensed REALTOR®</p>
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
