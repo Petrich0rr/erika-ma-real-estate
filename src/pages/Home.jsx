@@ -68,9 +68,9 @@ export default function Home() {
             </div>
             <Reveal
               y={32}
-              className="order-1 lg:order-2 relative z-20 w-full aspect-[3375/4219] lg:aspect-auto lg:absolute lg:bottom-0 lg:right-0 lg:h-[92%] lg:w-[40%] lg:max-w-[760px]">
+              className="order-1 lg:order-2 relative z-20 w-full aspect-[3/5] lg:aspect-auto lg:absolute lg:bottom-0 lg:right-0 lg:h-[clamp(420px,74vh,780px)] lg:w-[clamp(252px,44.4vh,468px)]">
               <Image
-                src="https://media.base44.com/images/public/6a79030aec60e25b597174ab/a3c7b9385_HalfBody_Headshot.png"
+                src="https://base44.app/api/apps/6a79030aec60e25b597174ab/files/mp/public/6a79030aec60e25b597174ab/aec0b1eb6_Erika_Hero_Cutout_Trimmed_v1.png"
                 alt={`${siteConfig.agentName} — professional real estate headshot`}
                 fittingType="fit"
                 className="block h-full w-full" />
