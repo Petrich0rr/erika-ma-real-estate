@@ -62,7 +62,7 @@ export default function Home() {
               </Reveal>
               <Reveal delay={0.24}>
                 <div className="mt-10">
-                  <a href="#contact" className="btn-primary">Let&rsquo;s Talk</a>
+                  <a href="#contact" className="btn-primary">Let&rsquo;s Grab Coffee</a>
                 </div>
                 <p className="mt-5 text-xs tracking-[0.08em] text-muted-foreground leading-relaxed max-w-[32rem]">
                   Licensed Real Estate Salesperson, HomeLife Landmark Realty Inc.
