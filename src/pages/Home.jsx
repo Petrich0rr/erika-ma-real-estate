@@ -71,7 +71,7 @@ export default function Home() {
             </div>
             <Reveal
               y={32}
-              className="order-1 lg:order-2 relative z-[1] w-full lg:absolute lg:bottom-0 lg:right-0 lg:w-[44vw] lg:max-w-[620px]">
+              className="order-1 lg:order-2 relative z-20 w-full lg:absolute lg:bottom-0 lg:right-0 lg:h-[88%] lg:w-auto">
               <Image
                 src="https://media.base44.com/images/public/6a79030aec60e25b597174ab/a980f6ce5_HalfBody_Headshot.png"
                 alt={`${siteConfig.agentName} — professional real estate headshot`}
