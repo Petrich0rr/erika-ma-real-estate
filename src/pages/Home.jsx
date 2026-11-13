@@ -73,7 +73,7 @@ export default function Home() {
                 src="https://base44.app/api/apps/6a79030aec60e25b597174ab/files/mp/public/6a79030aec60e25b597174ab/aec0b1eb6_Erika_Hero_Cutout_Trimmed_v1.png"
                 alt={`${siteConfig.agentName} — professional real estate headshot`}
                 fittingType="fit"
-                className="block h-full w-full" />
+                className="block h-full w-full hidden" />
               <div className="absolute bottom-6 left-0 bg-white px-8 py-6 border-l-2 border-primary">
                 <p className="font-heading text-[2rem] font-bold leading-none text-black">{siteConfig.agentName}</p>
                 <p className="mt-3 text-[0.7rem] font-semibold uppercase tracking-[0.3em] text-primary">Licensed REALTOR®</p>
