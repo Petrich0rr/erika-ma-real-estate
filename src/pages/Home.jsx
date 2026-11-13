@@ -49,7 +49,7 @@ export default function Home() {
               <Reveal delay={0.05}>
                 <h1 className="font-heading text-[2.75rem] sm:text-[4rem] lg:text-[4rem] leading-[1.02] text-black">
                   Want to buy, sell, or lease in{" "}
-                  <em className="italic font-normal">Toronto and the GTA</em>?
+                  <em className="italic font-normal text-primary">Toronto and the GTA</em>?
                 </h1>
               </Reveal>
               <Reveal delay={0.12}>
@@ -61,28 +61,26 @@ export default function Home() {
                 </p>
               </Reveal>
               <Reveal delay={0.24}>
-                <div className="mt-10 flex flex-wrap gap-4">
-                  <Link to="/buy" className="btn-primary">Buy a Home</Link>
-                  <Link to="/sell" className="btn-outline">Sell a Home</Link>
+                <div className="mt-10">
+                  <a href="#contact" className="btn-primary">Let&rsquo;s Talk</a>
                 </div>
                 <p className="mt-5 text-xs tracking-[0.08em] text-muted-foreground leading-relaxed max-w-[32rem]">
-                  Licensed Real Estate Salesperson, HomeLife Landmark Realty Inc. Serving Toronto and the GTA.
+                  Licensed Real Estate Salesperson, HomeLife Landmark Realty Inc.
                 </p>
               </Reveal>
             </div>
             <div className="lg:col-span-5 order-1 lg:order-2">
               <Reveal y={32} className="relative">
                 <div className="aspect-[3/4] overflow-hidden rounded-[22px] bg-white shadow-[0_30px_70px_-28px_rgba(0,23,104,0.4)]">
-                  <Image src="https://media.base44.com/images/public/6a79030aec60e25b597174ab/fa96e8e67_Blue_Home.png"
+                  <Image src="https://media.base44.com/images/public/6a79030aec60e25b597174ab/a980f6ce5_HalfBody_Headshot.png"
 
                   alt={`${siteConfig.agentName} — professional real estate headshot`}
-                  fittingType="fill"
+                  fittingType="fit"
                   className="w-full h-full" />
                   
                 </div>
                 <div className="hidden lg:block absolute -bottom-6 -left-6 bg-white px-6 py-4 border-l-2 border-primary">
-                  <span className="block text-[0.65rem] uppercase tracking-[0.25em] text-muted-foreground">Serving</span>
-                  <span className="block font-heading text-lg">Toronto &amp; the GTA</span>
+                  <span className="block font-heading text-lg">{siteConfig.agentName}</span>
                 </div>
               </Reveal>
             </div>
