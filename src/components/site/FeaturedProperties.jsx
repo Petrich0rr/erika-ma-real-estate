@@ -43,7 +43,7 @@ export default function FeaturedProperties() {
                 <>
                   <div className="relative overflow-hidden aspect-[4/3] bg-sand">
                     <Image src={img} alt="Featured listing placeholder" fittingType="fill" className="w-full h-full" />
-                    <span className="absolute top-4 left-4 bg-foreground text-background px-3 py-1 text-[0.62rem] uppercase tracking-[0.18em]">EXCLUSIVE LISTING</span>
+                    <span className="absolute top-4 left-4 bg-foreground text-background px-3 py-1 text-[0.62rem] uppercase tracking-[0.18em]">Leased</span>
                   </div>
                   <div className="pt-5">
                     <h3 className="font-heading text-xl">Featured Listing</h3>
