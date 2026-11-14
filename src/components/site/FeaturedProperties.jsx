@@ -40,17 +40,16 @@ export default function FeaturedProperties() {
         <div className="grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
             {siteConfig.images.properties.map((img, i) =>
           <Reveal key={i}>
-                <article className="group">
+                <>
                   <div className="relative overflow-hidden aspect-[4/3] bg-sand">
-                    <Image src={img} alt="Featured listing placeholder" fittingType="fill" className="w-full h-full transition-transform duration-700 group-hover:scale-105" />
+                    <Image src={img} alt="Featured listing placeholder" fittingType="fill" className="w-full h-full" />
                     <span className="absolute top-4 left-4 bg-foreground text-background px-3 py-1 text-[0.62rem] uppercase tracking-[0.18em]">EXCLUSIVE LISTING</span>
                   </div>
                   <div className="pt-5">
                     <h3 className="font-heading text-xl">Featured Listing</h3>
                     <p className="text-muted-foreground text-sm mt-1">Property details available soon.</p>
-                    
                   </div>
-                </article>
+                </>
               </Reveal>
           )}
           </div>

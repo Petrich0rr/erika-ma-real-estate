@@ -6,14 +6,14 @@ const formatPrice = (p) => (p ? `$${Number(p).toLocaleString("en-CA")}` : "Price
 
 export default function PropertyCard({ property }) {
   return (
-    <article className="group">
+    <>
       <div className="relative overflow-hidden aspect-[4/3] bg-sand">
         {property.photo ? (
           <Image
             src={property.photo}
             alt={property.address || property.title}
             fittingType="fill"
-            className="w-full h-full transition-transform duration-700 group-hover:scale-105"
+            className="w-full h-full"
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center text-muted-foreground text-sm">Photo</div>
@@ -45,6 +45,6 @@ export default function PropertyCard({ property }) {
         </div>
         <Link to="/contact" className="btn-ghost mt-5">View Property</Link>
       </div>
-    </article>
+    </>
   );
 }
