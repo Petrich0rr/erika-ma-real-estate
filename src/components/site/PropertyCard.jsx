@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Bed, Bath, MapPin } from "lucide-react";
 import { Image } from "@/components/ui/image";
 
-const formatPrice = (p) => (p ? `$${Number(p).toLocaleString("en-CA")}` : "Price on request");
+const formatPrice = (p, suffix) => (p ? `$${Number(p).toLocaleString("en-CA")}${suffix || ""}` : "Price on request");
 
 export default function PropertyCard({ property }) {
   return (
@@ -27,7 +27,7 @@ export default function PropertyCard({ property }) {
       <div className="pt-5">
         <div className="flex items-baseline justify-between gap-4">
           <h3 className="font-heading text-xl">{property.title || property.address}</h3>
-          <span className="font-heading text-lg text-primary whitespace-nowrap">{formatPrice(property.price)}</span>
+          <span className="font-heading text-lg text-primary whitespace-nowrap">{formatPrice(property.price, property.price_suffix)}</span>
         </div>
         {property.address && (
           <p className="text-muted-foreground text-sm mt-1 flex items-center gap-1.5">

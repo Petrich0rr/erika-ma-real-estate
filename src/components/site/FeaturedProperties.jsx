@@ -1,22 +1,13 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { base44 } from "@/api/base44Client";
 import PropertyCard from "@/components/site/PropertyCard";
-import FeaturedListingsPlaceholder from "@/components/site/FeaturedListingsPlaceholder";
 import Reveal from "@/components/site/Reveal";
+import { listings } from "@/lib/listings";
 
+// Static listings: the site has no Base44 backend on Cloudflare Pages,
+// so featured properties come from src/lib/listings.js, not the API.
+// Home shows the first 3, the full list lives on /listings.
 export default function FeaturedProperties() {
-  const [properties, setProperties] = useState(null);
-
-  useEffect(() => {
-    base44.entities.Property.list("-created_date", 12).
-    // Guard: a non-array response (e.g. an HTML error page) must never
-    // reach render, where .map() on it would blank the whole site.
-    then((list) => setProperties(Array.isArray(list) ? list : [])).
-    catch(() => setProperties([]));
-  }, []);
-
-  const hasReal = properties && properties.length > 0;
+  const featured = listings.slice(0, 3);
 
   return (
     <section className="py-20 md:py-32">
@@ -26,20 +17,16 @@ export default function FeaturedProperties() {
             <span className="eyebrow">Featured Properties</span>
             <h2 className="font-heading text-4xl md:text-5xl mt-4 max-w-xl">A curated selection of current listings</h2>
           </div>
-          <Link to="/contact" className="btn-ghost">View all &amp; enquire</Link>
+          <Link to="/listings" className="btn-ghost">View all &amp; enquire</Link>
         </Reveal>
 
-        {hasReal ? (
-          <div className="grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
-            {properties.map((p) => (
-              <Reveal key={p.id}>
-                <PropertyCard property={p} />
-              </Reveal>
-            ))}
-          </div>
-        ) : (
-          <FeaturedListingsPlaceholder />
-        )}
+        <div className="grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+          {featured.map((p) => (
+            <Reveal key={p.id}>
+              <PropertyCard property={p} />
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   );
