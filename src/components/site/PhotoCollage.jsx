@@ -6,7 +6,7 @@ import Reveal from "@/components/site/Reveal";
 const PHOTOS = [
   { src: "/about/erika-pink-coat.jpg", alt: "Erika in a pink coat", frame: "-rotate-2" },
   { src: "/about/erika-friends.jpg", alt: "Erika out with friends", frame: "rotate-[1.5deg] translate-y-6" },
-  { src: "/about/erika-skyline.jpg", alt: "Toronto skyline", frame: "rotate-1 -translate-y-2" },
+  { src: "/about/erika-event.jpg", alt: "Erika at a Homelife event", frame: "rotate-1 -translate-y-2" },
   { src: "/about/erika-nyc.jpg", alt: "Erika in New York", frame: "-rotate-1 translate-y-4" },
 ];
 
