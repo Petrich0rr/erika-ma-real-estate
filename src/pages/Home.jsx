@@ -21,7 +21,8 @@ export default function Home() {
 
   useEffect(() => {
     base44.entities.Neighbourhood.list().
-    then((n) => setNeighbourhoods(n.filter((x) => x.featured).concat(n).slice(0, 3))).
+    // Guard: a non-array response must never reach render.
+    then((n) => setNeighbourhoods(Array.isArray(n) ? n.filter((x) => x.featured).concat(n).slice(0, 3) : [])).
     catch(() => setNeighbourhoods([]));
   }, []);
 
