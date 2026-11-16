@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { siteConfig } from "@/lib/siteConfig";
 import Reveal from "@/components/site/Reveal";
 import CtaBand from "@/components/site/CtaBand";
-import { Image } from "@/components/ui/image";
 import HeroWatermark from "@/components/site/HeroWatermark";
 
 const AREAS = siteConfig.areas;
@@ -13,7 +12,8 @@ export default function About() {
       <section className="relative isolate overflow-hidden pt-36 md:pt-44 pb-16 md:pb-24 min-h-[340px] md:min-h-[640px]">
         <HeroWatermark
           opacity={0.3}
-          className="w-[clamp(210px,33vw,580px)] h-[clamp(210px,33vw,580px)] top-0 left-0"
+          maskPosition="center"
+          className="w-[clamp(480px,85vw,1100px)] h-[clamp(480px,85vw,1100px)] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
         />
         <div className="relative z-10 mx-auto max-w-[1400px] px-5 md:px-10">
           <Reveal><span className="eyebrow">About</span></Reveal>
@@ -33,13 +33,8 @@ export default function About() {
       <section className="pb-20 md:pb-28">
         <div className="mx-auto max-w-[1400px] px-5 md:px-10 grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           <Reveal className="lg:col-span-5">
-            <div className="lg:sticky lg:top-32 space-y-6">
-              <div className="aspect-[3/4] overflow-hidden bg-sand">
-                <Image src="/about/erika-pink-coat.jpg" alt={siteConfig.agentName} fittingType="fill" className="w-full h-full" />
-              </div>
-              <div className="aspect-[3/4] overflow-hidden bg-sand">
-                <Image src="/about/erika-black-dress.jpg" alt={siteConfig.agentName} fittingType="fill" className="w-full h-full" />
-              </div>
+            <div className="lg:sticky lg:top-32">
+              <img src="/about/erika-pink-coat.jpg" alt={siteConfig.agentName} className="w-full h-auto block" />
             </div>
           </Reveal>
           <div className="lg:col-span-7 space-y-16">
