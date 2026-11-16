@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { siteConfig } from "@/lib/siteConfig";
 import Reveal from "@/components/site/Reveal";
+import PhotoCollage from "@/components/site/PhotoCollage";
 import CtaBand from "@/components/site/CtaBand";
 import HeroWatermark from "@/components/site/HeroWatermark";
 
@@ -34,7 +35,7 @@ export default function About() {
         <div className="mx-auto max-w-[1400px] px-5 md:px-10 grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           <Reveal className="lg:col-span-5">
             <div className="lg:sticky lg:top-32">
-              <img src="/about/erika-pink-coat.jpg" alt={siteConfig.agentName} className="w-full h-auto block" />
+              <PhotoCollage />
             </div>
           </Reveal>
           <div className="lg:col-span-7 space-y-16">
@@ -60,6 +61,30 @@ export default function About() {
               </div>
             </Reveal>
           </div>
+        </div>
+      </section>
+
+      {/* INTRO VIDEO */}
+      <section className="pb-20 md:pb-28">
+        <div className="mx-auto max-w-[1400px] px-5 md:px-10 text-center">
+          <Reveal><span className="eyebrow">Watch</span></Reveal>
+          <Reveal delay={0.05}>
+            <h2 className="font-heading text-3xl md:text-4xl mt-4">A quick hello from me</h2>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <video
+              className="mx-auto mt-10 w-full max-w-[400px] rounded-lg shadow-xl block"
+              controls
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              poster="/about/erika-intro-poster.jpg"
+            >
+              <source src="/about/erika-intro.mp4" type="video/mp4" />
+            </video>
+          </Reveal>
         </div>
       </section>
 
