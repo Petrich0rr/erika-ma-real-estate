@@ -73,6 +73,9 @@ export default function Home() {
       {/* TESTIMONIALS */}
       <Testimonials />
 
+      {/* FEATURED PROPERTIES */}
+      <FeaturedProperties />
+
       {/* BUY / SELL PATHWAYS */}
       <section className="bg-sand">
         <div className="mx-auto max-w-[1400px] px-5 md:px-10 py-20 md:py-28">
@@ -96,9 +99,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* FEATURED PROPERTIES */}
-      <FeaturedProperties />
 
       {/* CONTACT */}
       <section id="contact" className="py-20 md:py-32 bg-sand">
