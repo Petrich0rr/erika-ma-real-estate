@@ -76,27 +76,16 @@ export default function Home() {
       {/* FEATURED PROPERTIES */}
       <FeaturedProperties />
 
-      {/* BUY / SELL PATHWAYS */}
+      {/* WHAT I DO */}
       <section className="bg-sand">
-        <div className="mx-auto max-w-[1400px] px-5 md:px-10 py-20 md:py-28">
-          <div className="grid md:grid-cols-2">
-            <Reveal className="p-10 md:p-16 border-b md:border-b-0 md:border-r border-primary/15">
-              <span className="eyebrow">For Buyers</span>
-              <h3 className="font-heading text-3xl md:text-4xl mt-4">Looking to Buy?</h3>
-              <p className="mt-5 text-foreground/75 max-w-md leading-relaxed">Finding the right home is about more than just the property. I’ll help you navigate the market, explore your options, and find a home that fits your needs and goals.
-
-              </p>
-              <Link to="/buy" className="btn-primary mt-8">Start Your Search</Link>
-            </Reveal>
-            <Reveal delay={0.08} className="p-10 md:p-16">
-              <span className="eyebrow">For Sellers</span>
-              <h3 className="font-heading text-3xl md:text-4xl mt-4">Looking to Sell?</h3>
-              <p className="mt-5 text-foreground/75 max-w-md leading-relaxed">Your home deserves a strategy that helps it stand out. With a marketing focused approach, I’ll position and showcase your property to reach the right buyers.
-
-              </p>
-              <Link to="/sell" className="btn-primary mt-8">What&rsquo;s My Home Worth?</Link>
-            </Reveal>
-          </div>
+        <div className="mx-auto max-w-[1400px] px-5 md:px-10 py-20 md:py-28 text-center">
+          <Reveal>
+            <span className="eyebrow">What I Do</span>
+            <h2 className="font-heading text-3xl md:text-5xl mt-4">Residential sales, leases, and commercial</h2>
+          </Reveal>
+          <Reveal delay={0.05}>
+            <Link to="/contact" className="btn-primary mt-8 inline-block">Let&rsquo;s Talk</Link>
+          </Reveal>
         </div>
       </section>
 
