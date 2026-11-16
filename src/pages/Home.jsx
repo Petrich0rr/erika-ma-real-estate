@@ -3,6 +3,7 @@ import { MapPin } from "lucide-react";
 import { siteConfig } from "@/lib/siteConfig";
 import Reveal from "@/components/site/Reveal";
 import FeaturedProperties from "@/components/site/FeaturedProperties";
+import InstagramFeed from "@/components/site/InstagramFeed";
 import Testimonials from "@/components/site/Testimonials";
 import LeadForm from "@/components/site/LeadForm";
 import { Image } from "@/components/ui/image";
@@ -88,6 +89,9 @@ export default function Home() {
           </Reveal>
         </div>
       </section>
+
+      {/* INSTAGRAM */}
+      <InstagramFeed />
 
       {/* CONTACT */}
       <section id="contact" className="py-20 md:py-32 bg-sand">
