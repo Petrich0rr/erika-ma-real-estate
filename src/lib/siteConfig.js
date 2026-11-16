@@ -62,7 +62,6 @@ export const navLinks = [
   { label: "Buy", to: "/buy" },
   { label: "Sell", to: "/sell" },
   { label: "Listings", to: "/listings" },
-  { label: "Neighbourhoods", to: "/neighbourhoods" },
   { label: "Resources", to: "/resources" },
   { label: "Contact", to: "/contact" },
 ];
