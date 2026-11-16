@@ -13,7 +13,8 @@ export default function Neighbourhoods() {
   const [selected, setSelected] = useState(null);
 
   useEffect(() => {
-    base44.entities.Neighbourhood.list().then(setItems).catch(() => setItems([]));
+    // Guard: a non-array response must never reach render, where .map() on it would blank the page.
+    base44.entities.Neighbourhood.list().then((list) => setItems(Array.isArray(list) ? list : [])).catch(() => setItems([]));
   }, []);
 
   return (
