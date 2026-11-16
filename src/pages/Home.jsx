@@ -1,12 +1,9 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowUpRight, MapPin } from "lucide-react";
-import { base44 } from "@/api/base44Client";
+import { MapPin } from "lucide-react";
 import { siteConfig } from "@/lib/siteConfig";
 import Reveal from "@/components/site/Reveal";
 import FeaturedProperties from "@/components/site/FeaturedProperties";
 import Testimonials from "@/components/site/Testimonials";
-import NeighbourhoodCard from "@/components/site/NeighbourhoodCard";
 import LeadForm from "@/components/site/LeadForm";
 import { Image } from "@/components/ui/image";
 import HeroVideo from "@/components/site/HeroVideo";
@@ -17,14 +14,6 @@ const HERO_TEXT_SHADOW = {
 
 
 export default function Home() {
-  const [neighbourhoods, setNeighbourhoods] = useState([]);
-
-  useEffect(() => {
-    base44.entities.Neighbourhood.list().
-    // Guard: a non-array response must never reach render.
-    then((n) => setNeighbourhoods(Array.isArray(n) ? n.filter((x) => x.featured).concat(n).slice(0, 3) : [])).
-    catch(() => setNeighbourhoods([]));
-  }, []);
 
   return (
     <>
@@ -110,43 +99,6 @@ export default function Home() {
 
       {/* FEATURED PROPERTIES */}
       <FeaturedProperties />
-
-      {/* NEIGHBOURHOODS PREVIEW */}
-      <section className="py-20 md:py-32 bg-sand">
-        <div className="mx-auto max-w-[1400px] px-5 md:px-10">
-          <Reveal className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
-            <div>
-              <span className="eyebrow">Neighbourhoods</span>
-              <h2 className="font-heading text-4xl md:text-5xl mt-4 max-w-xl">Explore Toronto &amp; the GTA</h2>
-            </div>
-            <Link to="/neighbourhoods" className="btn-ghost">Explore Neighbourhoods</Link>
-          </Reveal>
-          {neighbourhoods.length > 0 ?
-          <div className="grid sm:grid-cols-3 gap-8">
-              {neighbourhoods.map((n) =>
-            <Reveal key={n.id}><NeighbourhoodCard neighbourhood={n} /></Reveal>
-            )}
-            </div> :
-
-          <div className="grid sm:grid-cols-3 gap-8">
-              {Object.values(siteConfig.images.neighbourhoods).map((img, i) =>
-            <Reveal key={i}>
-                  <Link to="/neighbourhoods" className="group block">
-                    <div className="relative overflow-hidden aspect-[4/3] bg-background">
-                      <Image src={img} alt="Toronto neighbourhood" fittingType="fill" className="w-full h-full transition-transform duration-700 group-hover:scale-105" />
-                    </div>
-                    <div className="pt-4 flex items-center justify-between">
-                      <h3 className="font-heading text-xl">Neighbourhood Guide</h3>
-                      <ArrowUpRight size={18} className="text-primary" />
-                    </div>
-                    <p className="text-muted-foreground text-sm mt-1">Coming soon</p>
-                  </Link>
-                </Reveal>
-            )}
-            </div>
-          }
-        </div>
-      </section>
 
       {/* CONTACT */}
       <section id="contact" className="py-20 md:py-32 bg-sand">
