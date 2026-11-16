@@ -43,10 +43,8 @@ export default function Home() {
               <div className="mt-8 h-px w-16 bg-white/70 mx-auto" />
             </Reveal>
             <Reveal delay={0.18}>
-              <p style={HERO_TEXT_SHADOW} className="mt-7 text-[19px] text-white leading-[1.95] max-w-[36rem] mx-auto">
-                I will guide you through every step, from first showing to
-                <br className="hidden sm:block" />
-                <span className="whitespace-nowrap">keys in hand.</span>
+              <p style={HERO_TEXT_SHADOW} className="mt-7 text-[19px] text-white leading-[1.95] max-w-[36rem] mx-auto sm:whitespace-nowrap">
+                From first showing to keys in hand.
               </p>
             </Reveal>
             <Reveal delay={0.24}>
