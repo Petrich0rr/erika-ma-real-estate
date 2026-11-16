@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { Bed, Bath, MapPin } from "lucide-react";
 import { Image } from "@/components/ui/image";
 
@@ -29,9 +28,9 @@ export default function PropertyCard({ property }) {
           <h3 className="font-heading text-xl">{property.title || property.address}</h3>
           <span className="font-heading text-lg text-primary whitespace-nowrap">{formatPrice(property.price, property.price_suffix)}</span>
         </div>
-        {property.address && (
+        {property.location && (
           <p className="text-muted-foreground text-sm mt-1 flex items-center gap-1.5">
-            <MapPin size={13} /> {property.address}
+            <MapPin size={13} /> {property.location}
           </p>
         )}
         <div className="flex items-center gap-5 mt-4 text-sm text-foreground/70">
@@ -43,7 +42,6 @@ export default function PropertyCard({ property }) {
           )}
           {property.property_type && <span>{property.property_type}</span>}
         </div>
-        <Link to="/contact" className="btn-ghost mt-5">View Property</Link>
       </div>
     </>
   );
