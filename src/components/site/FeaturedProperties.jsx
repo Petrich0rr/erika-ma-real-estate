@@ -10,7 +10,9 @@ export default function FeaturedProperties() {
 
   useEffect(() => {
     base44.entities.Property.list("-created_date", 12).
-    then(setProperties).
+    // Guard: a non-array response (e.g. an HTML error page) must never
+    // reach render, where .map() on it would blank the whole site.
+    then((list) => setProperties(Array.isArray(list) ? list : [])).
     catch(() => setProperties([]));
   }, []);
 
