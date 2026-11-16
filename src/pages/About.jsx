@@ -1,17 +1,9 @@
 import { Link } from "react-router-dom";
-import { Check } from "lucide-react";
 import { siteConfig } from "@/lib/siteConfig";
 import Reveal from "@/components/site/Reveal";
 import CtaBand from "@/components/site/CtaBand";
 import { Image } from "@/components/ui/image";
 import HeroWatermark from "@/components/site/HeroWatermark";
-
-const APPROACH = [
-"Listening first — understanding your goals, timeline, and what home really means to you.",
-"A marketing mindset applied to every transaction, whether you're buying or selling.",
-"Clear, honest guidance at every step — no pressure, no jargon.",
-"Modern tools and exposure paired with old-fashioned personal service."];
-
 
 const AREAS = siteConfig.areas;
 
@@ -41,42 +33,27 @@ export default function About() {
       <section className="pb-20 md:pb-28">
         <div className="mx-auto max-w-[1400px] px-5 md:px-10 grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           <Reveal className="lg:col-span-5">
-            <div className="aspect-[3/4] overflow-hidden bg-sand lg:sticky lg:top-32">
-              <Image src="https://media.base44.com/images/public/6a79030aec60e25b597174ab/9218783f3_IMG_3445.jpeg" alt={siteConfig.agentName} fittingType="fill" className="w-full h-full" />
+            <div className="lg:sticky lg:top-32 space-y-6">
+              <div className="aspect-[3/4] overflow-hidden bg-sand">
+                <Image src="/about/erika-pink-coat.jpg" alt={siteConfig.agentName} fittingType="fill" className="w-full h-full" />
+              </div>
+              <div className="aspect-[3/4] overflow-hidden bg-sand">
+                <Image src="/about/erika-black-dress.jpg" alt={siteConfig.agentName} fittingType="fill" className="w-full h-full" />
+              </div>
             </div>
           </Reveal>
           <div className="lg:col-span-7 space-y-16">
             <Reveal>
               <h2 className="font-heading text-3xl md:text-4xl">A little about me</h2>
-              <p className="mt-6 text-foreground/80 leading-relaxed max-w-xl">Hi, I’m Erika! I’m a Toronto based real estate professional with a background in marketing. I love meeting new people, getting to know what they’re looking for, and helping make the whole real estate process feel a little less overwhelming.
-
-              </p>
-            </Reveal>
-
-            <Reveal>
-              <h2 className="font-heading text-3xl md:text-4xl">My approach to real estate</h2>
-              <ul className="mt-6 space-y-4 max-w-xl">
-                {APPROACH.map((a) =>
-                <li key={a} className="flex items-start gap-3">
-                    <Check size={18} className="text-primary mt-1 shrink-0" />
-                    <span className="text-foreground/80">{a}</span>
-                  </li>
-                )}
-              </ul>
-            </Reveal>
-
-            <Reveal>
-              <h2 className="font-heading text-3xl md:text-4xl">My marketing background</h2>
-              <p className="mt-6 text-foreground/80 leading-relaxed max-w-xl">Before real estate, I built my career in digital marketing. From social media and content to websites and campaigns, I’ve learned how much good presentation and the right strategy matter. Now I get to bring that experience into real estate too.
-
-              </p>
+              <p className="mt-6 text-foreground/80 leading-relaxed max-w-xl">Nice to meet you, I’m Erika!</p>
+              <p className="mt-4 text-foreground/80 leading-relaxed max-w-xl">I’m a licensed real estate salesperson, and I’ve called quite a few places home… from Scarborough to Downtown Toronto to Yonge &amp; Finch. And honestly? I love them all for different reasons!</p>
+              <p className="mt-4 text-foreground/80 leading-relaxed max-w-xl">I’m Canadian, but my roots are in Shanghai, China. 🇨🇦🇨🇳</p>
+              <p className="mt-4 text-foreground/80 leading-relaxed max-w-xl">Outside of real estate, you’ll probably find me at the gym, grabbing a fruit tea, or exploring somewhere new. I love meeting new people, hearing their stories, and making new friends along the way.</p>
             </Reveal>
 
             <Reveal>
               <h2 className="font-heading text-3xl md:text-4xl">Why work with me</h2>
-              <p className="mt-6 text-foreground/80 leading-relaxed max-w-xl">I want you to feel comfortable asking questions, sharing what you really want, and taking your time with big decisions. I’ll be there to guide you, keep you in the loop, and make the process as smooth as I can.
-
-              </p>
+              <p className="mt-6 text-foreground/80 leading-relaxed max-w-xl">I put my clients first. My goal is to make sure you find exactly what you had in mind, or even better!</p>
             </Reveal>
 
             <Reveal>
