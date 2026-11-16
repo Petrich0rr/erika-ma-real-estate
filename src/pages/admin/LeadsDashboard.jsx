@@ -28,9 +28,11 @@ export default function LeadsDashboard() {
         setMe(user);
         if (user && user.role === "admin") {
           const list = await base44.entities.Lead.list("-created_date", 500);
-          setLeads(list);
+          // Guard: a non-array response must never reach render.
+          const safeList = Array.isArray(list) ? list : [];
+          setLeads(safeList);
           const drafts = {};
-          list.forEach((l) => (drafts[l.id] = l.notes || ""));
+          safeList.forEach((l) => (drafts[l.id] = l.notes || ""));
           setNotesDraft(drafts);
         }
       } finally {
