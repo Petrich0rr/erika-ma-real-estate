@@ -14,6 +14,7 @@ import Home from "@/pages/Home";
 import About from "@/pages/About";
 import Buy from "@/pages/Buy";
 import Sell from "@/pages/Sell";
+import Listings from "@/pages/Listings";
 import Neighbourhoods from "@/pages/Neighbourhoods";
 import NeighbourhoodDetail from "@/pages/NeighbourhoodDetail";
 import Resources from "@/pages/Resources";
@@ -38,6 +39,7 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/buy" element={<Buy />} />
               <Route path="/sell" element={<Sell />} />
+              <Route path="/listings" element={<Listings />} />
               <Route path="/neighbourhoods" element={<Neighbourhoods />} />
               <Route path="/neighbourhoods/:slug" element={<NeighbourhoodDetail />} />
               <Route path="/resources" element={<Resources />} />
