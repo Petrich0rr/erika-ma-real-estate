@@ -16,7 +16,8 @@ export default function NeighbourhoodDetail() {
   useEffect(() => {
     setLoading(true);
     base44.entities.Neighbourhood.filter({ slug }).
-    then((list) => setNh(list[0] || null)).
+    // Guard: a non-array response must never reach render.
+    then((list) => setNh(Array.isArray(list) ? list[0] || null : null)).
     catch(() => setNh(null)).
     finally(() => setLoading(false));
   }, [slug]);
@@ -24,7 +25,7 @@ export default function NeighbourhoodDetail() {
   useEffect(() => {
     if (nh) {
       base44.entities.Property.filter({ neighbourhood: nh.name }).
-      then(setProperties).
+      then((list) => setProperties(Array.isArray(list) ? list : [])).
       catch(() => setProperties([]));
     }
   }, [nh]);
