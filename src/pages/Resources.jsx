@@ -21,7 +21,8 @@ export default function Resources() {
 
   useEffect(() => {
     base44.entities.Resource.list("-created_date", 6).
-    then(setArticles).
+    // Guard: a non-array response must never reach render, where .map() on it would blank the page.
+    then((list) => setArticles(Array.isArray(list) ? list : [])).
     catch(() => setArticles([]));
   }, []);
 
