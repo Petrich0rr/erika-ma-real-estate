@@ -9,7 +9,7 @@ const POSTS = [
   { img: "/instagram/ig-2.jpg", url: "https://www.instagram.com/p/DflFKdNDsOu/", label: "Client Love · Calleigh", date: "Nov 11, 2026" },
   { img: "/instagram/ig-3.jpg", url: "https://www.instagram.com/p/DfkWJ9VDhD3/", label: "Just Leased · 1635 Military Trail", date: "Nov 10, 2026" },
   { img: "/instagram/ig-4.jpg", url: "https://www.instagram.com/p/DfQbSMHE8qj/", label: "Just Leased · 355 Culford Rd", date: "Nov 2, 2026" },
-  { img: "/instagram/ig-5.jpg", url: "https://www.instagram.com/p/DeXkgFfFr43/", label: "For Lease · 15 David Salomon Dr", date: "Oct 11, 2026" },
+  { img: "/instagram/ig-5b.jpg", url: "https://www.instagram.com/p/DeXkgFfFr43/", label: "For Lease · 15 David Salomon Dr", date: "Oct 11, 2026" },
   { img: "/instagram/ig-6.jpg", url: "https://www.instagram.com/p/DdvBU5Ao0Ml/", label: "Listing Flyer · Toronto", date: "Sep 25, 2026" },
 ];
 
