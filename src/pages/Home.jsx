@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
-import { MapPin } from "lucide-react";
 import { siteConfig } from "@/lib/siteConfig";
 import Reveal from "@/components/site/Reveal";
 import FeaturedProperties from "@/components/site/FeaturedProperties";
 import InstagramFeed from "@/components/site/InstagramFeed";
 import Testimonials from "@/components/site/Testimonials";
-import LeadForm from "@/components/site/LeadForm";
+import ErikaRunner from "@/components/site/ErikaRunner";
 import { Image } from "@/components/ui/image";
 import HeroVideo from "@/components/site/HeroVideo";
 
@@ -39,7 +38,7 @@ export default function Home() {
             </Reveal>
             <Reveal delay={0.24}>
               <div className="mt-10 flex justify-center">
-                <a href="#contact" className="btn-primary px-12 py-5 text-base">Let&rsquo;s Grab Coffee</a>
+                <Link to="/contact" className="btn-primary px-12 py-5 text-base">Let&rsquo;s Grab Coffee</Link>
               </div>
             </Reveal>
           </div>
@@ -93,30 +92,24 @@ export default function Home() {
       {/* INSTAGRAM */}
       <InstagramFeed />
 
-      {/* CONTACT */}
-      <section id="contact" className="py-20 md:py-32 bg-sand">
-        <div className="mx-auto max-w-[1400px] px-5 md:px-10 grid lg:grid-cols-12 gap-12 lg:gap-16">
-          <div className="lg:col-span-5">
-            <Reveal><span className="eyebrow">Contact ERIKA</span></Reveal>
-            <Reveal delay={0.05}>
-              <h2 className="font-heading text-4xl md:text-5xl mt-4">Let&rsquo;s start a conversation</h2>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <p className="mt-6 text-foreground/80 max-w-md leading-relaxed">Every real estate journey starts with a conversation. Whether you’re buying, selling, renting, investing, or exploring your options, let’s connect and make your next move happen.
-
-              </p>
-            </Reveal>
-            <Reveal delay={0.15} className="mt-8 space-y-3 text-foreground/85">
-              <p className="flex items-center gap-1.5 text-muted-foreground pt-2"><MapPin size={16} className="text-primary" /> Toronto &amp; Greater Toronto Area</p>
-              <p><span className="text-muted-foreground">Email: </span><a href={`mailto:${siteConfig.email}`} className="link-underline">{siteConfig.email}</a></p>
-              <p><span className="text-muted-foreground">Phone: </span><a href={`tel:${siteConfig.phoneHref}`} className="link-underline">{siteConfig.phone}</a></p>
-            </Reveal>
-          </div>
-          <div className="lg:col-span-7">
-            <Reveal delay={0.1}>
-              <LeadForm />
-            </Reveal>
-          </div>
+      {/* PLAY A GAME — replaced the home Contact section Nov 16, 2026: it
+          duplicated the Contact page (header "Work With Erika", "Let's Talk",
+          and /contact all lead there). The form still lives on /contact. */}
+      <section id="play" className="py-20 md:py-32 bg-sand">
+        <div className="mx-auto max-w-[1400px] px-5 md:px-10">
+          <Reveal className="text-center">
+            <span className="eyebrow">Just for fun</span>
+            <h2 className="font-heading text-4xl md:text-5xl mt-4">Mini Erika vs. Toronto</h2>
+            <p className="mt-5 text-foreground/75 max-w-lg mx-auto">
+              House hunting can wait 30 seconds. Help mini Erika jump the houses and condos — how far can you get?
+            </p>
+          </Reveal>
+          <Reveal delay={0.08} className="mt-10">
+            <ErikaRunner />
+          </Reveal>
+          <p className="mt-8 text-center text-foreground/70">
+            Want to talk real estate instead? <Link to="/contact" className="link-underline text-primary">Say hi</Link>
+          </p>
         </div>
       </section>
     </>);
