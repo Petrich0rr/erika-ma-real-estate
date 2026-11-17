@@ -4,7 +4,7 @@ import Reveal from "@/components/site/Reveal";
 // to it (staggered Reveal delays). Photos keep their natural ratio — no
 // fixed boxes, so nothing gets squashed.
 const PHOTOS = [
-  { src: "/about/erika-pink-coat.jpg", alt: "Erika in a pink coat", frame: "-rotate-2" },
+  { src: "/about/erika-city-dusk.jpg", alt: "City skyline at dusk", frame: "-rotate-2" },
   { src: "/about/erika-friends.jpg", alt: "Erika out with friends", frame: "rotate-[1.5deg] translate-y-6" },
   { src: "/about/erika-event.jpg", alt: "Erika at a Homelife event", frame: "rotate-1 -translate-y-2" },
   { src: "/about/erika-nyc.jpg", alt: "Erika in New York", frame: "-rotate-1 translate-y-4" },
