@@ -11,9 +11,12 @@ import { Image } from "@/components/ui/image";
 // it was removed by rebuilding that strip (full frame kept, 1900x1267).
 // The Lease interior had a faint "360 Home Photography 2022" credit in the
 // corner; that was rebuilt too. /buy and /sell still render this page.
+// Restyled Nov 16, 2026 (ADVISORIE template Erika liked): colourful blurred
+// blobs behind white cards, numbered 01-04 sections, in her royal blue.
 const SERVICES = [
   {
     id: "buy",
+    num: "01",
     eyebrow: "Buy",
     title: "Find the home that fits your life",
     body: "Finding a home should feel exciting, not overwhelming. I\u2019ll help you navigate the market, understand your options, and find a home that feels right for you.",
@@ -23,6 +26,7 @@ const SERVICES = [
   },
   {
     id: "sell",
+    num: "02",
     eyebrow: "Sell",
     title: "Sell with a marketing edge",
     body: "Selling your home is more than putting it on the market. I\u2019ll combine thoughtful strategy, strong presentation, and modern marketing to help your property stand out.",
@@ -32,6 +36,7 @@ const SERVICES = [
   },
   {
     id: "lease",
+    num: "03",
     eyebrow: "Lease",
     title: "Find a rental that actually fits",
     body: "Looking to rent in Toronto or the GTA? Tell me your budget, your must-haves, and your move-in date, and I\u2019ll send you places worth seeing.",
@@ -42,6 +47,7 @@ const SERVICES = [
   },
   {
     id: "invest",
+    num: "04",
     eyebrow: "Invest",
     title: "Invest with the numbers in mind",
     body: "Looking for your next opportunity? I\u2019ll help you explore properties with your goals, the numbers, and the market in mind.",
@@ -57,34 +63,41 @@ function ServiceRow({ service, flip }) {
   // wrappers collapse to content width and the text squeezes to one word
   // per line (caught live Nov 16, 2026 on the Sell and Invest rows).
   return (
-    <section id={service.id} className="py-20 md:py-28 border-t border-primary/15 scroll-mt-24">
-      <div className="mx-auto max-w-[1400px] px-5 md:px-10 grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-        <div className={`lg:col-span-7 ${flip ? "lg:order-2" : ""}`}>
-          <Reveal><span className="eyebrow">{service.eyebrow}</span></Reveal>
-          <Reveal delay={0.05}>
-            <h2 className="font-heading text-4xl md:text-5xl mt-4 max-w-xl">{service.title}</h2>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <p className="mt-6 text-foreground/80 max-w-xl leading-relaxed">{service.body}</p>
-          </Reveal>
-          <Reveal delay={0.15}>
-            <div className="mt-8 flex flex-wrap gap-4">
-              {service.cta.to ? (
-                <Link to={service.cta.to} className="btn-primary">{service.cta.label}</Link>
-              ) : (
-                <a href={service.cta.href} className="btn-primary">{service.cta.label}</a>
-              )}
-              {service.cta2 && (
-                <Link to={service.cta2.to} className="btn-ghost">{service.cta2.label}</Link>
-              )}
+    <section id={service.id} className="relative z-10 py-8 md:py-12 scroll-mt-24">
+      <div className="mx-auto max-w-[1400px] px-5 md:px-10">
+        <div className="bg-white rounded-[2rem] shadow-[0_24px_70px_-24px_rgba(3,0,166,0.25)] px-6 py-10 md:px-12 md:py-14 grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+          <div className={`lg:col-span-7 ${flip ? "lg:order-2" : ""}`}>
+            <Reveal>
+              <div className="flex items-baseline gap-4">
+                <span className="font-heading text-5xl md:text-6xl">{service.num}</span>
+                <span className="eyebrow">{service.eyebrow}</span>
+              </div>
+            </Reveal>
+            <Reveal delay={0.05}>
+              <h2 className="font-heading text-4xl md:text-5xl mt-4 max-w-xl">{service.title}</h2>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <p className="mt-6 text-foreground/80 max-w-xl leading-relaxed">{service.body}</p>
+            </Reveal>
+            <Reveal delay={0.15}>
+              <div className="mt-8 flex flex-wrap gap-4">
+                {service.cta.to ? (
+                  <Link to={service.cta.to} className="btn-primary">{service.cta.label}</Link>
+                ) : (
+                  <a href={service.cta.href} className="btn-primary">{service.cta.label}</a>
+                )}
+                {service.cta2 && (
+                  <Link to={service.cta2.to} className="btn-ghost">{service.cta2.label}</Link>
+                )}
+              </div>
+            </Reveal>
+          </div>
+          <Reveal className={`lg:col-span-5 ${flip ? "lg:order-1" : ""}`}>
+            <div className="aspect-[4/3] overflow-hidden bg-sand">
+              <Image src={service.img} alt={service.alt} fittingType="fill" className="w-full h-full" />
             </div>
           </Reveal>
         </div>
-        <Reveal className={`lg:col-span-5 ${flip ? "lg:order-1" : ""}`}>
-          <div className="aspect-[4/3] overflow-hidden bg-sand">
-            <Image src={service.img} alt={service.alt} fittingType="fill" className="w-full h-full" />
-          </div>
-        </Reveal>
       </div>
     </section>
   );
@@ -93,8 +106,21 @@ function ServiceRow({ service, flip }) {
 export default function Services() {
   return (
     <>
-      <section className="pt-36 md:pt-44 pb-16 md:pb-24">
-        <div className="mx-auto max-w-[1400px] px-5 md:px-10 grid lg:grid-cols-12 gap-10 lg:gap-16 items-end">
+      {/* Colourful blurred backdrop (Nov 16, 2026, inspired by the ADVISORIE
+          template Erika liked): fixed soft blobs in her royal blue plus sky,
+          blush, teal and peach. Fixed z-0 so it sits above Layout's page
+          background but behind the white cards (every section here is
+          relative z-10); it unmounts when leaving this page. */}
+      <div aria-hidden className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+        <div className="absolute -top-32 -left-32 h-[34rem] w-[34rem] rounded-full bg-[#0a1e9e]/25 blur-[110px]" />
+        <div className="absolute top-[15%] -right-40 h-[30rem] w-[30rem] rounded-full bg-sky-300/40 blur-[110px]" />
+        <div className="absolute top-[45%] -left-40 h-[28rem] w-[28rem] rounded-full bg-pink-300/30 blur-[110px]" />
+        <div className="absolute top-[30%] left-[35%] h-[24rem] w-[24rem] rounded-full bg-teal-300/25 blur-[110px]" />
+        <div className="absolute -bottom-40 right-[5%] h-[32rem] w-[32rem] rounded-full bg-[#ffd9c0]/50 blur-[110px]" />
+      </div>
+      <section className="relative z-10 pt-36 md:pt-44 pb-10 md:pb-14">
+        <div className="mx-auto max-w-[1400px] px-5 md:px-10">
+          <div className="bg-white rounded-[2rem] shadow-[0_24px_70px_-24px_rgba(3,0,166,0.25)] px-6 py-10 md:px-12 md:py-14 grid lg:grid-cols-12 gap-10 lg:gap-16 items-end">
           <div className="lg:col-span-7">
             <Reveal><span className="eyebrow">Services</span></Reveal>
             <Reveal delay={0.05}>
@@ -109,6 +135,7 @@ export default function Services() {
               <Image src="/services/skyline-downtown.jpg" alt="Downtown Toronto skyline at dusk" fittingType="fill" className="w-full h-full" />
             </div>
           </Reveal>
+          </div>
         </div>
       </section>
 
@@ -117,34 +144,34 @@ export default function Services() {
       ))}
 
       {/* BUYER FORM */}
-      <section id="buy-form" className="py-20 md:py-32 bg-sand scroll-mt-24">
+      <section id="buy-form" className="relative z-10 py-10 md:py-14 scroll-mt-24">
         <div className="mx-auto max-w-[1000px] px-5 md:px-10">
-          <Reveal className="mb-12 text-center">
-            <span className="eyebrow">Start Your Search</span>
-            <h2 className="font-heading text-4xl md:text-5xl mt-4">Tell me what you&apos;re looking for</h2>
-            <p className="mt-5 text-foreground/75 max-w-lg mx-auto">
-              Share a few details and I&apos;ll personally review your criteria and reach out to start your search. No account needed.
-            </p>
-          </Reveal>
-          <Reveal delay={0.08} className="bg-background px-6 py-10 md:px-12 md:py-14 border border-primary/15">
+          <div className="bg-white rounded-[2rem] shadow-[0_24px_70px_-24px_rgba(3,0,166,0.25)] px-6 py-10 md:px-12 md:py-14">
+            <Reveal className="mb-12 text-center">
+              <span className="eyebrow">Start Your Search</span>
+              <h2 className="font-heading text-4xl md:text-5xl mt-4">Tell me what you&apos;re looking for</h2>
+              <p className="mt-5 text-foreground/75 max-w-lg mx-auto">
+                Share a few details and I&apos;ll personally review your criteria and reach out to start your search. No account needed.
+              </p>
+            </Reveal>
             <BuyerForm />
-          </Reveal>
+          </div>
         </div>
       </section>
 
       {/* SELLER FORM */}
-      <section id="sell-form" className="py-20 md:py-32 scroll-mt-24">
+      <section id="sell-form" className="relative z-10 py-10 md:py-14 scroll-mt-24">
         <div className="mx-auto max-w-[1000px] px-5 md:px-10">
-          <Reveal className="mb-12 text-center">
-            <span className="eyebrow">What&rsquo;s My Home Worth?</span>
-            <h2 className="font-heading text-4xl md:text-5xl mt-4">Request a complimentary evaluation</h2>
-            <p className="mt-5 text-foreground/75 max-w-lg mx-auto">
-              Share a few details about your property and I&apos;ll personally review the information and follow up to arrange a complimentary evaluation. This is not an automated estimate — every request is reviewed by me.
-            </p>
-          </Reveal>
-          <Reveal delay={0.08} className="bg-sand px-6 py-10 md:px-12 md:py-14 border border-primary/15">
+          <div className="bg-white rounded-[2rem] shadow-[0_24px_70px_-24px_rgba(3,0,166,0.25)] px-6 py-10 md:px-12 md:py-14">
+            <Reveal className="mb-12 text-center">
+              <span className="eyebrow">What&rsquo;s My Home Worth?</span>
+              <h2 className="font-heading text-4xl md:text-5xl mt-4">Request a complimentary evaluation</h2>
+              <p className="mt-5 text-foreground/75 max-w-lg mx-auto">
+                Share a few details about your property and I&apos;ll personally review the information and follow up to arrange a complimentary evaluation. This is not an automated estimate — every request is reviewed by me.
+              </p>
+            </Reveal>
             <SellerForm />
-          </Reveal>
+          </div>
         </div>
       </section>
     </>
