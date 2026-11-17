@@ -6,11 +6,14 @@ import { useEffect, useRef, useState } from "react";
 // and a dizzy frame for game over. Background: her sky-and-grass scene
 // (/game/bg-sky.jpg), gently scrolling. Obstacles: her Toronto sprite
 // sheet (/game/obs-*.png), scaled up ~1.35x. The navy E-flag obstacle
-// is NOT used (Erika doesn't like it). Space / ArrowUp / click / tap to
-// jump. High score in localStorage.
+// is NOT used (Erika doesn't like it). Physics: a floatier jump
+// (gravity 0.5) and forgiving hitboxes, so every obstacle is physically
+// clearable at every speed — verified by simulating the exact jump arc
+// against all 26 obstacles. Space / ArrowUp / click / tap to jump.
+// High score in localStorage.
 const HIGH_KEY = "erika-runner-high";
-const GRAVITY = 0.6;
-const JUMP_V = -14;
+const GRAVITY = 0.5;
+const JUMP_V = -13.5;
 const CHAR_X = 72;
 const CHAR_H = 108;
 const CHAR_W = 78;
@@ -142,7 +145,7 @@ export default function ErikaRunner() {
     const resize = () => {
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
       const w = wrap.clientWidth;
-      const h = w < 640 ? 280 : 340;
+      const h = 340; // tall enough that her head stays in frame at jump apex
       g.w = w;
       g.h = h;
       canvas.width = Math.round(w * dpr);
@@ -293,9 +296,10 @@ export default function ErikaRunner() {
       }
       const w = CHAR_H * (img.naturalWidth / img.naturalHeight);
       const jumping = g.y < charTop() - 0.5;
-      const bob = jumping ? 0 : Math.sin(g.run) * 1.5;
+      // No vertical bob: the run-cycle frames move her legs, and the bob
+      // made the whole sprite tremble. She only tilts while airborne.
       ctx.save();
-      ctx.translate(CHAR_X + CHAR_W / 2, g.y + CHAR_H / 2 + bob);
+      ctx.translate(CHAR_X + CHAR_W / 2, g.y + CHAR_H / 2);
       ctx.rotate(jumping ? -0.12 : 0);
       ctx.drawImage(img, -w / 2, -CHAR_H / 2, w, CHAR_H);
       ctx.restore();
@@ -365,12 +369,18 @@ export default function ErikaRunner() {
         }
         for (const o of g.obstacles) o.x -= g.speed;
         g.obstacles = g.obstacles.filter((o) => o.x + o.w > -20);
-        const cx0 = CHAR_X + 12;
-        const cx1 = CHAR_X + 66;
+        // Forgiving hitboxes (sim-verified: every obstacle is clearable
+        // at every speed): her box is her body's core, each obstacle's
+        // box is the middle 70% of its picture, so clipping a roof edge
+        // or a chimney doesn't kill her.
+        const cx0 = CHAR_X + 16;
+        const cx1 = CHAR_X + 62;
         const cy0 = g.y + 6;
         const cy1 = g.y + CHAR_H - 2;
         for (const o of g.obstacles) {
-          if (cx1 > o.x + 5 && cx0 < o.x + o.w - 5 && cy1 > o.y + 4 && cy0 < o.y + o.h) {
+          const ocx0 = o.x + o.w * 0.15;
+          const ocx1 = o.x + o.w * 0.85;
+          if (cx1 > ocx0 && cx0 < ocx1 && cy1 > o.y + 4 && cy0 < o.y + o.h) {
             die();
             break;
           }
