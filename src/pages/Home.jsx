@@ -57,7 +57,7 @@ export default function Home() {
           <div className="lg:col-span-7">
             <Reveal><span className="eyebrow" style={{ fontSize: "0.8rem" }}>Meet erika</span></Reveal>
             <Reveal delay={0.05}>
-              <h2 className="font-heading text-4xl md:text-5xl mt-4 max-w-xl">Your Trusted Partner in Real Estate.</h2>
+              <h2 className="font-heading text-4xl md:text-5xl mt-4 max-w-xl">Your <span className="inline-block font-heading italic text-primary text-[1.2em] leading-none">Trusted Partner</span> in Real Estate.</h2>
             </Reveal>
             <Reveal delay={0.1}>
               <p className="mt-6 text-foreground/80 max-w-xl leading-relaxed">Buying or selling a home is a big decision. I'm here to help make the process simple, transparent, and as stress-free as possible.
