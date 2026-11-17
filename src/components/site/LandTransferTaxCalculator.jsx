@@ -37,11 +37,11 @@ export default function LandTransferTaxCalculator() {
         <input type="number" min={0} step={10000} value={price} onChange={(e) => setPrice(Number(e.target.value))} className="ghost-input" />
       </div>
       <label className="flex items-center gap-3 text-sm cursor-pointer">
-        <input type="checkbox" checked={inToronto} onChange={(e) => setInToronto(e.target.checked)} className="w-4 h-4 accent-[#001768]" />
+        <input type="checkbox" checked={inToronto} onChange={(e) => setInToronto(e.target.checked)} className="w-4 h-4 accent-[#0201a7]" />
         <span>Property is in the City of Toronto (adds municipal LTT)</span>
       </label>
       <label className="flex items-center gap-3 text-sm cursor-pointer">
-        <input type="checkbox" checked={firstTime} onChange={(e) => setFirstTime(e.target.checked)} className="w-4 h-4 accent-[#001768]" />
+        <input type="checkbox" checked={firstTime} onChange={(e) => setFirstTime(e.target.checked)} className="w-4 h-4 accent-[#0201a7]" />
         <span>I may qualify as a first-time home buyer (apply rebates)</span>
       </label>
       <div className="border-t border-primary/25 pt-6 space-y-2 text-sm">

@@ -71,7 +71,7 @@ export default function NeighbourhoodMap({ neighbourhoods = [], onSelect }) {
             <div style={{ fontFamily: "Open Sans, sans-serif" }}>
               <strong style={{ fontFamily: "Playfair Display, serif", fontSize: "1rem" }}>{n.name}</strong>
               {n.tagline && <div style={{ color: "#757575", fontSize: "0.8rem", marginTop: "2px" }}>{n.tagline}</div>}
-              <div style={{ color: "#001768", fontSize: "0.8rem", marginTop: "6px", textDecoration: "underline" }}>View guide →</div>
+              <div style={{ color: "#0201a7", fontSize: "0.8rem", marginTop: "6px", textDecoration: "underline" }}>View guide →</div>
             </div>
           </Popup>
         </Marker>
