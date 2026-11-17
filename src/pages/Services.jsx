@@ -112,7 +112,7 @@ export default function Services() {
           background but behind the white cards (every section here is
           relative z-10); it unmounts when leaving this page. */}
       <div aria-hidden className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
-        <div className="absolute -top-32 -left-32 h-[34rem] w-[34rem] rounded-full bg-[#0a1e9e]/25 blur-[110px]" />
+        <div className="absolute -top-32 -left-32 h-[34rem] w-[34rem] rounded-full bg-[#0201a7]/25 blur-[110px]" />
         <div className="absolute top-[15%] -right-40 h-[30rem] w-[30rem] rounded-full bg-sky-300/40 blur-[110px]" />
         <div className="absolute top-[45%] -left-40 h-[28rem] w-[28rem] rounded-full bg-pink-300/30 blur-[110px]" />
         <div className="absolute top-[30%] left-[35%] h-[24rem] w-[24rem] rounded-full bg-teal-300/25 blur-[110px]" />
