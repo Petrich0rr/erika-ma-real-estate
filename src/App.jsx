@@ -12,8 +12,7 @@ import Layout from "@/components/site/Layout";
 // Public pages
 import Home from "@/pages/Home";
 import About from "@/pages/About";
-import Buy from "@/pages/Buy";
-import Sell from "@/pages/Sell";
+import Services from "@/pages/Services";
 import Listings from "@/pages/Listings";
 import Neighbourhoods from "@/pages/Neighbourhoods";
 import NeighbourhoodDetail from "@/pages/NeighbourhoodDetail";
@@ -37,8 +36,10 @@ function App() {
             <Route element={<Layout />}>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
-              <Route path="/buy" element={<Buy />} />
-              <Route path="/sell" element={<Sell />} />
+              <Route path="/services" element={<Services />} />
+              {/* /buy and /sell now show the Services page too */}
+              <Route path="/buy" element={<Services />} />
+              <Route path="/sell" element={<Services />} />
               <Route path="/listings" element={<Listings />} />
               <Route path="/neighbourhoods" element={<Neighbourhoods />} />
               <Route path="/neighbourhoods/:slug" element={<NeighbourhoodDetail />} />
