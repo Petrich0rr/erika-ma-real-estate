@@ -4,7 +4,6 @@ import Reveal from "@/components/site/Reveal";
 import FeaturedProperties from "@/components/site/FeaturedProperties";
 import InstagramFeed from "@/components/site/InstagramFeed";
 import Testimonials from "@/components/site/Testimonials";
-import ErikaRunner from "@/components/site/ErikaRunner";
 import { Image } from "@/components/ui/image";
 import HeroVideo from "@/components/site/HeroVideo";
 
@@ -91,27 +90,6 @@ export default function Home() {
 
       {/* INSTAGRAM */}
       <InstagramFeed />
-
-      {/* PLAY A GAME — replaced the home Contact section Nov 16, 2026: it
-          duplicated the Contact page (header "Work With Erika", "Let's Talk",
-          and /contact all lead there). The form still lives on /contact. */}
-      <section id="play" className="py-20 md:py-32 bg-sand">
-        <div className="mx-auto max-w-[1400px] px-5 md:px-10">
-          <Reveal className="text-center">
-            <span className="eyebrow">Just for fun</span>
-            <h2 className="font-heading text-4xl md:text-5xl mt-4">Mini Erika vs. Toronto</h2>
-            <p className="mt-5 text-foreground/75 max-w-lg mx-auto">
-              House hunting can wait 30 seconds. Help mini Erika jump the houses and condos — how far can you get?
-            </p>
-          </Reveal>
-          <Reveal delay={0.08} className="mt-10">
-            <ErikaRunner />
-          </Reveal>
-          <p className="mt-8 text-center text-foreground/70">
-            Want to talk real estate instead? <Link to="/contact" className="link-underline text-primary">Say hi</Link>
-          </p>
-        </div>
-      </section>
     </>);
 
 }
