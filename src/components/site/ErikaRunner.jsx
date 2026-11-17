@@ -426,12 +426,12 @@ export default function ErikaRunner() {
         <button
           type="button"
           onClick={tap}
-          className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-white/25 backdrop-blur-[1px]"
+          className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-white/25"
         >
           <span className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-primary shadow-lg">
             Press space or tap to run
           </span>
-          <span className="text-xs font-medium text-foreground/70">Jump the houses and condos — don&apos;t trip!</span>
+          <span className="text-xs font-medium text-foreground/70">Jump the obstacles to get to her next showing!</span>
         </button>
       )}
       {phase === "over" && (
