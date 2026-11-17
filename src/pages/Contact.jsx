@@ -2,15 +2,8 @@ import { siteConfig } from "@/lib/siteConfig";
 import Reveal from "@/components/site/Reveal";
 import LeadForm from "@/components/site/LeadForm";
 import ErikaRunner from "@/components/site/ErikaRunner";
+import WeChatButton from "@/components/site/WeChatButton";
 import { Instagram, Linkedin, Mail, Phone, MapPin } from "lucide-react";
-
-function TikTokIcon({ size = 20 }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M16.5 3c.3 2.1 1.7 3.8 3.8 4.2v2.6c-1.4 0-2.7-.4-3.8-1.1v6.6c0 3.3-2.7 6-6 6s-6-2.7-6-6 2.7-6 6-6c.3 0 .6 0 .9.1v2.7c-.3-.1-.6-.1-.9-.1-1.8 0-3.3 1.5-3.3 3.3s1.5 3.3 3.3 3.3 3.3-1.5 3.3-3.3V3h2.7z" />
-    </svg>);
-
-}
 
 export default function Contact() {
   return (
@@ -53,7 +46,7 @@ export default function Contact() {
               <div className="mt-5 flex items-center gap-5">
                 <a href={siteConfig.social.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-foreground/70 hover:text-primary transition-colors"><Instagram size={22} /></a>
                 <a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-foreground/70 hover:text-primary transition-colors"><Linkedin size={22} /></a>
-                <a href={siteConfig.social.tiktok} target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="text-foreground/70 hover:text-primary transition-colors"><TikTokIcon size={20} /></a>
+                <WeChatButton size={22} className="text-foreground/70 hover:text-primary transition-colors" />
                 <a href={`mailto:${siteConfig.email}`} aria-label="Email" className="text-foreground/70 hover:text-primary transition-colors"><Mail size={22} /></a>
                 <a href={`tel:${siteConfig.phoneHref}`} aria-label="Phone" className="text-foreground/70 hover:text-primary transition-colors"><Phone size={22} /></a>
               </div>
