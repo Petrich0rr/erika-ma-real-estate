@@ -4,8 +4,9 @@ import { useEffect, useRef, useState } from "react";
 // Player: Erika's chibi avatar, animated from her 17-frame sprite sheet:
 // an 8-frame run cycle (legs move), an eyes-closed jump frame with
 // sparkles, a standing-straight idle frame, and the eyes-closed "!!"
-// frame for failing (cuter). A fireworks burst celebrates a new high
-// score. Background: her sky-and-grass scene
+// frame for failing (cuter). Fireworks pop up in front of the game-over
+// card for a few seconds on a new high score. Background: her
+// sky-and-grass scene, scrolling left in a seamless loop
 // (/game/bg-sky.jpg), gently scrolling. Obstacles: her Toronto sprite
 // sheet (/game/obs-*.png), scaled up ~1.35x. The navy E-flag obstacle
 // is NOT used (Erika doesn't like it). Physics: a floatier jump
@@ -96,7 +97,9 @@ export default function ErikaRunner() {
   const [phase, setPhase] = useState("ready");
   const [finalScore, setFinalScore] = useState(0);
   const [isNewBest, setIsNewBest] = useState(false);
+  const [showFireworks, setShowFireworks] = useState(false);
   const [high, setHigh] = useState(loadHigh);
+  const fwTimerRef = useRef(null);
   const gRef = useRef(null);
 
   useEffect(() => {
@@ -174,6 +177,8 @@ export default function ErikaRunner() {
       g.run = 0;
       g.spawnIn = 80;
       setIsNewBest(false);
+      setShowFireworks(false);
+      if (fwTimerRef.current) window.clearTimeout(fwTimerRef.current);
       setPhase("playing");
     };
 
@@ -195,6 +200,9 @@ export default function ErikaRunner() {
       const newBest = s > prev && s > 0;
       setIsNewBest(newBest);
       if (newBest) {
+        setShowFireworks(true);
+        if (fwTimerRef.current) window.clearTimeout(fwTimerRef.current);
+        fwTimerRef.current = window.setTimeout(() => setShowFireworks(false), 3500);
         g.high = s;
         try {
           window.localStorage.setItem(HIGH_KEY, String(s));
@@ -320,15 +328,11 @@ export default function ErikaRunner() {
         return;
       }
       const { dw, dh, dy } = bgGeom();
-      // Gentle scroll: ping-pong across the spare width (0 when the
-      // image exactly covers the canvas).
-      const maxOff = Math.max(0, dw - g.w);
-      let dx = 0;
-      if (maxOff > 0) {
-        const cyc = g.bgX % (2 * maxOff);
-        dx = cyc <= maxOff ? -cyc : -(2 * maxOff - cyc);
-      }
-      ctx.drawImage(bgImg, dx, dy, dw, dh);
+      // The bg tiles seamlessly, so scroll it left forever: two copies,
+      // wrapping around, always moving left — never ping-ponging back.
+      const off = g.bgX % dw;
+      ctx.drawImage(bgImg, -off, dy, dw, dh);
+      ctx.drawImage(bgImg, -off + dw, dy, dw, dh);
     };
 
     const draw = () => {
@@ -366,7 +370,7 @@ export default function ErikaRunner() {
           g.vy = 0;
         }
         g.distance += g.speed;
-        g.bgX += g.speed * 0.25;
+        g.bgX += g.speed * 0.5;
         g.score = g.distance / 14;
         g.speed = Math.min(11, 5.2 + g.score * 0.004);
         g.run += g.speed * 0.12;
@@ -411,6 +415,7 @@ export default function ErikaRunner() {
       cancelAnimationFrame(raf);
       ro.disconnect();
       window.removeEventListener("keydown", onKey);
+      if (fwTimerRef.current) window.clearTimeout(fwTimerRef.current);
     };
   }, []);
 
@@ -446,12 +451,12 @@ export default function ErikaRunner() {
           className="absolute inset-0 flex items-center justify-center bg-white/40 backdrop-blur-[1px]"
           onPointerDown={tap}
         >
-          {isNewBest && (
+          {isNewBest && showFireworks && (
             <img
               src="/game/fireworks.webp"
               alt=""
               aria-hidden="true"
-              className="pointer-events-none absolute inset-0 h-full w-full animate-pulse object-contain"
+              className="pointer-events-none absolute inset-0 z-10 h-full w-full animate-pulse object-contain"
             />
           )}
           <div className="relative rounded-3xl bg-white px-8 py-6 text-center shadow-xl">
