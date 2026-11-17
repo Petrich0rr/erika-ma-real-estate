@@ -1,48 +1,66 @@
 import { useEffect, useRef, useState } from "react";
 
 // Mini Erika vs. Toronto — a Chrome-dino-style runner (Nov 16, 2026).
-// Player: Erika's chibi avatar (/game/mini-erika.png — long hair, sunnies,
-// matcha in hand). Obstacles: her Toronto sprite sheet (/game/obs-*.png).
-// Plain white background (Erika: the sky/skyline was too distracting).
-// Space / ArrowUp / click / tap to jump. High score in localStorage.
-// Coins, star, heart and diamond from the sheet are NOT used (her call).
+// Player: Erika's chibi avatar, animated from her 17-frame sprite sheet:
+// an 8-frame run cycle (legs move), a jump frame, a standing idle frame
+// and a dizzy frame for game over. Background: her sky-and-grass scene
+// (/game/bg-sky.jpg), gently scrolling. Obstacles: her Toronto sprite
+// sheet (/game/obs-*.png), scaled up ~1.35x. The navy E-flag obstacle
+// is NOT used (Erika doesn't like it). Space / ArrowUp / click / tap to
+// jump. High score in localStorage.
 const HIGH_KEY = "erika-runner-high";
 const GRAVITY = 0.6;
-const JUMP_V = -13;
+const JUMP_V = -14;
 const CHAR_X = 72;
-const CHAR_H = 72;
-const AVATAR_SRC = "/game/mini-erika.png";
-const AVATAR_ASPECT = 690 / 1041;
+const CHAR_H = 108;
+const CHAR_W = 78;
+const BG_SRC = "/game/bg-sky.jpg";
+const BG_W = 2172;
+const BG_H = 724;
+const GRASS_TOP = 0.867; // grass starts 86.7% down the bg image
+const AVATAR_SRC = "/game/mini-erika.png"; // single-frame backup only
+const RUN_SRCS = [
+  "/game/anim-run-01.png",
+  "/game/anim-run-02.png",
+  "/game/anim-run-03.png",
+  "/game/anim-run-04.png",
+  "/game/anim-run-05.png",
+  "/game/anim-run-06.png",
+  "/game/anim-run-07.png",
+  "/game/anim-run-08.png",
+];
+const JUMP_SRC = "/game/anim-special-02.png";
+const IDLE_SRC = "/game/anim-special-04.png";
+const DIZZY_SRC = "/game/anim-special-06c.png";
 
 // { src, h (game px), aspect (w/h), weight } — tall 2, medium 2, small 3.
 const OBSTACLE_DEFS = [
-  { src: "/game/obs-cn-tower.png", h: 108, aspect: 86 / 280, weight: 2 },
-  { src: "/game/obs-condo.png", h: 108, aspect: 205 / 273, weight: 2 },
-  { src: "/game/obs-tower-glass.png", h: 104, aspect: 198 / 257, weight: 2 },
-  { src: "/game/obs-house-brick.png", h: 66, aspect: 237 / 238, weight: 2 },
-  { src: "/game/obs-house-suburban.png", h: 62, aspect: 304 / 204, weight: 2 },
-  { src: "/game/obs-shop-fruit-tea.png", h: 64, aspect: 242 / 234, weight: 2 },
-  { src: "/game/obs-gym.png", h: 60, aspect: 232 / 182, weight: 2 },
-  { src: "/game/obs-subway.png", h: 62, aspect: 217 / 202, weight: 2 },
-  { src: "/game/obs-rogers-centre.png", h: 58, aspect: 254 / 142, weight: 2 },
-  { src: "/game/obs-cherry-bench.png", h: 56, aspect: 262 / 221, weight: 2 },
-  { src: "/game/obs-lamp.png", h: 56, aspect: 89 / 219, weight: 3 },
-  { src: "/game/obs-flag-e.png", h: 56, aspect: 109 / 220, weight: 3 },
-  { src: "/game/obs-sign-for-rent-sale.png", h: 56, aspect: 159 / 215, weight: 3 },
-  { src: "/game/obs-sign-open-house.png", h: 48, aspect: 155 / 163, weight: 3 },
-  { src: "/game/obs-hydrant.png", h: 44, aspect: 100 / 159, weight: 3 },
-  { src: "/game/obs-bin-blue.png", h: 44, aspect: 111 / 140, weight: 3 },
-  { src: "/game/obs-bin-black.png", h: 44, aspect: 111 / 146, weight: 3 },
-  { src: "/game/obs-barrier.png", h: 42, aspect: 148 / 133, weight: 3 },
-  { src: "/game/obs-boxes.png", h: 42, aspect: 147 / 136, weight: 3 },
-  { src: "/game/obs-drink.png", h: 42, aspect: 98 / 155, weight: 3 },
-  { src: "/game/obs-hydrangea.png", h: 40, aspect: 148 / 145, weight: 3 },
-  { src: "/game/obs-house-small.png", h: 40, aspect: 163 / 130, weight: 3 },
-  { src: "/game/obs-cone.png", h: 38, aspect: 97 / 117, weight: 3 },
-  { src: "/game/obs-hedge.png", h: 36, aspect: 142 / 109, weight: 3 },
-  { src: "/game/obs-keys.png", h: 36, aspect: 165 / 137, weight: 3 },
-  { src: "/game/obs-dumbbell.png", h: 34, aspect: 171 / 115, weight: 3 },
-  { src: "/game/obs-heel.png", h: 34, aspect: 152 / 125, weight: 3 },
+  { src: "/game/obs-cn-tower.png", h: 146, aspect: 86 / 280, weight: 2 },
+  { src: "/game/obs-condo.png", h: 146, aspect: 205 / 273, weight: 2 },
+  { src: "/game/obs-tower-glass.png", h: 140, aspect: 198 / 257, weight: 2 },
+  { src: "/game/obs-house-brick.png", h: 89, aspect: 237 / 238, weight: 2 },
+  { src: "/game/obs-house-suburban.png", h: 84, aspect: 304 / 204, weight: 2 },
+  { src: "/game/obs-shop-fruit-tea.png", h: 86, aspect: 242 / 234, weight: 2 },
+  { src: "/game/obs-gym.png", h: 81, aspect: 232 / 182, weight: 2 },
+  { src: "/game/obs-subway.png", h: 84, aspect: 217 / 202, weight: 2 },
+  { src: "/game/obs-rogers-centre.png", h: 78, aspect: 254 / 142, weight: 2 },
+  { src: "/game/obs-cherry-bench.png", h: 76, aspect: 262 / 221, weight: 2 },
+  { src: "/game/obs-lamp.png", h: 76, aspect: 89 / 219, weight: 3 },
+  { src: "/game/obs-sign-for-rent-sale.png", h: 76, aspect: 159 / 215, weight: 3 },
+  { src: "/game/obs-sign-open-house.png", h: 65, aspect: 155 / 163, weight: 3 },
+  { src: "/game/obs-hydrant.png", h: 59, aspect: 100 / 159, weight: 3 },
+  { src: "/game/obs-bin-blue.png", h: 59, aspect: 111 / 140, weight: 3 },
+  { src: "/game/obs-bin-black.png", h: 59, aspect: 111 / 146, weight: 3 },
+  { src: "/game/obs-barrier.png", h: 57, aspect: 148 / 133, weight: 3 },
+  { src: "/game/obs-boxes.png", h: 57, aspect: 147 / 136, weight: 3 },
+  { src: "/game/obs-drink.png", h: 57, aspect: 98 / 155, weight: 3 },
+  { src: "/game/obs-hydrangea.png", h: 54, aspect: 148 / 145, weight: 3 },
+  { src: "/game/obs-house-small.png", h: 54, aspect: 163 / 130, weight: 3 },
+  { src: "/game/obs-cone.png", h: 51, aspect: 97 / 117, weight: 3 },
+  { src: "/game/obs-hedge.png", h: 49, aspect: 142 / 109, weight: 3 },
+  { src: "/game/obs-keys.png", h: 49, aspect: 165 / 137, weight: 3 },
+  { src: "/game/obs-dumbbell.png", h: 46, aspect: 171 / 115, weight: 3 },
+  { src: "/game/obs-heel.png", h: 46, aspect: 152 / 125, weight: 3 },
 ];
 
 function loadHigh() {
@@ -60,6 +78,12 @@ function rr(ctx, x, y, w, h, r) {
   ctx.fill();
 }
 
+function loadImg(src) {
+  const img = new Image();
+  img.src = src;
+  return img;
+}
+
 export default function ErikaRunner() {
   const wrapRef = useRef(null);
   const canvasRef = useRef(null);
@@ -74,14 +98,16 @@ export default function ErikaRunner() {
     if (!canvas || !wrap) return;
     const ctx = canvas.getContext("2d");
 
-    // Preload the avatar and every obstacle sprite.
-    const avatarImg = new Image();
-    avatarImg.src = AVATAR_SRC;
+    // Preload the background, the animation frames and every obstacle.
+    const bgImg = loadImg(BG_SRC);
+    const avatarImg = loadImg(AVATAR_SRC);
+    const runImgs = RUN_SRCS.map(loadImg);
+    const jumpImg = loadImg(JUMP_SRC);
+    const idleImg = loadImg(IDLE_SRC);
+    const dizzyImg = loadImg(DIZZY_SRC);
     const spriteImgs = new Map();
     for (const def of OBSTACLE_DEFS) {
-      const img = new Image();
-      img.src = def.src;
-      spriteImgs.set(def.src, img);
+      spriteImgs.set(def.src, loadImg(def.src));
     }
 
     const g = {
@@ -94,19 +120,29 @@ export default function ErikaRunner() {
       score: 0,
       high: loadHigh(),
       run: 0,
+      bgX: 0,
       spawnIn: 90,
       w: 0,
       h: 0,
     };
     gRef.current = g;
 
-    const groundY = () => g.h - 34;
+    // The ground is the top of the grass in the bg image (cover-fit,
+    // anchored to the bottom of the canvas).
+    const bgGeom = () => {
+      const scale = Math.max(g.w / BG_W, g.h / BG_H);
+      return { dw: BG_W * scale, dh: BG_H * scale, dy: g.h - BG_H * scale };
+    };
+    const groundY = () => {
+      const { dh, dy } = bgGeom();
+      return dy + GRASS_TOP * dh;
+    };
     const charTop = () => groundY() - CHAR_H;
 
     const resize = () => {
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
       const w = wrap.clientWidth;
-      const h = w < 640 ? 260 : 320;
+      const h = w < 640 ? 280 : 340;
       g.w = w;
       g.h = h;
       canvas.width = Math.round(w * dpr);
@@ -186,10 +222,10 @@ export default function ErikaRunner() {
       });
     };
 
-    // Fallback character (canvas-drawn) if the avatar image fails to load.
+    // Fallback character (canvas-drawn, 72px coords) if no image loads.
     const drawErikaFallback = () => {
-      const x = CHAR_X;
-      const y = g.y;
+      const x = 0;
+      const y = 0;
       const jumping = g.y < charTop() - 0.5;
       const swing = jumping ? 0 : Math.sin(g.run) * 7;
       ctx.fillStyle = "#1f2a44";
@@ -237,28 +273,54 @@ export default function ErikaRunner() {
       ctx.fill();
     };
 
+    const frameImg = () => {
+      if (g.phase === "over") return dizzyImg;
+      if (g.phase === "ready") return idleImg;
+      if (g.y < charTop() - 0.5) return jumpImg;
+      return runImgs[Math.floor(g.run / 2) % runImgs.length];
+    };
+
     const drawAvatar = () => {
-      if (!avatarImg.complete || avatarImg.naturalWidth === 0) {
+      let img = frameImg();
+      if (!img || !img.complete || img.naturalWidth === 0) img = avatarImg;
+      if (!img || !img.complete || img.naturalWidth === 0) {
+        ctx.save();
+        ctx.translate(CHAR_X, g.y);
+        ctx.scale(CHAR_H / 72, CHAR_H / 72);
         drawErikaFallback();
+        ctx.restore();
         return;
       }
-      const w = CHAR_H * AVATAR_ASPECT;
+      const w = CHAR_H * (img.naturalWidth / img.naturalHeight);
       const jumping = g.y < charTop() - 0.5;
       const bob = jumping ? 0 : Math.sin(g.run) * 1.5;
       ctx.save();
-      ctx.translate(CHAR_X + w / 2, g.y + CHAR_H / 2 + bob);
+      ctx.translate(CHAR_X + CHAR_W / 2, g.y + CHAR_H / 2 + bob);
       ctx.rotate(jumping ? -0.12 : 0);
-      ctx.drawImage(avatarImg, -w / 2, -CHAR_H / 2, w, CHAR_H);
+      ctx.drawImage(img, -w / 2, -CHAR_H / 2, w, CHAR_H);
       ctx.restore();
     };
 
+    const drawBg = () => {
+      if (!bgImg.complete || bgImg.naturalWidth === 0) {
+        ctx.fillStyle = "#bcd9ff";
+        ctx.fillRect(0, 0, g.w, g.h);
+        return;
+      }
+      const { dw, dh, dy } = bgGeom();
+      // Gentle scroll: ping-pong across the spare width (0 when the
+      // image exactly covers the canvas).
+      const maxOff = Math.max(0, dw - g.w);
+      let dx = 0;
+      if (maxOff > 0) {
+        const cyc = g.bgX % (2 * maxOff);
+        dx = cyc <= maxOff ? -cyc : -(2 * maxOff - cyc);
+      }
+      ctx.drawImage(bgImg, dx, dy, dw, dh);
+    };
+
     const draw = () => {
-      // Plain white — no sky, sun, clouds or skyline (too distracting).
-      ctx.fillStyle = "#ffffff";
-      ctx.fillRect(0, 0, g.w, g.h);
-      // Ground: just a royal-blue line.
-      ctx.fillStyle = "#0300a6";
-      ctx.fillRect(0, groundY(), g.w, 3);
+      drawBg();
       for (const o of g.obstacles) {
         const img = spriteImgs.get(o.def.src);
         if (img && img.complete && img.naturalWidth > 0) {
@@ -266,7 +328,10 @@ export default function ErikaRunner() {
         }
       }
       drawAvatar();
-      // Score
+      // Score — royal blue with a soft white halo so it reads over sky.
+      ctx.save();
+      ctx.shadowColor = "rgba(255,255,255,0.9)";
+      ctx.shadowBlur = 6;
       ctx.fillStyle = "#0300a6";
       ctx.font = "700 15px 'Open Sans', sans-serif";
       ctx.textAlign = "right";
@@ -274,6 +339,7 @@ export default function ErikaRunner() {
       ctx.fillStyle = "rgba(3,0,166,0.55)";
       ctx.font = "600 13px 'Open Sans', sans-serif";
       ctx.fillText(`BEST ${String(Math.max(g.high, Math.floor(g.score))).padStart(4, "0")}`, g.w - 16, 48);
+      ctx.restore();
       ctx.textAlign = "left";
     };
 
@@ -288,6 +354,7 @@ export default function ErikaRunner() {
           g.vy = 0;
         }
         g.distance += g.speed;
+        g.bgX += g.speed * 0.25;
         g.score = g.distance / 14;
         g.speed = Math.min(11, 5.2 + g.score * 0.004);
         g.run += g.speed * 0.12;
@@ -298,10 +365,10 @@ export default function ErikaRunner() {
         }
         for (const o of g.obstacles) o.x -= g.speed;
         g.obstacles = g.obstacles.filter((o) => o.x + o.w > -20);
-        const cx0 = CHAR_X + 8;
-        const cx1 = CHAR_X + 42;
-        const cy0 = g.y + 4;
-        const cy1 = g.y + CHAR_H;
+        const cx0 = CHAR_X + 12;
+        const cx1 = CHAR_X + 66;
+        const cy0 = g.y + 6;
+        const cy1 = g.y + CHAR_H - 2;
         for (const o of g.obstacles) {
           if (cx1 > o.x + 5 && cx0 < o.x + o.w - 5 && cy1 > o.y + 4 && cy0 < o.y + o.h) {
             die();
