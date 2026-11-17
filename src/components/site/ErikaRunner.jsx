@@ -1,13 +1,49 @@
 import { useEffect, useRef, useState } from "react";
 
 // Mini Erika vs. Toronto — a Chrome-dino-style runner (Nov 16, 2026).
-// Chibi Erika (dark bob, pink coat) jumps houses, condos and hydrants.
+// Player: Erika's chibi avatar (/game/mini-erika.png — long hair, sunnies,
+// matcha in hand). Obstacles: her Toronto sprite sheet (/game/obs-*.png).
+// Plain white background (Erika: the sky/skyline was too distracting).
 // Space / ArrowUp / click / tap to jump. High score in localStorage.
+// Coins, star, heart and diamond from the sheet are NOT used (her call).
 const HIGH_KEY = "erika-runner-high";
 const GRAVITY = 0.6;
 const JUMP_V = -13;
 const CHAR_X = 72;
-const CHAR_H = 64;
+const CHAR_H = 72;
+const AVATAR_SRC = "/game/mini-erika.png";
+const AVATAR_ASPECT = 690 / 1041;
+
+// { src, h (game px), aspect (w/h), weight } — tall 2, medium 2, small 3.
+const OBSTACLE_DEFS = [
+  { src: "/game/obs-cn-tower.png", h: 108, aspect: 86 / 280, weight: 2 },
+  { src: "/game/obs-condo.png", h: 108, aspect: 205 / 273, weight: 2 },
+  { src: "/game/obs-tower-glass.png", h: 104, aspect: 198 / 257, weight: 2 },
+  { src: "/game/obs-house-brick.png", h: 66, aspect: 237 / 238, weight: 2 },
+  { src: "/game/obs-house-suburban.png", h: 62, aspect: 304 / 204, weight: 2 },
+  { src: "/game/obs-shop-fruit-tea.png", h: 64, aspect: 242 / 234, weight: 2 },
+  { src: "/game/obs-gym.png", h: 60, aspect: 232 / 182, weight: 2 },
+  { src: "/game/obs-subway.png", h: 62, aspect: 217 / 202, weight: 2 },
+  { src: "/game/obs-rogers-centre.png", h: 58, aspect: 254 / 142, weight: 2 },
+  { src: "/game/obs-cherry-bench.png", h: 56, aspect: 262 / 221, weight: 2 },
+  { src: "/game/obs-lamp.png", h: 56, aspect: 89 / 219, weight: 3 },
+  { src: "/game/obs-flag-e.png", h: 56, aspect: 109 / 220, weight: 3 },
+  { src: "/game/obs-sign-for-rent-sale.png", h: 56, aspect: 159 / 215, weight: 3 },
+  { src: "/game/obs-sign-open-house.png", h: 48, aspect: 155 / 163, weight: 3 },
+  { src: "/game/obs-hydrant.png", h: 44, aspect: 100 / 159, weight: 3 },
+  { src: "/game/obs-bin-blue.png", h: 44, aspect: 111 / 140, weight: 3 },
+  { src: "/game/obs-bin-black.png", h: 44, aspect: 111 / 146, weight: 3 },
+  { src: "/game/obs-barrier.png", h: 42, aspect: 148 / 133, weight: 3 },
+  { src: "/game/obs-boxes.png", h: 42, aspect: 147 / 136, weight: 3 },
+  { src: "/game/obs-drink.png", h: 42, aspect: 98 / 155, weight: 3 },
+  { src: "/game/obs-hydrangea.png", h: 40, aspect: 148 / 145, weight: 3 },
+  { src: "/game/obs-house-small.png", h: 40, aspect: 163 / 130, weight: 3 },
+  { src: "/game/obs-cone.png", h: 38, aspect: 97 / 117, weight: 3 },
+  { src: "/game/obs-hedge.png", h: 36, aspect: 142 / 109, weight: 3 },
+  { src: "/game/obs-keys.png", h: 36, aspect: 165 / 137, weight: 3 },
+  { src: "/game/obs-dumbbell.png", h: 34, aspect: 171 / 115, weight: 3 },
+  { src: "/game/obs-heel.png", h: 34, aspect: 152 / 125, weight: 3 },
+];
 
 function loadHigh() {
   try {
@@ -38,13 +74,22 @@ export default function ErikaRunner() {
     if (!canvas || !wrap) return;
     const ctx = canvas.getContext("2d");
 
+    // Preload the avatar and every obstacle sprite.
+    const avatarImg = new Image();
+    avatarImg.src = AVATAR_SRC;
+    const spriteImgs = new Map();
+    for (const def of OBSTACLE_DEFS) {
+      const img = new Image();
+      img.src = def.src;
+      spriteImgs.set(def.src, img);
+    }
+
     const g = {
       phase: "ready",
       y: 0,
       vy: 0,
       speed: 5.2,
       obstacles: [],
-      clouds: [],
       distance: 0,
       score: 0,
       high: loadHigh(),
@@ -52,7 +97,6 @@ export default function ErikaRunner() {
       spawnIn: 90,
       w: 0,
       h: 0,
-      skylineX: 0,
     };
     gRef.current = g;
 
@@ -74,10 +118,6 @@ export default function ErikaRunner() {
     resize();
     const ro = new ResizeObserver(resize);
     ro.observe(wrap);
-
-    for (let i = 0; i < 5; i++) {
-      g.clouds.push({ x: Math.random() * 1100, y: 22 + Math.random() * 70, s: 0.6 + Math.random() * 0.8 });
-    }
 
     const start = () => {
       g.phase = "playing";
@@ -119,115 +159,42 @@ export default function ErikaRunner() {
       setPhase("over");
     };
 
+    const pickDef = () => {
+      const loaded = OBSTACLE_DEFS.filter((d) => {
+        const img = spriteImgs.get(d.src);
+        return img && img.complete && img.naturalWidth > 0;
+      });
+      const pool = loaded.length ? loaded : OBSTACLE_DEFS;
+      const total = pool.reduce((sum, d) => sum + d.weight, 0);
+      let roll = Math.random() * total;
+      for (const d of pool) {
+        roll -= d.weight;
+        if (roll <= 0) return d;
+      }
+      return pool[pool.length - 1];
+    };
+
     const spawnObstacle = () => {
-      const roll = Math.random();
-      const gy = groundY();
-      if (roll < 0.42) {
-        const w = 52;
-        const h = 54;
-        g.obstacles.push({
-          kind: "house",
-          x: g.w + 20,
-          y: gy - h,
-          w,
-          h,
-          color: Math.random() < 0.5 ? "#0300a6" : "#d96a4f",
-        });
-      } else if (roll < 0.8) {
-        const w = 44;
-        const h = 92 + Math.random() * 46;
-        g.obstacles.push({ kind: "building", x: g.w + 20, y: gy - h, w, h });
-      } else {
-        const w = 24;
-        const h = 32;
-        g.obstacles.push({ kind: "hydrant", x: g.w + 20, y: gy - h, w, h });
-      }
+      const def = pickDef();
+      const w = Math.round(def.h * def.aspect);
+      g.obstacles.push({
+        def,
+        x: g.w + 20,
+        y: groundY() - def.h,
+        w,
+        h: def.h,
+      });
     };
 
-    const drawCloud = (c) => {
-      ctx.fillStyle = "rgba(255,255,255,0.9)";
-      ctx.beginPath();
-      ctx.ellipse(c.x, c.y, 34 * c.s, 13 * c.s, 0, 0, Math.PI * 2);
-      ctx.ellipse(c.x + 22 * c.s, c.y + 4 * c.s, 24 * c.s, 10 * c.s, 0, 0, Math.PI * 2);
-      ctx.ellipse(c.x - 22 * c.s, c.y + 5 * c.s, 20 * c.s, 9 * c.s, 0, 0, Math.PI * 2);
-      ctx.fill();
-    };
-
-    const drawSkyline = () => {
-      ctx.fillStyle = "#b9d2f2";
-      const step = 190;
-      let x = -((g.skylineX % step) + step) % step - 40;
-      let i = 0;
-      while (x < g.w + 40) {
-        const gy = groundY();
-        if (i % 3 === 2) {
-          // CN Tower
-          ctx.fillRect(x + 18, gy - 128, 9, 128);
-          ctx.beginPath();
-          ctx.ellipse(x + 22, gy - 96, 15, 7, 0, 0, Math.PI * 2);
-          ctx.fill();
-          ctx.fillRect(x + 21, gy - 150, 2, 24);
-        } else {
-          const bw = 64 + (i % 2) * 22;
-          const bh = 42 + ((i * 37) % 52);
-          ctx.fillRect(x, gy - bh, bw, bh);
-        }
-        x += step;
-        i += 1;
-      }
-    };
-
-    const drawHouse = (o) => {
-      ctx.fillStyle = "#f7e3c2";
-      ctx.fillRect(o.x, o.y + 20, o.w, o.h - 20);
-      ctx.fillStyle = o.color;
-      ctx.beginPath();
-      ctx.moveTo(o.x - 4, o.y + 22);
-      ctx.lineTo(o.x + o.w / 2, o.y);
-      ctx.lineTo(o.x + o.w + 4, o.y + 22);
-      ctx.closePath();
-      ctx.fill();
-      ctx.fillStyle = "#8a5a2b";
-      ctx.fillRect(o.x + o.w / 2 - 6, o.y + o.h - 22, 12, 22);
-      ctx.fillStyle = "#bcd8f7";
-      ctx.fillRect(o.x + 7, o.y + 28, 11, 11);
-      ctx.fillRect(o.x + o.w - 18, o.y + 28, 11, 11);
-    };
-
-    const drawBuilding = (o) => {
-      ctx.fillStyle = "#9db4dd";
-      ctx.fillRect(o.x, o.y, o.w, o.h);
-      ctx.fillStyle = "#dbe7fa";
-      for (let row = 0; row < Math.floor((o.h - 14) / 20); row++) {
-        for (let col = 0; col < 2; col++) {
-          ctx.fillRect(o.x + 7 + col * 19, o.y + 10 + row * 20, 10, 12);
-        }
-      }
-      ctx.fillStyle = "#0300a6";
-      ctx.fillRect(o.x, o.y, o.w, 4);
-    };
-
-    const drawHydrant = (o) => {
-      ctx.fillStyle = "#d94f3d";
-      rr(ctx, o.x + 4, o.y + 8, 16, o.h - 8, 5);
-      ctx.beginPath();
-      ctx.arc(o.x + 12, o.y + 8, 8, Math.PI, 0);
-      ctx.fill();
-      ctx.fillStyle = "#b93a2c";
-      ctx.fillRect(o.x, o.y + 16, 4, 6);
-      ctx.fillRect(o.x + o.w - 4, o.y + 16, 4, 6);
-    };
-
-    const drawErika = () => {
+    // Fallback character (canvas-drawn) if the avatar image fails to load.
+    const drawErikaFallback = () => {
       const x = CHAR_X;
       const y = g.y;
       const jumping = g.y < charTop() - 0.5;
       const swing = jumping ? 0 : Math.sin(g.run) * 7;
-      // legs
       ctx.fillStyle = "#1f2a44";
       rr(ctx, x + 10 - (jumping ? 0 : Math.max(0, swing)), y + 48, 6, 16, 3);
       rr(ctx, x + 20 + (jumping ? 0 : Math.max(0, -swing)), y + 48, 6, 16, 3);
-      // arms (up when jumping)
       ctx.fillStyle = "#f472b6";
       if (jumping) {
         rr(ctx, x + 2, y + 22, 6, 16, 3);
@@ -236,17 +203,14 @@ export default function ErikaRunner() {
         rr(ctx, x + 1, y + 26 + swing * 0.4, 6, 15, 3);
         rr(ctx, x + 31, y + 26 - swing * 0.4, 6, 15, 3);
       }
-      // pink coat
       ctx.fillStyle = "#f472b6";
       rr(ctx, x + 3, y + 22, 32, 30, 10);
       ctx.fillStyle = "#ec5da8";
       ctx.fillRect(x + 3, y + 48, 32, 4);
-      // head
       ctx.fillStyle = "#f6cfae";
       ctx.beginPath();
       ctx.arc(x + 19, y + 12, 11, 0, Math.PI * 2);
       ctx.fill();
-      // hair: dark bob
       ctx.fillStyle = "#241a12";
       ctx.beginPath();
       ctx.arc(x + 19, y + 10, 12, Math.PI, 0);
@@ -256,7 +220,6 @@ export default function ErikaRunner() {
       ctx.beginPath();
       ctx.arc(x + 19, y + 9, 12, Math.PI * 1.05, Math.PI * 1.95);
       ctx.fill();
-      // face
       ctx.fillStyle = "#241a12";
       ctx.beginPath();
       ctx.arc(x + 15, y + 13, 1.4, 0, Math.PI * 2);
@@ -274,31 +237,36 @@ export default function ErikaRunner() {
       ctx.fill();
     };
 
+    const drawAvatar = () => {
+      if (!avatarImg.complete || avatarImg.naturalWidth === 0) {
+        drawErikaFallback();
+        return;
+      }
+      const w = CHAR_H * AVATAR_ASPECT;
+      const jumping = g.y < charTop() - 0.5;
+      const bob = jumping ? 0 : Math.sin(g.run) * 1.5;
+      ctx.save();
+      ctx.translate(CHAR_X + w / 2, g.y + CHAR_H / 2 + bob);
+      ctx.rotate(jumping ? -0.12 : 0);
+      ctx.drawImage(avatarImg, -w / 2, -CHAR_H / 2, w, CHAR_H);
+      ctx.restore();
+    };
+
     const draw = () => {
-      const sky = ctx.createLinearGradient(0, 0, 0, g.h);
-      sky.addColorStop(0, "#cfe4ff");
-      sky.addColorStop(1, "#f4f8ff");
-      ctx.fillStyle = sky;
+      // Plain white — no sky, sun, clouds or skyline (too distracting).
+      ctx.fillStyle = "#ffffff";
       ctx.fillRect(0, 0, g.w, g.h);
-      // sun
-      ctx.fillStyle = "rgba(255,233,168,0.85)";
-      ctx.beginPath();
-      ctx.arc(g.w - 84, 54, 26, 0, Math.PI * 2);
-      ctx.fill();
-      for (const c of g.clouds) drawCloud(c);
-      drawSkyline();
-      // ground
-      ctx.fillStyle = "#e6eefb";
-      ctx.fillRect(0, groundY(), g.w, 34);
+      // Ground: just a royal-blue line.
       ctx.fillStyle = "#0300a6";
       ctx.fillRect(0, groundY(), g.w, 3);
       for (const o of g.obstacles) {
-        if (o.kind === "house") drawHouse(o);
-        else if (o.kind === "building") drawBuilding(o);
-        else drawHydrant(o);
+        const img = spriteImgs.get(o.def.src);
+        if (img && img.complete && img.naturalWidth > 0) {
+          ctx.drawImage(img, o.x, o.y, o.w, o.h);
+        }
       }
-      drawErika();
-      // score
+      drawAvatar();
+      // Score
       ctx.fillStyle = "#0300a6";
       ctx.font = "700 15px 'Open Sans', sans-serif";
       ctx.textAlign = "right";
@@ -330,8 +298,8 @@ export default function ErikaRunner() {
         }
         for (const o of g.obstacles) o.x -= g.speed;
         g.obstacles = g.obstacles.filter((o) => o.x + o.w > -20);
-        const cx0 = CHAR_X + 10;
-        const cx1 = CHAR_X + 36;
+        const cx0 = CHAR_X + 8;
+        const cx1 = CHAR_X + 42;
         const cy0 = g.y + 4;
         const cy1 = g.y + CHAR_H;
         for (const o of g.obstacles) {
@@ -339,14 +307,6 @@ export default function ErikaRunner() {
             die();
             break;
           }
-        }
-      }
-      g.skylineX -= g.phase === "playing" ? g.speed * 0.25 : 0.4;
-      for (const c of g.clouds) {
-        c.x -= g.phase === "playing" ? 0.5 : 0.25;
-        if (c.x < -90) {
-          c.x = g.w + 40;
-          c.y = 22 + Math.random() * 70;
         }
       }
       draw();
