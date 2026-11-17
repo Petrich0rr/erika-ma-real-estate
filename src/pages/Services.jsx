@@ -49,50 +49,39 @@ const SERVICES = [
 ];
 
 function ServiceRow({ service, flip }) {
-  const photo = (
-    <Reveal className="lg:col-span-5">
-      <div className="aspect-[4/3] overflow-hidden bg-sand">
-        <Image src={service.img} alt={service.alt} fittingType="fill" className="w-full h-full" />
-      </div>
-    </Reveal>
-  );
-  const text = (
-    <div className="lg:col-span-7">
-      <Reveal><span className="eyebrow">{service.eyebrow}</span></Reveal>
-      <Reveal delay={0.05}>
-        <h2 className="font-heading text-4xl md:text-5xl mt-4 max-w-xl">{service.title}</h2>
-      </Reveal>
-      <Reveal delay={0.1}>
-        <p className="mt-6 text-foreground/80 max-w-xl leading-relaxed">{service.body}</p>
-      </Reveal>
-      <Reveal delay={0.15}>
-        <div className="mt-8 flex flex-wrap gap-4">
-          {service.cta.to ? (
-            <Link to={service.cta.to} className="btn-primary">{service.cta.label}</Link>
-          ) : (
-            <a href={service.cta.href} className="btn-primary">{service.cta.label}</a>
-          )}
-          {service.cta2 && (
-            <Link to={service.cta2.to} className="btn-ghost">{service.cta2.label}</Link>
-          )}
-        </div>
-      </Reveal>
-    </div>
-  );
+  // NOTE: the order classes go directly on the grid items (the text div and
+  // the Reveal). Wrapping them in extra divs breaks the 12-col grid — the
+  // wrappers collapse to content width and the text squeezes to one word
+  // per line (caught live Nov 16, 2026 on the Sell and Invest rows).
   return (
     <section id={service.id} className="py-20 md:py-28 border-t border-primary/15 scroll-mt-24">
       <div className="mx-auto max-w-[1400px] px-5 md:px-10 grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-        {flip ? (
-          <>
-            <div className="lg:order-2">{text}</div>
-            <div className="lg:order-1">{photo}</div>
-          </>
-        ) : (
-          <>
-            {text}
-            {photo}
-          </>
-        )}
+        <div className={`lg:col-span-7 ${flip ? "lg:order-2" : ""}`}>
+          <Reveal><span className="eyebrow">{service.eyebrow}</span></Reveal>
+          <Reveal delay={0.05}>
+            <h2 className="font-heading text-4xl md:text-5xl mt-4 max-w-xl">{service.title}</h2>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <p className="mt-6 text-foreground/80 max-w-xl leading-relaxed">{service.body}</p>
+          </Reveal>
+          <Reveal delay={0.15}>
+            <div className="mt-8 flex flex-wrap gap-4">
+              {service.cta.to ? (
+                <Link to={service.cta.to} className="btn-primary">{service.cta.label}</Link>
+              ) : (
+                <a href={service.cta.href} className="btn-primary">{service.cta.label}</a>
+              )}
+              {service.cta2 && (
+                <Link to={service.cta2.to} className="btn-ghost">{service.cta2.label}</Link>
+              )}
+            </div>
+          </Reveal>
+        </div>
+        <Reveal className={`lg:col-span-5 ${flip ? "lg:order-1" : ""}`}>
+          <div className="aspect-[4/3] overflow-hidden bg-sand">
+            <Image src={service.img} alt={service.alt} fittingType="fill" className="w-full h-full" />
+          </div>
+        </Reveal>
       </div>
     </section>
   );
