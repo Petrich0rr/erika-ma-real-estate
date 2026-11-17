@@ -73,7 +73,7 @@ export default function WeChatButton({ className = "", size = 20 }) {
             onClick={() => setOpen(false)}
             className="absolute inset-0 bg-black/60 backdrop-blur-[2px]"
           />
-          <div className="relative max-h-[90vh] w-full max-w-[340px] overflow-y-auto rounded-3xl bg-white p-6 text-center shadow-2xl">
+          <div className="relative max-h-[90vh] w-full max-w-[340px] overflow-y-auto rounded-3xl bg-white p-6 text-center text-foreground shadow-2xl">
             <button
               type="button"
               onClick={() => setOpen(false)}
