@@ -2,9 +2,10 @@ import { useEffect, useRef, useState } from "react";
 
 // Mini Erika vs. Toronto — a Chrome-dino-style runner (Nov 16, 2026).
 // Player: Erika's chibi avatar, animated from her 17-frame sprite sheet:
-// an 8-frame run cycle (legs move), a jump frame and an idle frame that
-// both use her eyes-closed poses (Erika's favourites), and a dizzy frame
-// for game over. Background: her sky-and-grass scene
+// an 8-frame run cycle (legs move), an eyes-closed jump frame with
+// sparkles, a standing-straight idle frame, and the eyes-closed "!!"
+// frame for failing (cuter). A fireworks burst celebrates a new high
+// score. Background: her sky-and-grass scene
 // (/game/bg-sky.jpg), gently scrolling. Obstacles: her Toronto sprite
 // sheet (/game/obs-*.png), scaled up ~1.35x. The navy E-flag obstacle
 // is NOT used (Erika doesn't like it). Physics: a floatier jump
@@ -34,8 +35,9 @@ const RUN_SRCS = [
   "/game/anim-run-08.png",
 ];
 const JUMP_SRC = "/game/anim-special-03a.png"; // eyes closed, sparkles
-const IDLE_SRC = "/game/anim-special-06b.png"; // eyes closed, "!!"
-const DIZZY_SRC = "/game/anim-special-06c.png";
+const IDLE_SRC = "/game/anim-special-04.png"; // standing straight
+const FAIL_SRC = "/game/anim-special-06b.png"; // eyes closed, "!!" — for failing, cuter
+const FIREWORKS_SRC = "/game/fireworks.webp"; // new-high-score celebration
 
 // { src, h (game px), aspect (w/h), weight } — tall 2, medium 2, small 3.
 const OBSTACLE_DEFS = [
@@ -93,6 +95,7 @@ export default function ErikaRunner() {
   const canvasRef = useRef(null);
   const [phase, setPhase] = useState("ready");
   const [finalScore, setFinalScore] = useState(0);
+  const [isNewBest, setIsNewBest] = useState(false);
   const [high, setHigh] = useState(loadHigh);
   const gRef = useRef(null);
 
@@ -108,7 +111,8 @@ export default function ErikaRunner() {
     const runImgs = RUN_SRCS.map(loadImg);
     const jumpImg = loadImg(JUMP_SRC);
     const idleImg = loadImg(IDLE_SRC);
-    const dizzyImg = loadImg(DIZZY_SRC);
+    const failImg = loadImg(FAIL_SRC);
+    loadImg(FIREWORKS_SRC); // warm the cache so it pops instantly on a new best
     const spriteImgs = new Map();
     for (const def of OBSTACLE_DEFS) {
       spriteImgs.set(def.src, loadImg(def.src));
@@ -169,6 +173,7 @@ export default function ErikaRunner() {
       g.score = 0;
       g.run = 0;
       g.spawnIn = 80;
+      setIsNewBest(false);
       setPhase("playing");
     };
 
@@ -187,7 +192,9 @@ export default function ErikaRunner() {
       const s = Math.floor(g.score);
       setFinalScore(s);
       const prev = loadHigh();
-      if (s > prev) {
+      const newBest = s > prev && s > 0;
+      setIsNewBest(newBest);
+      if (newBest) {
         g.high = s;
         try {
           window.localStorage.setItem(HIGH_KEY, String(s));
@@ -278,7 +285,7 @@ export default function ErikaRunner() {
     };
 
     const frameImg = () => {
-      if (g.phase === "over") return dizzyImg;
+      if (g.phase === "over") return failImg;
       if (g.phase === "ready") return idleImg;
       if (g.y < charTop() - 0.5) return jumpImg;
       return runImgs[Math.floor(g.run / 2) % runImgs.length];
@@ -439,7 +446,15 @@ export default function ErikaRunner() {
           className="absolute inset-0 flex items-center justify-center bg-white/40 backdrop-blur-[1px]"
           onPointerDown={tap}
         >
-          <div className="rounded-3xl bg-white px-8 py-6 text-center shadow-xl">
+          {isNewBest && (
+            <img
+              src="/game/fireworks.webp"
+              alt=""
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 h-full w-full animate-pulse object-contain"
+            />
+          )}
+          <div className="relative rounded-3xl bg-white px-8 py-6 text-center shadow-xl">
             <p className="eyebrow">Game over</p>
             <p className="mt-2 font-heading text-4xl">
               {finalScore} <span className="text-lg text-foreground/60">pts</span>
