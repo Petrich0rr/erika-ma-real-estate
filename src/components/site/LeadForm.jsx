@@ -3,7 +3,7 @@ import { Loader2 } from "lucide-react";
 import { submitLead } from "@/lib/submitLead";
 import FormSuccess from "@/components/site/FormSuccess";
 
-const INTERESTS = ["Buying", "Selling", "Buying & Selling", "Investing", "General Question"];
+const INTERESTS = ["Buying", "Selling", "Buying & Selling", "Investing", "Leasing", "Renting", "General Question"];
 
 export default function LeadForm({ defaultInterest = "General Question" }) {
   const [form, setForm] = useState({
