@@ -47,6 +47,7 @@ export default function ErikaRunner() {
       clouds: [],
       distance: 0,
       score: 0,
+      high: loadHigh(),
       run: 0,
       spawnIn: 90,
       w: 0,
@@ -107,6 +108,7 @@ export default function ErikaRunner() {
       setFinalScore(s);
       const prev = loadHigh();
       if (s > prev) {
+        g.high = s;
         try {
           window.localStorage.setItem(HIGH_KEY, String(s));
         } catch {
@@ -303,7 +305,7 @@ export default function ErikaRunner() {
       ctx.fillText(`SCORE ${String(Math.floor(g.score)).padStart(4, "0")}`, g.w - 16, 28);
       ctx.fillStyle = "rgba(3,0,166,0.55)";
       ctx.font = "600 13px 'Open Sans', sans-serif";
-      ctx.fillText(`BEST ${String(Math.max(high, Math.floor(g.score))).padStart(4, "0")}`, g.w - 16, 48);
+      ctx.fillText(`BEST ${String(Math.max(g.high, Math.floor(g.score))).padStart(4, "0")}`, g.w - 16, 48);
       ctx.textAlign = "left";
     };
 
@@ -352,7 +354,8 @@ export default function ErikaRunner() {
     raf = requestAnimationFrame(tick);
 
     const onKey = (e) => {
-      if (e.code !== "Space" && e.code !== "ArrowUp") return;
+      const isJump = e.code === "Space" || e.code === "ArrowUp" || e.key === " " || e.key === "ArrowUp";
+      if (!isJump) return;
       const r = canvas.getBoundingClientRect();
       if (r.bottom < 0 || r.top > window.innerHeight) return;
       e.preventDefault();
@@ -394,7 +397,10 @@ export default function ErikaRunner() {
         </button>
       )}
       {phase === "over" && (
-        <div className="absolute inset-0 flex items-center justify-center bg-white/40 backdrop-blur-[1px]">
+        <div
+          className="absolute inset-0 flex items-center justify-center bg-white/40 backdrop-blur-[1px]"
+          onPointerDown={tap}
+        >
           <div className="rounded-3xl bg-white px-8 py-6 text-center shadow-xl">
             <p className="eyebrow">Game over</p>
             <p className="mt-2 font-heading text-4xl">
@@ -406,6 +412,7 @@ export default function ErikaRunner() {
             <button type="button" onClick={tap} className="btn-primary mt-5">
               Play again
             </button>
+            <p className="mt-3 text-xs text-foreground/50">or press space, or tap anywhere</p>
           </div>
         </div>
       )}
