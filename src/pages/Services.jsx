@@ -5,17 +5,20 @@ import SellerForm from "@/components/site/SellerForm";
 import { Image } from "@/components/ui/image";
 
 // One page for everything Erika does: buy, sell, lease, and invest.
-// Replaces the separate Buy and Sell pages (Nov 16, 2026) — their AI
-// photos are gone, every photo here is real: her own listings and stills
-// from her hero video. /buy and /sell still render this page.
+// Replaces the separate Buy and Sell pages (Nov 16, 2026). Photos are the
+// ones Erika picked Nov 16, 2026 — all real photos, no AI. The Sell aerial
+// had a "CENTURY 21 MILLENNIUM INC., Brokerage" watermark across the bottom;
+// it was removed by rebuilding that strip (full frame kept, 1900x1267).
+// The Lease interior had a faint "360 Home Photography 2022" credit in the
+// corner; that was rebuilt too. /buy and /sell still render this page.
 const SERVICES = [
   {
     id: "buy",
     eyebrow: "Buy",
     title: "Find the home that fits your life",
     body: "Finding a home should feel exciting, not overwhelming. I\u2019ll help you navigate the market, understand your options, and find a home that feels right for you.",
-    img: "/listings/culford.jpg",
-    alt: "A real Toronto home Erika leased for a client",
+    img: "/services/buy-houses.jpg",
+    alt: "Suburban Toronto homes on a quiet street",
     cta: { label: "Start Your Home Search", href: "#buy-form" },
   },
   {
@@ -23,8 +26,8 @@ const SERVICES = [
     eyebrow: "Sell",
     title: "Sell with a marketing edge",
     body: "Selling your home is more than putting it on the market. I\u2019ll combine thoughtful strategy, strong presentation, and modern marketing to help your property stand out.",
-    img: "/listings/david-salomon.jpg",
-    alt: "A real Toronto condo tower",
+    img: "/services/neighbourhood-aerial.jpg",
+    alt: "Aerial view of a Toronto neighbourhood at dusk",
     cta: { label: "What\u2019s My Home Worth?", href: "#sell-form" },
   },
   {
@@ -32,8 +35,8 @@ const SERVICES = [
     eyebrow: "Lease",
     title: "Find a rental that actually fits",
     body: "Looking to rent in Toronto or the GTA? Tell me your budget, your must-haves, and your move-in date, and I\u2019ll send you places worth seeing.",
-    img: "/listings/dundas.jpg",
-    alt: "A real downtown Toronto condo tower",
+    img: "/services/rental-interior.jpg",
+    alt: "Bright condo living room and kitchen",
     cta: { label: "See Current Rentals", to: "/listings" },
     cta2: { label: "Tell Me What You Need", to: "/contact" },
   },
@@ -42,8 +45,8 @@ const SERVICES = [
     eyebrow: "Invest",
     title: "Invest with the numbers in mind",
     body: "Looking for your next opportunity? I\u2019ll help you explore properties with your goals, the numbers, and the market in mind.",
-    img: "/services/skyline-invest.jpg",
-    alt: "Toronto skyline at dusk",
+    img: "/services/commercial-plaza.jpg",
+    alt: "Commercial plaza",
     cta: { label: "Let\u2019s Talk", to: "/contact" },
   },
 ];
@@ -103,7 +106,7 @@ export default function Services() {
           </div>
           <Reveal delay={0.1} className="lg:col-span-5">
             <div className="aspect-[4/3] overflow-hidden bg-sand">
-              <Image src="/services/skyline-dusk.jpg" alt="Toronto skyline at dusk" fittingType="fill" className="w-full h-full" />
+              <Image src="/services/skyline-downtown.jpg" alt="Downtown Toronto skyline at dusk" fittingType="fill" className="w-full h-full" />
             </div>
           </Reveal>
         </div>
