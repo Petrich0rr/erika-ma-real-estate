@@ -18,6 +18,8 @@ import Neighbourhoods from "@/pages/Neighbourhoods";
 import NeighbourhoodDetail from "@/pages/NeighbourhoodDetail";
 import Resources from "@/pages/Resources";
 import Contact from "@/pages/Contact";
+import Games from "@/pages/Games";
+import LostUnderground from "@/pages/LostUnderground";
 import Privacy from "@/pages/Privacy";
 import Terms from "@/pages/Terms";
 
@@ -45,6 +47,8 @@ function App() {
               <Route path="/neighbourhoods/:slug" element={<NeighbourhoodDetail />} />
               <Route path="/resources" element={<Resources />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/games" element={<Games />} />
+              <Route path="/lost-underground" element={<LostUnderground />} />
               <Route path="/privacy" element={<Privacy />} />
               <Route path="/terms" element={<Terms />} />
             </Route>
