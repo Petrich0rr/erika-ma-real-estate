@@ -75,7 +75,7 @@ export default function Contact() {
       {/* PLAY A GAME — moved here from the home page Nov 16, 2026: the game
           belongs on the Contact page (menu Contact and the Work With Erika
           button both land here). */}
-      <section id="play" className="pb-20 md:pb-32 bg-sand">
+      <section id="play" className="pb-20 md:pb-32 bg-sand scroll-mt-28">
         <div className="mx-auto max-w-[1400px] px-5 md:px-10">
           <Reveal className="text-center">
             <span className="eyebrow">Just for fun</span>
