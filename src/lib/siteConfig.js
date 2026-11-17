@@ -37,7 +37,7 @@ export const siteConfig = {
   social: {
     instagram: "https://www.instagram.com/realerikama/",
     linkedin: "https://www.linkedin.com/in/erikama/",
-    tiktok: "https://www.tiktok.com/@erikarma._",
+    wechatId: "erikarma",
   },
   images: {
     hero: "https://media.base44.com/images/public/6a79030aec60e25b597174ab/00be8f2f3_generated_87ff875e.png",
