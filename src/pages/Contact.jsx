@@ -73,7 +73,7 @@ export default function Contact() {
       </section>
 
       {/* PLAY A GAME — moved here from the home page Nov 16, 2026: the game
-          belongs on the Contact page (menu Contact and the Work With Erika
+          belongs on the Contact page (menu Minigame and the Work With Erika
           button both land here). */}
       <section id="play" className="pb-20 md:pb-32 bg-sand scroll-mt-28">
         <div className="mx-auto max-w-[1400px] px-5 md:px-10">
@@ -81,7 +81,7 @@ export default function Contact() {
             <span className="eyebrow">Just for fun</span>
             <h2 className="font-heading text-4xl md:text-5xl mt-4">Tired of browsing properties?</h2>
             <p className="mt-5 text-foreground/75 max-w-lg mx-auto">
-              Take a break and play a little game. Help mini Erika jump the houses and condos, and see if you can beat the high score.
+              Help mini Erika jump the obstacles to get to her next showing — and see if you can beat the high score.
             </p>
           </Reveal>
           <Reveal delay={0.08} className="mt-10">
