@@ -2,8 +2,9 @@ import { useEffect, useRef, useState } from "react";
 
 // Mini Erika vs. Toronto — a Chrome-dino-style runner (Nov 16, 2026).
 // Player: Erika's chibi avatar, animated from her 17-frame sprite sheet:
-// an 8-frame run cycle (legs move), a jump frame, a standing idle frame
-// and a dizzy frame for game over. Background: her sky-and-grass scene
+// an 8-frame run cycle (legs move), a jump frame and an idle frame that
+// both use her eyes-closed poses (Erika's favourites), and a dizzy frame
+// for game over. Background: her sky-and-grass scene
 // (/game/bg-sky.jpg), gently scrolling. Obstacles: her Toronto sprite
 // sheet (/game/obs-*.png), scaled up ~1.35x. The navy E-flag obstacle
 // is NOT used (Erika doesn't like it). Physics: a floatier jump
@@ -32,8 +33,8 @@ const RUN_SRCS = [
   "/game/anim-run-07.png",
   "/game/anim-run-08.png",
 ];
-const JUMP_SRC = "/game/anim-special-02.png";
-const IDLE_SRC = "/game/anim-special-04.png";
+const JUMP_SRC = "/game/anim-special-03a.png"; // eyes closed, sparkles
+const IDLE_SRC = "/game/anim-special-06b.png"; // eyes closed, "!!"
 const DIZZY_SRC = "/game/anim-special-06c.png";
 
 // { src, h (game px), aspect (w/h), weight } — tall 2, medium 2, small 3.
