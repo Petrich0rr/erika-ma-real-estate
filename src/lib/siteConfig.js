@@ -62,5 +62,5 @@ export const navLinks = [
   { label: "Services", to: "/services" },
   { label: "Listings", to: "/listings" },
   { label: "Resources", to: "/resources" },
-  { label: "Minigame", to: "/contact#play" },
+  { label: "Games", to: "/games" },
 ];
