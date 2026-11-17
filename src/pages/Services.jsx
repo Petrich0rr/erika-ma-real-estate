@@ -69,7 +69,7 @@ function ServiceRow({ service, flip }) {
           <div className={`lg:col-span-7 ${flip ? "lg:order-2" : ""}`}>
             <Reveal>
               <div className="flex items-baseline gap-4">
-                <span className="font-heading text-5xl md:text-6xl">{service.num}</span>
+                <span className="font-heading text-5xl md:text-6xl text-primary">{service.num}</span>
                 <span className="eyebrow">{service.eyebrow}</span>
               </div>
             </Reveal>
