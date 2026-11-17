@@ -2,15 +2,7 @@ import { Link } from "react-router-dom";
 import { Instagram, Linkedin, Mail, Phone, ArrowUpRight } from "lucide-react";
 import { navLinks, siteConfig } from "@/lib/siteConfig";
 import BrokerageLogo from "@/components/site/BrokerageLogo";
-
-// TikTok has no lucide icon; render a compact inline glyph.
-function TikTokIcon({ size = 18 }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M16.5 3c.3 2.1 1.7 3.8 3.8 4.2v2.6c-1.4 0-2.7-.4-3.8-1.1v6.6c0 3.3-2.7 6-6 6s-6-2.7-6-6 2.7-6 6-6c.3 0 .6 0 .9.1v2.7c-.3-.1-.6-.1-.9-.1-1.8 0-3.3 1.5-3.3 3.3s1.5 3.3 3.3 3.3 3.3-1.5 3.3-3.3V3h2.7z" />
-    </svg>);
-
-}
+import WeChatButton from "@/components/site/WeChatButton";
 
 export default function SiteFooter() {
   return (
@@ -43,9 +35,7 @@ export default function SiteFooter() {
               <a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-background/70 hover:text-background transition-colors">
                 <Linkedin size={20} />
               </a>
-              <a href={siteConfig.social.tiktok} target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="text-background/70 hover:text-background transition-colors">
-                <TikTokIcon size={18} />
-              </a>
+              <WeChatButton size={20} className="text-background/70 hover:text-background transition-colors" />
               <a href={`mailto:${siteConfig.email}`} aria-label="Email" className="text-background/70 hover:text-background transition-colors">
                 <Mail size={20} />
               </a>
