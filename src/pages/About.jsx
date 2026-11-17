@@ -45,7 +45,7 @@ export default function About() {
               <p className="mt-4 text-foreground/80 leading-relaxed max-w-xl">I’m a licensed real estate salesperson, and I’ve called quite a few places home… from Scarborough to Downtown Toronto to Yonge &amp; Finch. And honestly? I love them all for different reasons!</p>
               <p className="mt-4 text-foreground/80 leading-relaxed max-w-xl">I graduated from the University of Toronto.</p>
               <p className="mt-4 text-foreground/80 leading-relaxed max-w-xl">I’m Canadian, but my roots are in Shanghai, China. 🇨🇦🇨🇳</p>
-              <p className="mt-4 text-foreground/80 leading-relaxed max-w-xl">Outside of real estate, you’ll probably find me at the gym, grabbing a fruit tea, or exploring somewhere new. I love meeting new people, hearing their stories, and making new friends along the way.</p>
+              <p className="mt-4 text-foreground/80 leading-relaxed max-w-xl">Outside of real estate, you’ll probably find me at the gym, grabbing a fruit tea, or exploring somewhere new. I love meeting new people and making wonderful friends along the way.</p>
             </Reveal>
 
             <Reveal>
